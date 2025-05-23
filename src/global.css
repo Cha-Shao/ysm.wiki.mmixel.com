@@ -37,3 +37,22 @@
 
   --border: var(--sl-color-gray-5);
 }
+
+@theme {
+  --color-accent-low: var(--sl-color-accent-low);
+  --color-accent: var(--sl-color-accent);
+  --color-accent-high: var(--sl-color-accent-high);
+  --color-white: var(--sl-color-white);
+  --color-gray-1: var(--sl-color-gray-1);
+  --color-gray-2: var(--sl-color-gray-2);
+  --color-gray-3: var(--sl-color-gray-3);
+  --color-gray-4: var(--sl-color-gray-4);
+  --color-gray-5: var(--sl-color-gray-5);
+  --color-gray-6: var(--sl-color-gray-6);
+  --color-gray-7: var(--sl-color-gray-7);
+  --color-black: var(--sl-color-black);
+}
+
+.simple-border {
+  @apply border border-[var(--border)];
+}

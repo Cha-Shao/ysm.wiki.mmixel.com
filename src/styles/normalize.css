@@ -8,7 +8,7 @@
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
 
-html {
+.normalize html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
@@ -20,7 +20,7 @@ html {
  * Remove the margin in all browsers.
  */
 
-body {
+.normalize body {
   margin: 0;
 }
 
@@ -28,7 +28,7 @@ body {
  * Render the `main` element consistently in IE.
  */
 
-main {
+.normalize main {
   display: block;
 }
 
@@ -37,7 +37,7 @@ main {
  * `article` contexts in Chrome, Firefox, and Safari.
  */
 
-h1 {
+.normalize h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
@@ -50,7 +50,7 @@ h1 {
  * 2. Show the overflow in Edge and IE.
  */
 
-hr {
+.normalize hr {
   box-sizing: content-box; /* 1 */
   height: 0; /* 1 */
   overflow: visible; /* 2 */
@@ -61,7 +61,7 @@ hr {
  * 2. Correct the odd `em` font sizing in all browsers.
  */
 
-pre {
+.normalize pre {
   font-family: monospace, monospace; /* 1 */
   font-size: 1em; /* 2 */
 }
@@ -73,7 +73,7 @@ pre {
  * Remove the gray background on active links in IE 10.
  */
 
-a {
+.normalize a {
   background-color: transparent;
 }
 
@@ -82,7 +82,7 @@ a {
  * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
  */
 
-abbr[title] {
+.normalize abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
   text-decoration: underline dotted; /* 2 */
@@ -93,7 +93,7 @@ abbr[title] {
  */
 
 b,
-strong {
+.normalize strong {
   font-weight: bolder;
 }
 
@@ -104,7 +104,7 @@ strong {
 
 code,
 kbd,
-samp {
+.normalize samp {
   font-family: monospace, monospace; /* 1 */
   font-size: 1em; /* 2 */
 }
@@ -113,7 +113,7 @@ samp {
  * Add the correct font size in all browsers.
  */
 
-small {
+.normalize small {
   font-size: 80%;
 }
 
@@ -123,18 +123,18 @@ small {
  */
 
 sub,
-sup {
+.normalize sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
   vertical-align: baseline;
 }
 
-sub {
+.normalize sub {
   bottom: -0.25em;
 }
 
-sup {
+.normalize sup {
   top: -0.5em;
 }
 
@@ -145,7 +145,7 @@ sup {
  * Remove the border on images inside links in IE 10.
  */
 
-img {
+.normalize img {
   border-style: none;
 }
 
@@ -161,7 +161,7 @@ button,
 input,
 optgroup,
 select,
-textarea {
+.normalize textarea {
   font-family: inherit; /* 1 */
   font-size: 100%; /* 1 */
   line-height: 1.15; /* 1 */
@@ -174,7 +174,7 @@ textarea {
  */
 
 button,
-input {
+.normalize input {
   /* 1 */
   overflow: visible;
 }
@@ -185,7 +185,7 @@ input {
  */
 
 button,
-select {
+.normalize select {
   /* 1 */
   text-transform: none;
 }
@@ -197,7 +197,7 @@ select {
 button,
 [type="button"],
 [type="reset"],
-[type="submit"] {
+.normalize [type="submit"] {
   -webkit-appearance: button;
 }
 
@@ -208,7 +208,7 @@ button,
 button::-moz-focus-inner,
 [type="button"]::-moz-focus-inner,
 [type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
+.normalize [type="submit"]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
@@ -220,7 +220,7 @@ button::-moz-focus-inner,
 button:-moz-focusring,
 [type="button"]:-moz-focusring,
 [type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
+.normalize [type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
@@ -228,7 +228,7 @@ button:-moz-focusring,
  * Correct the padding in Firefox.
  */
 
-fieldset {
+.normalize fieldset {
   padding: 0.35em 0.75em 0.625em;
 }
 
@@ -239,7 +239,7 @@ fieldset {
  *    `fieldset` elements in all browsers.
  */
 
-legend {
+.normalize legend {
   box-sizing: border-box; /* 1 */
   color: inherit; /* 2 */
   display: table; /* 1 */
@@ -252,7 +252,7 @@ legend {
  * Add the correct vertical alignment in Chrome, Firefox, and Opera.
  */
 
-progress {
+.normalize progress {
   vertical-align: baseline;
 }
 
@@ -260,7 +260,7 @@ progress {
  * Remove the default vertical scrollbar in IE 10+.
  */
 
-textarea {
+.normalize textarea {
   overflow: auto;
 }
 
@@ -270,7 +270,7 @@ textarea {
  */
 
 [type="checkbox"],
-[type="radio"] {
+.normalize [type="radio"] {
   box-sizing: border-box; /* 1 */
   padding: 0; /* 2 */
 }
@@ -280,7 +280,7 @@ textarea {
  */
 
 [type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
+.normalize [type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
 
@@ -289,7 +289,7 @@ textarea {
  * 2. Correct the outline style in Safari.
  */
 
-[type="search"] {
+.normalize [type="search"] {
   -webkit-appearance: textfield; /* 1 */
   outline-offset: -2px; /* 2 */
 }
@@ -298,7 +298,7 @@ textarea {
  * Remove the inner padding in Chrome and Safari on macOS.
  */
 
-[type="search"]::-webkit-search-decoration {
+.normalize [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -307,7 +307,7 @@ textarea {
  * 2. Change font properties to `inherit` in Safari.
  */
 
-::-webkit-file-upload-button {
+.normalize ::-webkit-file-upload-button {
   -webkit-appearance: button; /* 1 */
   font: inherit; /* 2 */
 }
@@ -319,7 +319,7 @@ textarea {
  * Add the correct display in Edge, IE 10+, and Firefox.
  */
 
-details {
+.normalize details {
   display: block;
 }
 
@@ -327,7 +327,7 @@ details {
  * Add the correct display in all browsers.
  */
 
-summary {
+.normalize summary {
   display: list-item;
 }
 
@@ -338,7 +338,7 @@ summary {
  * Add the correct display in IE 10+.
  */
 
-template {
+.normalize template {
   display: none;
 }
 
@@ -346,10 +346,16 @@ template {
  * Add the correct display in IE 10.
  */
 
-[hidden] {
+.normalize [hidden] {
   display: none;
 }
 
-p {
+/* custom */
+
+.normalize p {
+  margin: unset;
+}
+
+.normalize div {
   margin: unset;
 }

@@ -20,8 +20,8 @@ const ImageCard = ({
         alt={title}
       />
       <div className="p-4 m-0">
-        <h2 className="text-xl mb-4">{title}</h2>
-        <p>{desc}</p>
+        <h2 className="text-xl">{title}</h2>
+        {desc && (<p className="mt-4">{desc}</p>)}
       </div>
     </div>
   )
