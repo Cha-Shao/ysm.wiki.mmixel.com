@@ -13,6 +13,7 @@
     "@astrojs/react": "^4.3.0",
     "@astrojs/starlight": "^0.34.3",
     "@astrojs/starlight-tailwind": "^4.0.1",
+    "@astrojs/vercel": "^8.1.4",
     "@tailwindcss/vite": "^4.1.7",
     "@types/react": "^19.1.5",
     "@types/react-dom": "^19.1.5",
