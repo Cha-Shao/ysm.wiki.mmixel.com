@@ -56,3 +56,7 @@
 .simple-border {
   @apply border border-[var(--border)];
 }
+
+.hero {
+  display: none;
+}

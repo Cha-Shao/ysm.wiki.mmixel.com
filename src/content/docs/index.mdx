@@ -5,7 +5,7 @@ template: splash
 hero:
   tagline: 一个可以自定义修改玩家模型动画的模组
   image:
-    file: ../../assets/houston.webp
+    file: ../../assets/main.png
   actions:
     - text: 开始教程
       link: /intro
@@ -14,9 +14,14 @@ hero:
       link: https://starlight.astro.build
       icon: external
       variant: minimal
+banner:
+  content: YSM最新版本为 2.4.1
 ---
 
 import { Card, CardGrid } from "@astrojs/starlight/components"
+import Hero from "@/components/Hero"
+
+<Hero />
 
 ## Next steps
 
