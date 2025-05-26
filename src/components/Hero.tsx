@@ -6,7 +6,7 @@ const Hero = () => {
     <div className={clsx(
       "flex flex-col relative",
       "lg:flex-row lg:pt-32",
-      "-mb-32"
+      "lg:-mb-32"
     )}>
       <div className='shrink-0 space-y-4'>
         <h1 className='text-4xl lg:text-7xl'>
