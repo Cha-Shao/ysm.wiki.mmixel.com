@@ -66,6 +66,43 @@ export default defineConfig({
                     ],
                 },
                 {
+                    label: "动画制作",
+                    items: [
+                        { label: "动画概述", slug: "animation/intro" },
+                        { label: "玩家主动画", slug: "animation/main" },
+                        { label: "手部条件动画", slug: "animation/arm" },
+                        { label: "并行动画", slug: "animation/parallel" },
+                        { label: "护甲动画", slug: "animation/armor" },
+                        { label: "骑乘动画", slug: "animation/ride" },
+                        { label: "轮盘动画", slug: "animation/emote" },
+                        { label: "箭矢动画", slug: "animation/arrow" },
+                        { label: "选择界面动画", slug: "animation/gui" },
+                        { label: "永恒枪械工坊动画", slug: "animation/tacz" },
+                        { label: "马术动画", slug: "animation/swem" },
+                        { label: "跑酷动画", slug: "animation/parcool" },
+                        { label: "CarryOn动画", slug: "animation/carry-on" },
+                        { label: "拔刀剑动画", slug: "animation/slashblade" },
+                        { label: "女仆动画", slug: "animation/tlm" },
+                        { label: "更真实的第一人称", slug: "animation/first-person" },
+                    ]
+                },
+                {
+                    label: "molang",
+                    items: [
+                        { label: "Molang概述", slug: "molang/intro" },
+                        { label: "变量", slug: "molang/var" },
+                        { label: "常用 molang 集合", slug: "molang/common" },
+                        { label: "molang 参考表", slug: "molang/ref" },
+                    ]
+                },
+                {
+                    label: "模型转换",
+                    items: [
+                        { label: "中国版YSM组件", slug: "trans/netease" },
+                        { label: "女仆模组", slug: "trans/maid" },
+                    ]
+                },
+                {
                     label: "Reference",
                     autogenerate: { directory: "reference" },
                 },
