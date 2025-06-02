@@ -53,45 +53,37 @@ import ImageCard from "@/components/ImageCard"
 
 这里我们以蓝玫瑰（02Bunny）提供的模型为例，从零开始制作一张 PBR 贴图。
 
-![7162d2214e813c4b.jpg](https://s2.loli.net/2025/01/30/KCu37bDxr4LsgeX.jpg)
+![7162d2214e813c4b.jpg](/images/KCu37bDxr4LsgeX.jpg)
 
 首先，复制一张贴图，在名称后缀加上 `_s`（这是常见的命名习惯，并非强制要求）。切换到绘画模式，在设置中将画板切换到 RGB 模式。
 
 这样，下方的数值就会与 PBR 的各项数值一一对应，如图所示，依次为：光滑度 128，金属度 255，亮度 0。
 
-![71d061534ea4540c.jpg](https://s2.loli.net/2025/01/30/4sXHn6QbT25ImZq.jpg)
+![71d061534ea4540c.jpg](/images/4sXHn6QbT25ImZq.jpg)
 
 接着，我们就可以在新复制的贴图上进行换色操作。由于刚才我们设置的是金属材质，所以要对模型上应该呈现金属质感的部分进行换色。
 
-![5f9718c096f5c71b.jpg](https://s2.loli.net/2025/01/30/ES9I1VMnwckzlhu.jpg)
+![5f9718c096f5c71b.jpg](/images/ES9I1VMnwckzlhu.jpg)
 
 其他部分同理，根据该部分应呈现的材质来调整相应的数值。
 
 例如，对于玻璃材质，我们可以设置为 `255 64 0` 以强调反光度；对于任何发光部件，可以填充为 `0 0 255`；光滑度和金属度也可根据实际情况添加数值。而像轮胎、头发、布料这类材质，可以不添加任何数值，即填充为 `0 0 0`。
 
-![419b098b3f62d33d.jpg](https://s2.loli.net/2025/01/30/WAjlcXQz4trskGZ.jpg)
+![419b098b3f62d33d.jpg](/images/WAjlcXQz4trskGZ.jpg)
 
 ## 最终效果
 
 之后，我们就可以将贴图和模型导出。通过插件将这些文件挂载即可。
 
-![1.png](https://s2.loli.net/2025/01/30/2mh7ZFRVJzpg5UW.png)
+![1.png](/images/2mh7ZFRVJzpg5UW.png)
 
 至此，我们的 PBR 贴图就制作完成了。现在可以进入游戏进行检查，对比使用 PBR 前后的效果：
 
 <CardGrid>
 
-<ImageCard
-  src="https://s2.loli.net/2025/01/30/f5IsdMaKxyem3V2.jpg"
-  title="使用 PBR 前"
-  href="/"
-/>
+<ImageCard src="/images/f5IsdMaKxyem3V2.jpg" title="使用 PBR 前" href="/" />
 
-<ImageCard
-  src="https://s2.loli.net/2025/01/30/OMzXqU87EdLcgDm.jpg"
-  title="使用 PBR 后"
-  href="/"
-/>
+<ImageCard src="/images/OMzXqU87EdLcgDm.jpg" title="使用 PBR 后" href="/" />
 
 </CardGrid>
 

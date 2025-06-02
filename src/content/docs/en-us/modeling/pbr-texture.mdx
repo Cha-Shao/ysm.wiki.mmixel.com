@@ -55,43 +55,35 @@ Before you start making PBR textures, you must be aware of the following:
 
 Here, we use a model provided by 蓝玫瑰 (02Bunny) as an example to create a PBR texture from scratch.
 
-![7162d2214e813c4b.jpg](https://s2.loli.net/2025/01/30/KCu37bDxr4LsgeX.jpg)
+![7162d2214e813c4b.jpg](/images/KCu37bDxr4LsgeX.jpg)
 
 First, copy a texture and add `_s` to the filename (this is a common naming convention, not a requirement). Switch to painting mode and set the canvas to RGB mode in the settings.
 
 Now, the values below will correspond to the PBR parameters one by one, as shown in the image: smoothness 128, metallic 255, emission 0.
 
-![71d061534ea4540c.jpg](https://s2.loli.net/2025/01/30/4sXHn6QbT25ImZq.jpg)
+![71d061534ea4540c.jpg](/images/4sXHn6QbT25ImZq.jpg)
 
 Next, you can recolor the new texture. Since we set it as a metal material, recolor the parts of the model that should have a metallic feel.
 
-![5f9718c096f5c71b.jpg](https://s2.loli.net/2025/01/30/ES9I1VMnwckzlhu.jpg)
+![5f9718c096f5c71b.jpg](/images/ES9I1VMnwckzlhu.jpg)
 
 For other parts, adjust the values according to the material you want to present.
 
 For example, for glass, you can set it to `255 64 0` to emphasize reflectivity; for any glowing parts, fill with `0 0 255`; smoothness and metallic can be added as needed. For materials like tires, hair, or fabric, you can leave them as `0 0 0`.
 
-![419b098b3f62d33d.jpg](https://s2.loli.net/2025/01/30/WAjlcXQz4trskGZ.jpg)
+![419b098b3f62d33d.jpg](/images/WAjlcXQz4trskGZ.jpg)
 
 ## Final Effect
 
 After that, export the texture and model. Use the plugin to mount these files.
 
-![1.png](https://s2.loli.net/2025/01/30/2mh7ZFRVJzpg5UW.png)
+![1.png](/images/2mh7ZFRVJzpg5UW.png)
 
 Now the PBR texture is complete. You can enter the game to check and compare the effects before and after using PBR:
 
 <CardGrid>
-  <ImageCard
-    src="https://s2.loli.net/2025/01/30/f5IsdMaKxyem3V2.jpg"
-    title="Before PBR"
-    href="/"
-  />
-  <ImageCard
-    src="https://s2.loli.net/2025/01/30/OMzXqU87EdLcgDm.jpg"
-    title="After PBR"
-    href="/"
-  />
+  <ImageCard src="/images/f5IsdMaKxyem3V2.jpg" title="Before PBR" href="/" />
+  <ImageCard src="/images/OMzXqU87EdLcgDm.jpg" title="After PBR" href="/" />
 </CardGrid>
 
 If you find that some effects are not ideal, you can go back to BlockBench to modify and save the PBR texture, then use the refresh command in-game to see the changes in real time.

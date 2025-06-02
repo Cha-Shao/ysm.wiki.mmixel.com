@@ -25,17 +25,17 @@ To better explain what Molang is and how it works, let's start with the mechanis
 
 The animation mechanism in Bedrock Edition is very simple: keyframes are created at different points in time, and the position, rotation, or scale of a component is set. When the animation starts playing, the program automatically calculates the tween animation, moving, rotating, or scaling the component from one state to another to present the animation effect.
 
-![5.png](https://s2.loli.net/2023/02/11/xykIWa7bTqSBnfm.png)
+![5.png](/images/xykIWa7bTqSBnfm.png)
 
 For each keyframe, we set a specific value, which determines the position, rotation, or scale of the component at that keyframe.
 
-![6.png](https://s2.loli.net/2023/02/11/Uz8XTsCNJMcb3tZ.png)
+![6.png](/images/Uz8XTsCNJMcb3tZ.png)
 
 However, in some special cases, this value is not fixed. For example, we may want the swing angle to be 30 degrees when the player is holding an item, and 60 degrees when empty-handed. In this case, we can use a Molang expression.
 
 A common animation design is to show or hide a model. For example, we want to display the helmet component when the player wears a helmet. We can use the scale function to hide the component: when the X, Y, and Z scale are all 0, the component will be hidden. Therefore, in BlockBench, we can write:
 
-![7.png](https://s2.loli.net/2023/02/11/1gAHJNZfwmu6qzL.png)
+![7.png](/images/1gAHJNZfwmu6qzL.png)
 
 Here, `ysm.has_helmet` is a Molang parameter. When the player wears a helmet, it returns 1; when the player does not wear a helmet, it returns 0, which perfectly achieves the show/hide effect we want.
 
@@ -46,7 +46,7 @@ For a long time, long hair models have been a headache. When the player looks up
 
 So, we can write the Molang parameter like this:
 
-![8.png](https://s2.loli.net/2023/02/11/POS9uIYbKBfJwxi.png)
+![8.png](/images/POS9uIYbKBfJwxi.png)
 
 Let's explain this parameter line by line:
 

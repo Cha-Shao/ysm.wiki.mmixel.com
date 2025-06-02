@@ -25,17 +25,17 @@ Molang 是 Mojang 官方为基岩版动画设计的一种极为简易的语言�
 
 基岩版动画的机制十分简单，在不同的时间点创建关键帧，并设定某个组件的位置、旋转角度或缩放比例。当动画开始播放时，程序会自动计算补间动画，使组件从一个位置移动、旋转或缩放至另一个位置，从而呈现出动画效果。
 
-![5.png](https://s2.loli.net/2023/02/11/xykIWa7bTqSBnfm.png)
+![5.png](/images/xykIWa7bTqSBnfm.png)
 
 我们为每个关键帧设置的是一个具体的数值，该数值决定了动画播放到该关键帧时，组件所处的位置、旋转角度或缩放大小。
 
-![6.png](https://s2.loli.net/2023/02/11/Uz8XTsCNJMcb3tZ.png)
+![6.png](/images/Uz8XTsCNJMcb3tZ.png)
 
 然而，在某些特殊情况下，这个数值并非固定不变。例如，我们希望玩家手持物品时的摆动角度为 30 度，而空手时的摆动角度为 60 度，此时就可以运用 Molang 表达式。
 
 一种常见的动画设计是显示或隐藏模型，比如我们希望玩家穿戴头盔时显示头盔组件。我们可以利用缩放功能来隐藏组件，当组件的 X、Y、Z 缩放比例均为 0 时，该组件就会被隐藏。因此，我们可以在 BlockBench 中这样编写：
 
-![7.png](https://s2.loli.net/2023/02/11/1gAHJNZfwmu6qzL.png)
+![7.png](/images/1gAHJNZfwmu6qzL.png)
 
 这里的 `ysm.has_helmet` 是一个 Molang 参数，当玩家穿戴头盔时，它会返回数字 1；而当玩家未穿戴头盔时，它会返回数字 0，恰好实现了我们所需的隐藏或显示功能。
 
@@ -46,7 +46,7 @@ Molang 是 Mojang 官方为基岩版动画设计的一种极为简易的语言�
 
 那么，我们可以这样编写 Molang 参数：
 
-![8.png](https://s2.loli.net/2023/02/11/POS9uIYbKBfJwxi.png)
+![8.png](/images/POS9uIYbKBfJwxi.png)
 
 下面我们来逐行介绍这个参数的含义：
 

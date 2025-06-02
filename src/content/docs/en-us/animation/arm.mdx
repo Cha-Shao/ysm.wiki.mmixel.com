@@ -27,24 +27,24 @@ Below are key concepts from the vanilla Minecraft mechanism:
 - **Hold**: The state when the player is holding an item but not performing any action (such as idle weapon holding pose).
 - **Tag system (Tag)**: Used to categorize similar items (such as all swords). For specific tags, refer to the [Minecraft Tag Wiki](https://minecraft.fandom.com/wiki/Tag).
 - **Item ID lookup**: Press `F3 + H` to display item IDs (example below):  
-  ![Item ID Example](https://s2.loli.net/2023/06/25/BTo2G4dPbK5SlAq.png)
+  ![Item ID Example](/images/BTo2G4dPbK5SlAq.png)
 
 ## Use Animations
 
 Use animations include **10 built-in categories**, compatible with most mod scenarios. The rules are as follows:
 
-| Animation Name                                         | Trigger Scenario                | Duration Description         |
-| ------------------------------------------------------ | ------------------------------- | --------------------------- |
-| `use_mainhand:eat`<br/>`use_offhand:eat`               | Played when eating food         | About 1.5 seconds           |
-| `use_mainhand:drink`<br/>`use_offhand:drink`           | Played when drinking potions or milk buckets | About 1.5 seconds           |
-| `use_mainhand:shield`<br/>`use_offhand:shield`         | Played when raising a shield    | Dynamic trigger, lasts until released |
-| `use_mainhand:block`<br/>`use_offhand:block`           | Played when in blocking state (e.g. holding shield) | Loops during blocking       |
-| `use_mainhand:bow`<br/>`use_offhand:bow`               | Played while drawing a bow      | Recommend ≥60s or static    |
-| `use_mainhand:spear`<br/>`use_offhand:spear`           | Played while holding a trident  | Recommend ≥60s or static    |
-| `use_mainhand:crossbow`<br/>`use_offhand:crossbow`     | Played when loading/using crossbow | Recommend ≥60s or static    |
-| `use_mainhand:spyglass`<br/>`use_offhand:spyglass`     | Played when using spyglass      | Recommend ≥60s or static    |
-| `use_mainhand:toot_horn`<br/>`use_offhand:toot_horn`   | Played when blowing goat horn   | Recommend ≥60s or static    |
-| `use_mainhand:brush`<br/>`use_offhand:brush`           | Played when using brush (archaeology) | Dynamic trigger, during operation |
+| Animation Name                                       | Trigger Scenario                                    | Duration Description                  |
+| ---------------------------------------------------- | --------------------------------------------------- | ------------------------------------- |
+| `use_mainhand:eat`<br/>`use_offhand:eat`             | Played when eating food                             | About 1.5 seconds                     |
+| `use_mainhand:drink`<br/>`use_offhand:drink`         | Played when drinking potions or milk buckets        | About 1.5 seconds                     |
+| `use_mainhand:shield`<br/>`use_offhand:shield`       | Played when raising a shield                        | Dynamic trigger, lasts until released |
+| `use_mainhand:block`<br/>`use_offhand:block`         | Played when in blocking state (e.g. holding shield) | Loops during blocking                 |
+| `use_mainhand:bow`<br/>`use_offhand:bow`             | Played while drawing a bow                          | Recommend ≥60s or static              |
+| `use_mainhand:spear`<br/>`use_offhand:spear`         | Played while holding a trident                      | Recommend ≥60s or static              |
+| `use_mainhand:crossbow`<br/>`use_offhand:crossbow`   | Played when loading/using crossbow                  | Recommend ≥60s or static              |
+| `use_mainhand:spyglass`<br/>`use_offhand:spyglass`   | Played when using spyglass                          | Recommend ≥60s or static              |
+| `use_mainhand:toot_horn`<br/>`use_offhand:toot_horn` | Played when blowing goat horn                       | Recommend ≥60s or static              |
+| `use_mainhand:brush`<br/>`use_offhand:brush`         | Played when using brush (archaeology)               | Dynamic trigger, during operation     |
 
 ### Custom Use Animation Rules
 
@@ -52,7 +52,7 @@ Supports custom animations via **item ID** or **tag**. Example:
 | Animation Name | Trigger Condition | Naming Rule |
 | -------------------------------------------------------------- | ------------------------------- | ---------------- |
 | `use_mainhand$minecraft:shield`<br/>`use_offhand$minecraft:shield` | Use when holding shield (ID match) | `$` followed by item ID |
-| `use_mainhand#minecraft:dirt`<br/>`use_offhand#minecraft:dirt`     | Use when holding dirt-type items (tag match) | `#` followed by item tag |
+| `use_mainhand#minecraft:dirt`<br/>`use_offhand#minecraft:dirt` | Use when holding dirt-type items (tag match) | `#` followed by item tag |
 
 ## Swing Animations
 
@@ -62,23 +62,23 @@ Supports custom animations via **item ID** or **tag**. Example:
 
 ### Built-in Swing Animation Categories
 
-| Animation Name                                         | Trigger Scenario                                    |
-| ------------------------------------------------------ | -------------------------------------------------- |
-| `swing:sword`<br/>`swing_offhand:sword`               | Played when swinging sword-type weapons            |
-| `swing:axe`<br/>`swing_offhand:axe`                   | Played when swinging axe-type tools                |
-| `swing:pickaxe`<br/>`swing_offhand:pickaxe`           | Played when swinging pickaxe-type tools            |
-| `swing:shovel`<br/>`swing_offhand:shovel`             | Played when swinging shovel-type tools             |
-| `swing:hoe`<br/>`swing_offhand:hoe`                   | Played when swinging hoe-type tools                |
-| `swing:shield`<br/>`swing_offhand:shield`             | Played when swinging shield (e.g. attack action)   |
-| `swing:throwable_potion`<br/>`swing:throwable_potion` | Played when throwing potions                       |
+| Animation Name                                        | Trigger Scenario                                                                     |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| `swing:sword`<br/>`swing_offhand:sword`               | Played when swinging sword-type weapons                                              |
+| `swing:axe`<br/>`swing_offhand:axe`                   | Played when swinging axe-type tools                                                  |
+| `swing:pickaxe`<br/>`swing_offhand:pickaxe`           | Played when swinging pickaxe-type tools                                              |
+| `swing:shovel`<br/>`swing_offhand:shovel`             | Played when swinging shovel-type tools                                               |
+| `swing:hoe`<br/>`swing_offhand:hoe`                   | Played when swinging hoe-type tools                                                  |
+| `swing:shield`<br/>`swing_offhand:shield`             | Played when swinging shield (e.g. attack action)                                     |
+| `swing:throwable_potion`<br/>`swing:throwable_potion` | Played when throwing potions                                                         |
 | `swing:fishing_rod`<br/>`swing:fishing_rod`           | Played when casting/retracting fishing rod <Badge type="tip" text="Added in 2.3.0"/> |
 
 ### Custom Swing Animation Example
 
-| Animation Name             | Trigger Condition                  | Naming Rule         |
-| -------------------------- | ---------------------------------- | ------------------- |
-| `swing$minecraft:shield`   | Left-click swing with shield (ID match) | `$` followed by item ID  |
-| `swing#minecraft:dirt`     | Swing with dirt-type items (tag match)  | `#` followed by item tag |
+| Animation Name           | Trigger Condition                       | Naming Rule              |
+| ------------------------ | --------------------------------------- | ------------------------ |
+| `swing$minecraft:shield` | Left-click swing with shield (ID match) | `$` followed by item ID  |
+| `swing#minecraft:dirt`   | Swing with dirt-type items (tag match)  | `#` followed by item tag |
 
 ## Hold Animations
 
@@ -89,24 +89,24 @@ Hold animations play when the player is holding an item but not performing any a
 
 ### Built-in Hold Animation Categories
 
-| Animation Name                                                     | Trigger Scenario                                              |
-| ------------------------------------------------------------------ | ------------------------------------------------------------- |
-| `hold_mainhand:empty`<br/>`hold_offhand:empty`                     | Played when empty-handed                                      |
-| `hold_mainhand:charged_crossbow`<br/>`hold_offhand:charged_crossbow` | Played when holding charged crossbow                          |
-| `hold_mainhand:crossbow`<br/>`hold_offhand:crossbow`               | Played when holding uncharged crossbow                        |
-| `hold_mainhand:fishing_rod`<br/>`hold_offhand:fishing_rod`         | Played when holding fishing rod (not cast) <Badge type="tip" text="Added in 2.3.0"/> |
-| `hold_mainhand:fishing`                                            | Played when holding cast fishing rod (**unique naming**)      |
-| `hold_mainhand:slashblade`<br/>`hold_offhand:slashblade`           | Played when holding Slashblade <Badge type="tip" text="Added in 2.3.0"/> |
-| `hold_mainhand:sword`<br/>`hold_offhand:sword`                     | Played when holding sword (idle)                              |
-| `hold_mainhand:axe`<br/>`hold_offhand:axe`                         | Played when holding axe (idle)                                |
-| `hold_mainhand:shield`<br/>`hold_offhand:shield`                   | Played when holding shield (idle)                             |
-| `hold_mainhand:throwable_potion`<br/>`hold_offhand:throwable_potion` | Played when holding throwable potion                         |
-| `hold_mainhand:eat`<br/>`hold_offhand:eat`                         | Played when holding food                                      |
-| `hold_mainhand:drink`<br/>`hold_offhand:drink`                     | Played when holding potion/milk bucket                        |
+| Animation Name                                                       | Trigger Scenario                                                                     |
+| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| `hold_mainhand:empty`<br/>`hold_offhand:empty`                       | Played when empty-handed                                                             |
+| `hold_mainhand:charged_crossbow`<br/>`hold_offhand:charged_crossbow` | Played when holding charged crossbow                                                 |
+| `hold_mainhand:crossbow`<br/>`hold_offhand:crossbow`                 | Played when holding uncharged crossbow                                               |
+| `hold_mainhand:fishing_rod`<br/>`hold_offhand:fishing_rod`           | Played when holding fishing rod (not cast) <Badge type="tip" text="Added in 2.3.0"/> |
+| `hold_mainhand:fishing`                                              | Played when holding cast fishing rod (**unique naming**)                             |
+| `hold_mainhand:slashblade`<br/>`hold_offhand:slashblade`             | Played when holding Slashblade <Badge type="tip" text="Added in 2.3.0"/>             |
+| `hold_mainhand:sword`<br/>`hold_offhand:sword`                       | Played when holding sword (idle)                                                     |
+| `hold_mainhand:axe`<br/>`hold_offhand:axe`                           | Played when holding axe (idle)                                                       |
+| `hold_mainhand:shield`<br/>`hold_offhand:shield`                     | Played when holding shield (idle)                                                    |
+| `hold_mainhand:throwable_potion`<br/>`hold_offhand:throwable_potion` | Played when holding throwable potion                                                 |
+| `hold_mainhand:eat`<br/>`hold_offhand:eat`                           | Played when holding food                                                             |
+| `hold_mainhand:drink`<br/>`hold_offhand:drink`                       | Played when holding potion/milk bucket                                               |
 
 ### Custom Hold Animation Example
 
-| Animation Name                                                     | Trigger Condition                              | Naming Rule         |
-| ------------------------------------------------------------------ | ---------------------------------------------- | ------------------- |
-| `hold_mainhand$minecraft:shield`<br/>`hold_offhand$minecraft:shield` | Played when holding shield (idle, ID match)    | `$` followed by item ID  |
+| Animation Name                                                       | Trigger Condition                                           | Naming Rule              |
+| -------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------ |
+| `hold_mainhand$minecraft:shield`<br/>`hold_offhand$minecraft:shield` | Played when holding shield (idle, ID match)                 | `$` followed by item ID  |
 | `hold_mainhand#minecraft:dirt`<br/>`hold_offhand#minecraft:dirt`     | Played when holding dirt/grass block-type items (tag match) | `#` followed by item tag |
