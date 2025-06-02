@@ -23,7 +23,7 @@ export default defineConfig({
             social: [{
                 icon: "github",
                 label: "GitHub",
-                href: "https://github.com/withastro/starlight"
+                href: "https://github.com/Cha-Shao/ysm.wiki.mmixel.com"
             }],
             defaultLocale: "root",
             locales: {
