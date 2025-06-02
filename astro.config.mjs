@@ -30,6 +30,10 @@ export default defineConfig({
                 root: {
                     label: "简体中文",
                     lang: "zh-CN",
+                },
+                'zh-ai': {
+                    label: "AI 中文",
+                    lang: "zh-AI",
                 }
             },
             sidebar: [
@@ -102,10 +106,10 @@ export default defineConfig({
                         { label: "女仆模组", slug: "trans/maid" },
                     ]
                 },
-                {
-                    label: "Reference",
-                    autogenerate: { directory: "reference" },
-                },
+                // {
+                //     label: "Reference",
+                //     autogenerate: { directory: "reference" },
+                // },
             ],
             customCss: [
                 "./src/global.css",

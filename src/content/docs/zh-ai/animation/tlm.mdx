@@ -1,0 +1,64 @@
+---
+title: 女仆动画
+---
+
+import { Aside } from "@astrojs/starlight/components"
+
+自 YSM 2.4.0 版本起，我们新增了对车万女仆模组的支持。如今，YSM 的模型可直接供车万女仆模组里的女仆使用。
+
+## 添加新的定位组
+
+女仆模组中有一个名为 `BackpackLocator` 的背包定位组，用于展示女仆装备的背包，其定位通常设置在两肩中间。当女仆的装饰槽位放置有拔刀剑或者旗帜时，也会将该定位组作为参考。
+
+## 添加动画定位文件
+
+首先，你需要在 `ysm.json` 的动画字段中添加一个新的类型 `tlm`，示例如下：
+
+```json {11}
+"animation": {
+    "main": "animations/main.animation.json",
+    "arm": "animations/arm.animation.json",
+    "extra": "animations/extra.animation.json",
+    "tac": "animations/tac.animation.json",
+    "carryon": "animations/carryon.animation.json",
+    "parcool": "animations/parcool.animation.json",
+    "swem": "animations/swem.animation.json",
+    "slashblade": "animations/slashblade.animation.json",
+    // 这就是女仆的动画
+    "tlm": "animations/tlm.animation.json"
+}
+```
+
+之后，参考默认模型的 `tlm.animation.json` 动画即可。
+
+<Aside>
+  **若你要修改女仆动画，务必填写此处。若修改后的女仆动画无法正常生效，请先检查此处是否声明了该文件**
+</Aside>
+
+## 动画清单
+
+以下是可自定义的女仆动画，默认模型的女仆动画文件为 `tlm.animation.json`：
+
+| 名称       | 作用                                                                                                                         | 备注     |
+| :--------- | :--------------------------------------------------------------------------------------------------------------------------- | :------- |
+| gomoku     | 女仆坐在五子棋盘、象棋、国际象棋旁边的动画                                                                                   | 循环播放 |
+| bookshelf  | 女仆坐在书架上的动画                                                                                                         | 循环播放 |
+| computer   | 女仆坐在电脑旁的动画                                                                                                         | 循环播放 |
+| keyboard   | 女仆坐在电子琴旁的动画                                                                                                       | 循环播放 |
+| chair      | 女仆坐在坐垫上的动画，可在后方添加 `$` 符号并加上坐垫 ID 来为特定的坐垫添加动画。<br/> 示例：`chair$touhou_little_maid:moto` | 循环播放 |
+| picnic     | 女仆坐在野餐垫上的动画                                                                                                       | 循环播放 |
+| beg        | 当玩家手持蛋糕靠近女仆时，女仆会播放此动画                                                                                   | 循环播放 |
+| game_lost  | 当女仆输了棋局时播放此动画                                                                                                   | 循环播放 |
+| game_win   | 当女仆赢得棋局时播放此动画                                                                                                   | 循环播放 |
+| broom      | 女仆乘坐扫把时播放此动画                                                                                                     | 循环播放 |
+| statue     | 女仆模型作为雕像渲染时播放此动画                                                                                             | 循环播放 |
+| garage_kit | 女仆模型作为手办渲染时播放此动画                                                                                             | 循环播放 |
+
+## 坐垫条件动画
+
+女仆模组自带的坐垫，其实体 ID 均相同。为此，我们特意为其添加了条件动画的支持。
+
+坐垫的条件动画，动画名以 `chair` 开头，`$` 后面加上坐垫的模型 ID。
+
+- 例如游戏内的椅子：`chair$touhou_little_maid:class_chair`
+- 例如游戏内的摩托车坐垫：`chair$touhou_little_maid:moto`

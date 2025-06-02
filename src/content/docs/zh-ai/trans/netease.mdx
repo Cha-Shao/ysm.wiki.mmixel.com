@@ -1,0 +1,134 @@
+---
+title: 中国版YSM组件
+---
+
+import { Aside } from "@astrojs/starlight/components"
+import FileCard from "@/components/FileCard"
+
+本教程将详细讲述如何把 Java 版 Yes Steve Model（简称 YSM）模组的模型包，转换为网易中国版 Yes Steve Model 组件附包。
+
+此教程默认你已经了解 Java 版 Yes Steve Model 模型的制作方法。
+
+<Aside type="caution">
+  加密格式的 Java 版 Yes Steve Model 模型（即文件名以 `.ysm`
+  结尾的单个文件）**无法被读取和转换**！
+  若你制作的模型未获得原作者许可，**请勿进行转换和发布**！我们坚决反对任何侵权盗取模型的行为，因侵权导致的后果与我们无关！
+</Aside>
+
+## 一、准备工作
+
+首先，你需要下载以下两个文件：
+![img](https://s2.loli.net/2025/01/28/WiIGQSLgq2A8rdF.png)
+
+- `ysmMain.zip`：这是前置包，仅用于中国版 YSM 组件附包的测试附属包，**请勿挪作他用**。
+- `ysm-netease-utils.js`：这是 BlockBench 插件，可用于一键转换 Java 版 YSM 模型包。
+
+<FileCard
+  name="ysm-netease-utils.js"
+  size="442 KB"
+  url="/files/ysm-netease-utils.js"
+/>
+
+其次，你的电脑还需安装以下三款软件：
+![img](https://s2.loli.net/2025/01/28/p5jxLacNJkVRQgl.png)
+
+- `BlockBench`：一款用于制作模型的软件，相信大家都不陌生。
+- `VSCode`：经典的文本编辑软件。由于部分高级内容可能需要对脚本文件进行修改，因此建议安装该软件。
+- `我的世界开发者启动器`：这是网易官方专门用于组件开发的软件，需要注册开发者账户才能登录使用。下载地址：[https://mc.163.com/dev](https://mc.163.com/dev)
+
+## 二、插件安装
+
+首先，打开 BlockBench 软件，将之前下载的 `ysm-netease-utils.js` 文件（**注意不要修改文件名，安装后也不要删除该文件**）直接拖入 BlockBench 中。
+![img](https://s2.loli.net/2025/01/28/1aQ39gqfGRCjrPc.png)
+点击确认后，你在 `文件 -> 插件` 菜单中就能看到已加载的插件：
+![img](https://s2.loli.net/2025/01/28/rh7paZYUKB13NjE.png)
+![img](https://s2.loli.net/2025/01/28/EltwBoCvgDxus64.png)
+
+## 三、转换模型
+
+现在，我们开始进行 Java 版 YSM 模型的转换。
+在 BlockBench 中打开如下菜单：
+![img](https://s2.loli.net/2025/01/28/ailrDY1VGJ8uXfd.png)
+![img](https://s2.loli.net/2025/01/28/SI8qWfDuMgdmkn7.png)
+点击 `选择 Java 版模型包` 按钮，然后选中你需要转换的 Java 版 YSM 模型包文件夹。
+接着点击 `选择导出路径` 按钮，选择你要存放转换后组件包的路径。
+
+<Aside>
+  中国版组件包不支持路径中包含中文，建议选择纯英文路径，例如将其放置在桌面。
+</Aside>
+最后填写作者名和模型名，这两个名称最终会被插件自动拼接成你组件包的 ID，请尽量选择较长且不易产生冲突的名称。
+<Aside>
+  中国版组件包不支持 ID
+  包含中文，请务必填写小写英文字符或下划线，不要使用中文或空格。
+</Aside>
+
+## 四、测试模型
+
+现在，你已经完成了组件包的转换，让我们进入游戏进行测试吧！
+首先打开 `我的世界开发者启动器`，登录账户，然后选择 `创作 -> 本地导入 -> 导入基岩版组件`：
+![img](https://s2.loli.net/2025/01/28/Spsc9gmIo13udVa.png)
+将之前下载的 `ysmMain.zip` 前置包导入，随便起个名字，然后点击导入。
+![img](https://s2.loli.net/2025/01/28/mLuF12gj5IzSJZx.png)
+接着，按照同样的方法将刚刚通过插件转换后的文件夹导入：
+![img](https://s2.loli.net/2025/01/28/xQgAlP5dIvmGfiX.png)
+然后选择主包（选择附属包也可以，可根据个人喜好决定），点击开发测试按钮：
+![img](https://s2.loli.net/2025/01/28/JROyAUMZbsta1oE.png)
+随便选择一个版本，如 3.1 或 3.2 均可：
+![img](https://s2.loli.net/2025/01/28/haFymdDS31AKCMr.png)
+在这个界面需要进行两处修改：
+
+- 勾选我们的主包和附属包。
+- 选择创造模式（否则在测试过程中很容易被怪物打死，不太方便）。
+  ![img](https://s2.loli.net/2025/01/28/WgS3JU4BQuAXhRL.png)
+  点击开始按钮，运行游戏，之后按照正常流程在游戏内使用 YSM 组件即可：
+  ![img](https://s2.loli.net/2025/01/28/bGRXdTnQjYivkH6.png)
+
+## 五、问题反馈
+
+如果你在使用过程中遇到问题，我们可能会向你索要日志文件，你可以通过点击此处导出日志文件：
+![img](https://s2.loli.net/2025/01/28/FxkE21hGWM9i3jX.png)
+
+## 转换常见问题
+
+### 一、部分日志后台报错
+
+如果出现以下几种错误，暂时不会产生影响，无需过多关注：
+`friendly name 'material.tohru' not found in entity friendly name list (material.default) - check your spelling?`
+![img](https://s2.loli.net/2025/01/28/C4Ncf6ZkIeqmJrn.png)
+`Error: can't find animation xxx`
+![img](https://s2.loli.net/2025/01/28/jbEFC5zc8LTnGvl.png)
+
+### 二、第一人称手臂模型有多出或缺失部分内容
+
+第一人称手臂模型是通过插件自动识别 `RightArm` 组下的所有子组来实现的。如果你没有 `RightArm` 组，或者 `RightArm` 组包含了多余的骨骼，就会导致上述问题。
+!!（规划中）：后续计划为插件添加新功能，让用户可以自行选择需要显示的组!!
+解决办法如下：
+首先，按照下图所示，找到你转换后的组件包内的该文件，并用 `VScode` 打开：
+![img](https://s2.loli.net/2025/01/28/yIpkr4SGvaRwdCJ.png)
+在 `part_visibility` 字段下，删除多余的、不应该显示的组。如果有缺失的组，也可以按照同样的方法进行添加。
+
+### 三、在某些界面，模型会显示出本应隐藏的部分
+
+具体情况如下图所示，本应隐藏的部分却显示了出来：
+![img](https://s2.loli.net/2025/01/28/VvZHTMIfz3ODLhU.png)
+![21.png](https://s2.loli.net/2025/01/28/Dmv6nH5WSFZp2Qo.png)
+解决办法：
+这两个界面的 GUI 中调用的动画名为 `paperpoll`，插件默认生成的 `paperpoll` 动画可能存在一些问题，你需要自行修正其内容，以隐藏某些组件。
+由于基岩版的机制，我们在 GUI 中的设计是仅播放 `paperpoll` 动画，**不会播放任何并行动画**！因此，你在 GUI 中播放的动画不宜过于复杂，也不建议使用 `molang` 语句，否则会导致游戏卡顿。
+模型文件位于 `resource_pack\models\entity` 路径下，动画文件位于 `resource_pack\animations` 路径下，通常你只需加载名为 `main.animation.json` 的文件即可。
+![22.png](https://s2.loli.net/2025/01/28/EakQb85KMFJj3WR.png)
+![23.png](https://s2.loli.net/2025/01/28/P38Ks4EwHhCuG2y.png)
+
+### 四、打开 GUI 模型切换界面时，后台疯狂报错
+
+报错信息可能如下：`Error: unhandled request for unknown variable 'variable.xxx'`
+![img](https://s2.loli.net/2025/01/28/UHCodeBYLnRyIOw.png)
+解决办法：
+GUI 和纸娃娃动画不支持 molang 变量，请检查你的 `gui` 和 `paperdoll` 动画是否添加了 molang 语句。
+
+### 五、轮盘动画不显示部分模型
+
+在 `pre_parallel` 动画里隐藏了某些组（缩放为 0），然后想在轮盘动画里显示这些组（缩放为 1），但测试时发现轮盘动画中这些组并未显示出来。
+解决办法：
+找到 `pre_parallel` 动画和轮盘动画中关于该组的关键帧，查看其模式是否为线性。如果是，将两处的模式都修改为书写方式一致的平滑帧，即可修复该问题。
+目前尚不清楚该问题的原因，但按照上述方法可以解决。

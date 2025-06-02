@@ -1,0 +1,70 @@
+---
+title: 跑酷动画
+---
+
+import { Aside } from "@astrojs/starlight/components"
+
+Parcool 模组为玩家增添了各类跑酷动作，自 2.2.2 版本起，我们为该模组添加了兼容支持！
+
+<Aside>
+  MCMOD 百科：[Parcool 模组](https://www.mcmod.cn/class/5958.html)
+  参考视频：[Parcool 模组演示视频](https://www.bilibili.com/video/BV1xJ4m1h7UH)
+</Aside>
+
+由于部分动画需要明确区分前后左右方向，因此你需要参考默认模型动画文件 `parcool.animation.json` 中的动画名称。同时，别忘了在 `ysm.json` 文件中声明该动画文件！
+
+## 添加动画定位文件
+
+首先，你要在 `ysm.json` 的动画字段里新增一个类型 `parcool`，示例如下：
+
+```json {8}
+"animation": {
+    "main": "animations/main.animation.json",
+    "arm": "animations/arm.animation.json",
+    "extra": "animations/extra.animation.json",
+    "tac": "animations/tac.animation.json",
+    "carryon": "animations/carryon.animation.json",
+    // 这就是跑酷的动画
+    "parcool": "animations/parcool.animation.json",
+    "swem": "animations/swem.animation.json",
+    "slashblade": "animations/slashblade.animation.json",
+    "tlm": "animations/tlm.animation.json"
+}
+```
+
+之后，参考默认模型的 `parcool.animation.json` 动画即可。
+
+<Aside>
+  **若你要修改跑酷动画，务必填写此处。若修改后的跑酷动画无法正常生效，请先检查此处是否声明了该文件**
+</Aside>
+
+## 动画列表
+
+以下是可自定义的跑酷动画，默认模型的跑酷动画文件为 `parcool.animation.json`：
+
+| ID                            | 描述                                                                                                       | 参考视频                                                            | 预览图                                                                                                                                    |
+| :---------------------------- | :--------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------- |
+| `parcool:backward_wall_jump`  | 应该是背着墙进行跳跃，但我未能试验出该效果                                                                 |                                                                     |                                                                                                                                           |
+| `parcool:wall_jump`           | 瞪墙跳                                                                                                     | [参考视频片段](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=152.5) |                                                                                                                                           |
+| `parcool:cat_leap`            | 猫扑                                                                                                       | [参考视频片段](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=74)    | ![猫扑动图](https://s2.loli.net/2024/08/14/U14VOHA7E2We3w8.gif)                                                                           |
+| `parcool:climb_up`            | 爬墙跳                                                                                                     | 视频中未展示该动画                                                  | ![爬墙跳动图](https://s2.loli.net/2024/08/14/KnmHXyNi8lBDuJt.gif)                                                                         |
+| `parcool:cling_to_cliff`      | 猫挂，可左右移动                                                                                           | [参考视频片段](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=84)    | ![猫挂动图](https://s2.loli.net/2024/08/14/6QLI3nzpgtqdHvk.png)                                                                           |
+| `parcool:crawl`               | 爬行                                                                                                       | [参考视频片段](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=123.4) |                                                                                                                                           |
+| `parcool:dive_animation_host` | 飞跃而下                                                                                                   | [参考视频片段](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=216.0) | ![飞跃动图](https://s2.loli.net/2024/08/14/L37ftNsS2Oz8YDT.gif)                                                                           |
+| `parcool:dive_into_water`     | 跳水                                                                                                       | [参考视频片段](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=216.0) | ![跳水动图](https://s2.loli.net/2024/08/14/nHc5toSp2sxOR6f.gif)                                                                           |
+| `parcool:dodge`               | 躲闪动画                                                                                                   | [参考视频片段](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=205.0) | ![躲闪动图](https://s2.loli.net/2024/08/14/XknxO7CpmE2YfdH.gif)                                                                           |
+| `parcool:fast_running`        | 快速奔跑                                                                                                   | [参考视频片段](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=27.5)  | ![快速奔跑动图](https://s2.loli.net/2024/08/14/yFjnCDo51SVMZp8.gif)                                                                       |
+| `parcool:fast_swim`           | 快速游泳                                                                                                   | [参考视频片段](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=27.5)  | ![快速游泳动图](https://s2.loli.net/2024/08/14/nDfSbzOdFmVluGL.gif)                                                                       |
+| `parcool:flipping`            | 空翻                                                                                                       | [参考视频片段](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=175.0) |                                                                                                                                           |
+| `parcool:horizontal_wall_run` | 水平跑墙                                                                                                   | [参考视频片段](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=62)    |                                                                                                                                           |
+| `parcool:vertical_wall_run`   | 垂直跑墙（未能试验出该效果）                                                                               | [参考视频片段](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=62)    |                                                                                                                                           |
+| `parcool:jump_from_bar`       | 未查询到相关信息                                                                                           |                                                                     |                                                                                                                                           |
+| `parcool:hang`                | 垂挂                                                                                                       | [参考视频片段](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=114.5) |                                                                                                                                           |
+| `parcool:kong_vault`          | 金刚撑                                                                                                     | [参考视频片段](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=37.1)  | ![金刚撑动图1](https://s2.loli.net/2024/08/14/4plmdIjfM1XnkWw.gif)<br/>![金刚撑图片](https://s2.loli.net/2024/08/14/wGmdXYiEkAOztF9.webp) |
+| `parcool:speed_vault`         | 翻越                                                                                                       |                                                                     | ![Speed_Vault 图片](https://s2.loli.net/2024/08/14/kMb2FPGd8KQ5jiz.webp)                                                                  |
+| `parcool:roll`                | 看起来类似空翻，但并非 `parcool:flipping` 动画                                                             |                                                                     |                                                                                                                                           |
+| `parcool:sliding`             | 滑铲                                                                                                       | [参考视频片段](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=135.8) |                                                                                                                                           |
+| `parcool:tap`                 | 落地缓冲                                                                                                   | [参考视频片段](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=185.3) |                                                                                                                                           |
+| `parcool:wall_slide`          | 滑墙：当角色离地且触碰墙面时，按住滑墙键（默认鼠标右键）可抓着墙面减缓下落速度，实现安全着陆，此为静态动画 | [参考视频片段](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=141.4) | ![滑墙图片](https://s2.loli.net/2024/08/14/tkRG8MiDBqrvAuI.png)                                                                           |
+| `parcool:jump_charging`       | 高跳蓄力（按下 shift 键时）                                                                                |                                                                     |                                                                                                                                           |
+| `parcool:charge_jump`         | 高跳（蓄力后按下空格键）                                                                                   |                                                                     |                                                                                                                                           |

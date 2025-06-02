@@ -4,12 +4,10 @@ const ImageCard = ({
   src,
   title,
   desc,
-  href,
 }: {
   src: string
   title: string
   desc: string
-  href: string
 }) => {
   return (
     <div

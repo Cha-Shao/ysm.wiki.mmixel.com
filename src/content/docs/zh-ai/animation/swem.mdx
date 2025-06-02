@@ -1,0 +1,50 @@
+---
+title: 马术动画
+---
+
+import { Aside } from "@astrojs/starlight/components"
+
+SWEM 马术模组是一款极为硬核的马术相关模组，它增添了十分完备的马术动画，能够在游戏中模拟现实里的马术动作。自 2.2.2 版本起，我们为该模组添加了兼容支持！
+
+你可参考 MCMOD 百科：[https://www.mcmod.cn/class/7803.html](https://www.mcmod.cn/class/7803.html)
+
+你可以参考默认模型动画文件 `swem.animation.json`，同时，别忘了在 `ysm.json` 文件中声明该文件！
+
+## 添加动画定位文件
+
+首先，你要在 `ysm.json` 的动画字段里新增一个类型 `swem`，示例如下：
+
+```json {9}
+"animation": {
+    "main": "animations/main.animation.json",
+    "arm": "animations/arm.animation.json",
+    "extra": "animations/extra.animation.json",
+    "tac": "animations/tac.animation.json",
+    "carryon": "animations/carryon.animation.json",
+    "parcool": "animations/parcool.animation.json",
+    // 这就是马术的动画
+    "swem": "animations/swem.animation.json",
+    "slashblade": "animations/slashblade.animation.json",
+    "tlm": "animations/tlm.animation.json"
+}
+```
+
+之后，参考默认模型的 `swem.animation.json` 动画即可。
+
+<Aside>
+  若你要修改马术动画，务必填写此处。若修改后的马术动画无法正常生效，请先检查此处是否声明了该文件。
+</Aside>
+
+## 动画清单
+
+以下是可自定义的马术动画，默认模型的马术动画文件为 `swem.animation.json`：
+
+| 名称                                                                                            | 作用                                       |
+| :---------------------------------------------------------------------------------------------- | :----------------------------------------- |
+| `swem:idle`                                                                                     | 当玩家骑上 SWEM 模组的马并静止不动时的动画 |
+| `swem:walk`                                                                                     | 慢步                                       |
+| `swem:trot`                                                                                     | 快步                                       |
+| `swem:canter`                                                                                   | 跑步                                       |
+| `swem:canter_ext`                                                                               | 跑步                                       |
+| `swem:gallop`                                                                                   | 袭步                                       |
+| `swem:jump_lv1`<br/>`swem:jump_lv2`<br/>`swem:jump_lv3`<br/>`swem:jump_lv4`<br/>`swem:jump_lv5` | 跳跃，共分为五个等级                       |

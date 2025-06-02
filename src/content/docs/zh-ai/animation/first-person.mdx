@@ -1,0 +1,21 @@
+---
+title: 更真实的第一人称
+---
+
+import { Aside } from "@astrojs/starlight/components"
+
+[更真实的第一人称模型（First-person Model）](https://www.curseforge.com/minecraft/mc-mods/first-person-model) 模组是一款模仿传统 3D 游戏玩家视角的模组，它替换了原版的第一人称视角，让游戏体验更加真实有趣。
+
+![2023-07-21_00.18.jpg](https://s2.loli.net/2023/07/21/25SgTJLdlU1iYCQ.jpg)
+
+<Aside>
+
+请注意：对于 [更真实的第一人称模型（First-person Model）](https://www.curseforge.com/minecraft/mc-mods/first-person-model) 模组，我们仅能做到最低限度的兼容，因此仍可能偶发性地出现玩家头部消失、玩家视角显示异常等小问题……
+
+</Aside>
+
+组名为 `AllHead` 的模型，在渲染第一人称视角玩家时会自动隐藏。若你有帽子或其他可能阻挡第一人称视角的模型，都应放置在该组下。
+
+玩家视角的高低由 `ViewLocator` 的旋转点控制。不过，由于 [更真实的第一人称模型（First-person Model）](https://www.curseforge.com/minecraft/mc-mods/first-person-model) 模组强制将 X、Z 坐标限定在原点处，所以只能对玩家视角的高度进行修改。
+
+此外，我们还提供了 `ysm.first_person_mod_hide` molang 参数。当玩家安装了 [更真实的第一人称模型（First-person Model）](https://www.curseforge.com/minecraft/mc-mods/first-person-model) 模组，且需要隐藏玩家头部时，该参数返回 true，否则返回 false。你可以利用它实现更复杂的第一人称隐藏功能。

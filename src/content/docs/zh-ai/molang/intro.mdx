@@ -1,0 +1,126 @@
+---
+title: 简介
+---
+
+import { Card } from "@astrojs/starlight/components"
+
+Molang 是 Mojang 官方为基岩版动画设计的一种极为简易的语言，借助 Molang，我们能够实现各类复杂的动画。
+
+自 1.2.0 版本起，我们几乎支持所有官方 Molang 特性（具体如下），你可以查阅官方文档来学习如何使用它们：
+
+- [字符串类型](https://bedrock.dev/zh/docs/stable/Molang#Strings)
+- [自定义变量](https://bedrock.dev/zh/docs/stable/Molang#Variables)
+- [空值合并运算符](https://wiki.mcbe-dev.net/zh-cn/Molang#??空值合并运算符)
+- [二元条件运算符](https://wiki.mcbe-dev.net/zh-cn/Molang#关键字)
+- [别名](https://bedrock.dev/zh/docs/stable/Molang#Aliases)
+- [复杂表达式](https://wiki.mcbe-dev.net/zh-cn/Molang#基本语法)
+- [作用域定界符](https://wiki.mcbe-dev.net/zh-cn/Molang#{}花括号作用域定界符)
+- [loop 循环](https://wiki.mcbe-dev.net/zh-cn/Molang#loop)，[continue](https://wiki.mcbe-dev.net/zh-cn/Molang#continue)、[break](https://wiki.mcbe-dev.net/zh-cn/Molang#break)（for_each 也支持，但目前尚未使用）
+- [结构体](https://wiki.mcbe-dev.net/zh-cn/Molang#结构体)
+- [箭头表达式](https://wiki.mcbe-dev.net/zh-cn/Molang#->指针运算符)
+
+## Molang 是什么
+
+为了更清晰地阐释 Molang 是什么以及理解其运行机制，我们从基岩版动画的机制入手。
+
+基岩版动画的机制十分简单，在不同的时间点创建关键帧，并设定某个组件的位置、旋转角度或缩放比例。当动画开始播放时，程序会自动计算补间动画，使组件从一个位置移动、旋转或缩放至另一个位置，从而呈现出动画效果。
+
+![5.png](https://s2.loli.net/2023/02/11/xykIWa7bTqSBnfm.png)
+
+我们为每个关键帧设置的是一个具体的数值，该数值决定了动画播放到该关键帧时，组件所处的位置、旋转角度或缩放大小。
+
+![6.png](https://s2.loli.net/2023/02/11/Uz8XTsCNJMcb3tZ.png)
+
+然而，在某些特殊情况下，这个数值并非固定不变。例如，我们希望玩家手持物品时的摆动角度为 30 度，而空手时的摆动角度为 60 度，此时就可以运用 Molang 表达式。
+
+一种常见的动画设计是显示或隐藏模型，比如我们希望玩家穿戴头盔时显示头盔组件。我们可以利用缩放功能来隐藏组件，当组件的 X、Y、Z 缩放比例均为 0 时，该组件就会被隐藏。因此，我们可以在 BlockBench 中这样编写：
+
+![7.png](https://s2.loli.net/2023/02/11/1gAHJNZfwmu6qzL.png)
+
+这里的 `ysm.has_helmet` 是一个 Molang 参数，当玩家穿戴头盔时，它会返回数字 1；而当玩家未穿戴头盔时，它会返回数字 0，恰好实现了我们所需的隐藏或显示功能。
+
+长期以来，长发模型一直是一个令人头疼的问题。当玩家抬头时，长长的头发会随头部转动，直接插入玩家的身体。我们也可以使用 Molang 巧妙地解决这个问题，具体思路如下：
+
+1. 当玩家仰头时，头发不再随头部转动，而是垂直向下（即头发的旋转角度与头部的旋转角度相反，相互抵消）。
+2. 当玩家俯看时，头发随头部转动（即旋转角度为 0）。
+
+那么，我们可以这样编写 Molang 参数：
+
+![8.png](https://s2.loli.net/2023/02/11/POS9uIYbKBfJwxi.png)
+
+下面我们来逐行介绍这个参数的含义：
+
+这是一种条件式的写法，其格式为 `判断条件 ? 如果符合条件时返回的结果 : 如果不符合条件时返回的结果`
+
+```molang
+(ysm.head_pitch > 0) ? -ysm.head_pitch : 0
+```
+
+`（ysm.head_pitch > 0）`：判断条件。玩家俯仰的角度范围是 -90 度到 90 度，这里判断玩家俯仰的角度是否大于 0 度，使用括号括起来会更加直观。
+
+`-ysm.head_pitch`：当玩家俯仰角度大于 0 时（即抬头时），我们特意取反，将头发的旋转角度抵消。
+
+`0`：当玩家俯仰角度小于 0 时（即俯视时），我们将其设为 0，这样头发就会随头部旋转。
+
+## 与基岩版的差异
+
+- 未初始化的变量为 null 值，可以使用空值合并运算符进行识别，在参与数值类计算时被视为 0 或 false；
+- 结构体不支持嵌套；
+- 玩家在切换模型、重生、传送至部分维度、退出重进以及其他类似操作后，所有变量存储将被清空。
+
+## 相关调试指令
+
+<Card>
+
+在本地玩家身上执行 Molang 表达式，并将结果输出至聊天框。此指令仅在单人游戏中有效。
+
+```
+/ysmclient molang execute <expr>
+```
+
+</Card>
+
+<Card>
+
+向自定义调试屏幕添加 Molang 表达式，该表达式会实时计算和更新；
+
+- `pre` 表示在动画更新前执行，`post` 表示在动画更新后执行。
+- `2.2.2` 及之前的版本需要按两次 `Alt` + `B` 才能进入自定义调试屏幕。
+- `2.3.0` 及往后的版本只需按一次 `Alt` + `B` 即可进入自定义调试屏幕。
+
+```
+/ysmclient molang watch add [pre|post] <name> <expr>
+```
+
+</Card>
+
+<Card>
+
+管理自定义调试屏幕上的条目。
+
+```
+/ysmclient molang watch remove <name>
+/ysmclient molang watch clear
+```
+
+</Card>
+
+<Card>
+
+在指定玩家身上执行 Molang；此指令在多人游戏中可用，需要管理员权限。执行结果不会输出。
+
+```
+/ysm molang execute <player> <expr>
+```
+
+</Card>
+
+## `roaming` 变量
+
+以 `v.roaming.xxx` 格式书写的变量（**不能**简写为 `v.r.xxx`），在切换维度、重生、退出重进后能够恢复。这些变量还能在玩家之间同步，并且会跟随服务端的 cap 写入存档。
+
+不过，此类变量存在一些限制：
+
+- 一个模型最多可以有 16 个 `roaming` 变量，所有模型共享这 16 个变量；
+- 变量名称的字符数不能超过 16 个；
+- 变量只能存储 `float` 类型的数据。
