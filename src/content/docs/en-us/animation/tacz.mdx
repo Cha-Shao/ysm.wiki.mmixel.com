@@ -1,0 +1,82 @@
+---
+title: TaCZ Animation
+---
+
+import { Aside } from "@astrojs/starlight/components"
+
+[TaCZ](https://www.curseforge.com/minecraft/mc-mods/timeless-and-classic-guns-tac) is a well-crafted firearm mod that supports Forge versions 1.16.5/1.18.2.
+
+[TaCZ: Zero](https://www.curseforge.com/minecraft/mc-mods/timeless-and-classics-zero) is the higher version sequel, supporting Forge 1.18.2/1.19.2/1.20.1 and Fabric 1.20.1.
+
+We provide support for both versions of the mod.
+
+Currently, firearms are divided into three types: pistol (`pistol`), rifle (`rifle`), and RPG (`rpg`). The animation design uses a combination of upper and lower body, greatly simplifying the animation workflow.
+
+Compatible animations should be placed in the `tac.animation.json` file. When a player holds a firearm from the TaCZ mod, these animations will play.
+
+## Lower Body Animations
+
+| Name       | Function                                          |
+| :--------- | :------------------------------------------------ |
+| `tac:idle` | Lower body animation when holding a weapon        |
+| `tac:run`  | Lower body animation when sprinting with a weapon |
+| `tac:walk` | Lower body animation when walking with a weapon   |
+
+## Upper Body Animations
+
+| Name                   | Function                               |
+| :--------------------- | :------------------------------------- |
+| `tac:aim:fire:pistol`  | Aim and fire animation for pistol      |
+| `tac:aim:fire:rifle`   | Aim and fire animation for rifle       |
+| `tac:aim:fire:rpg`     | Aim and fire animation for RPG         |
+| `tac:aim:pistol`       | Aim animation for pistol               |
+| `tac:aim:rifle`        | Aim animation for rifle                |
+| `tac:aim:rpg`          | Aim animation for RPG                  |
+| `tac:hold:fire:pistol` | Hip fire animation for pistol          |
+| `tac:hold:fire:rifle`  | Hip fire animation for rifle           |
+| `tac:hold:fire:rpg`    | Hip fire animation for RPG             |
+| `tac:hold:pistol`      | Hold animation for pistol              |
+| `tac:hold:rifle`       | Hold animation for rifle               |
+| `tac:hold:rpg`         | Hold animation for RPG                 |
+| `tac:reload:pistol`    | Reload animation for pistol            |
+| `tac:reload:rifle`     | Reload animation for rifle             |
+| `tac:reload:rpg`       | Reload animation for RPG               |
+| `tac:run:pistol`       | Upper body sprint animation for pistol |
+| `tac:run:rifle`        | Upper body sprint animation for rifle  |
+| `tac:run:rpg`          | Upper body sprint animation for RPG    |
+| `tac:melee:pistol`     | Melee animation for pistol             |
+| `tac:melee:rifle`      | Melee animation for rifle              |
+| `tac:melee:rpg`        | Melee animation for RPG                |
+
+## Full Body Animations
+
+Since prone or crawling weapon poses cannot use the upper + lower body design, these are designed as full body poses.
+
+| Name                       | Function                        |
+| :------------------------- | :------------------------------ |
+| `tac:climb:pistol`         | Crawl animation for pistol      |
+| `tac:climb:rifle`          | Crawl animation for rifle       |
+| `tac:climb:rpg`            | Crawl animation for RPG         |
+| `tac:climbing:fire:pistol` | Prone fire animation for pistol |
+| `tac:climbing:fire:rifle`  | Prone fire animation for rifle  |
+| `tac:climbing:fire:rpg`    | Prone fire animation for RPG    |
+| `tac:climbing:pistol`      | Prone animation for pistol      |
+| `tac:climbing:rifle`       | Prone animation for rifle       |
+| `tac:climbing:rpg`         | Prone animation for RPG         |
+
+## Grenade Animations
+
+| Name                   | Function                     |
+| :--------------------- | :--------------------------- |
+| `tac:mainhand:grenade` | Throw grenade with main hand |
+| `tac:offhand:grenade`  | Throw grenade with off hand  |
+
+## Special Firearm Animations
+
+All the above animations end with `pistol`, `rifle`, or `rpg`, corresponding to the main weapon categories. If you want to create a unique TAC animation for a specific firearm, just replace the ending `:pistol`, `:rifle`, or `:rpg` with `$` plus the firearm's item ID. For example, to create a unique aim and fire animation for the AK47, name it `tac:aim:fire$tac:ak47`.
+
+<Aside>
+  In TaCZ: Zero (TacZ), all firearms are the same item, distinguished by the
+  `GunId` field in NBT. We also support this. The usage is the same as above,
+  just add the gun ID after `$`.
+</Aside>

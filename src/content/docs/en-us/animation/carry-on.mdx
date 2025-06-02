@@ -1,0 +1,35 @@
+---
+title: CarryOn Animation
+---
+
+[Carry On mod](https://curseforge.com/minecraft/mc-mods/carry-on) is a very interesting mod that allows players to pick up certain blocks, entities, and even other players by holding Shift and right-clicking.
+
+In versions 1.16.5 and 1.18.2, the Carry On mod only supports picking up players and blocks, and will additionally render a player arm model (to disable this rendering, you need to modify the Carry On mod's own configuration file).
+
+**Only the 1.19.2 and 1.20 versions of the Carry On mod can fully support all features!**
+
+The compatible animations for the Carry On mod are stored in a separate file named `carryon.animation.json`, which contains four animations:
+
+| Name               | Function                                                                                                                | Note  |
+| :----------------- | :---------------------------------------------------------------------------------------------------------------------- | :---- |
+| `carryon:block`    | Animation when the player is carrying a block                                                                           | Loops |
+| `carryon:entity`   | Animation when the player is carrying an entity                                                                         | Loops |
+| `carryon:player`   | Animation when the player is carrying another player (only in 1.19.2 and 1.20 versions)                                 | Loops |
+| `carryon:princess` | Animation for the player being carried (only in 1.19.2 and 1.20 versions)<br/>!!So the animation is called "princess"!! | Loops |
+
+## Extra Arms
+
+If you are using Carry On mod version 1.18.2 or earlier, you may encounter the following situation:
+
+![pig.png](https://s2.loli.net/2025/01/30/T7lDLOtSYFPV91o.png)
+
+This is a bug in older versions of the Carry On mod. You just need to manually edit the `config\carryon-client.toml` file and change `true` to `false` after `renderArms`:
+
+```toml {6}
+#Settings
+[settings]
+    #If the front of the Tile Entities should face the player or should face outward
+    facePlayer = false
+    #Arms should render on sides when carrying
+    renderArms = true
+```

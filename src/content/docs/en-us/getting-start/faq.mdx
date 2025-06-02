@@ -1,0 +1,312 @@
+---
+title: FAQ
+---
+
+import {
+  Aside,
+  Badge,
+  Card,
+  LinkCard,
+  Steps,
+  CardGrid,
+} from "@astrojs/starlight/components"
+
+<Aside type="tip">
+
+This guide is only for the Java version of the YSM mod, not for the NetEase version. Please pay attention!
+
+</Aside>
+
+<Aside type="caution">
+
+Before reading this document, please make sure you have basic computer skills, such as copy-pasting, extracting files, browsing the web, etc. Otherwise, you may have difficulty understanding the following content.
+
+If you are not familiar with computer operations, it is recommended to learn from this tutorial: [https://www.criwits.top/missing](https://www.criwits.top/missing)
+
+</Aside>
+
+## Quick Search
+
+You can click the keywords below, check the right-side table of contents, or press `Ctrl K` to search and quickly locate your question.
+
+- [Quick Search](#quick-search)
+- [How to install the mod](#how-to-install-the-mod)
+- [How to get models](#how-to-get-models)
+- [How to open the model selection page](#how-to-open-the-model-selection-page)
+- [How to install model files](#how-to-install-model-files)
+- [Model not found](#model-not-found)
+- [Always shows the vanilla player model](#always-shows-the-vanilla-player-model)
+- [Model displays abnormally after loading](#model-displays-abnormally-after-loading)
+- [Prompt "Unsupported YSM model version"](#prompt-unsupported-ysm-model-version)
+- [Is there a Bedrock or NetEase version?](#is-there-a-bedrock-or-netease-version)
+- [Can I play this mod on mobile?](#can-i-play-this-mod-on-mobile)
+- [How to enable/disable extra player rendering](#how-to-enable-disable-extra-player-rendering)
+- [How to move the extra player rendering position](#how-to-move-the-extra-player-rendering-position)
+
+If the above content does not solve your problem, you can ask in the group chat. When asking in the group, please be patient with possibly impatient members, as they may have helped many beginners like you.
+
+<CardGrid>
+
+<LinkCard
+  title="Yes Steve Model Mod Group Chat ①"
+  href="https://qm.qq.com/q/DnMzfKRPFK"
+/>
+
+<LinkCard
+  title="Yes Steve Model Mod Group Chat ②"
+  href="https://qm.qq.com/q/kXgjd9i7Uk"
+/>
+
+<LinkCard
+  title="Yes Steve Model Mod Group Chat ③"
+  href="https://qm.qq.com/q/rsoLMfBJCg"
+/>
+
+<LinkCard
+  title="Yes Steve Model Mod Group Chat ④"
+  href="https://qm.qq.com/q/4sANpvLFK8"
+/>
+
+</CardGrid>
+
+## How to install the mod
+
+The latest official version of the mod is: `2.4.1`
+Supported versions:
+
+<Card title="Version 2.4.1">
+
+- Forge: `1.20.1` `1.19.2` `1.18.2` `1.16.5`
+- Fabric: `1.21.1` `1.21`
+  `1.20.1` `1.19.2` `1.18.2` `1.16.5`
+- NeoForge: `1.21.1` `1.21`
+
+</Card>
+
+Due to CurseForge review reasons, YSM has been removed from CurseForge. To download the latest version, please go to MC 百科 or Modrinth:
+
+- Modrinth: [https://modrinth.com/mod/yes-steve-model/versions](https://modrinth.com/mod/yes-steve-model/versions)
+- MC 百科: [https://www.mcmod.cn/download/8616.html](https://www.mcmod.cn/download/8616.html)
+
+Versions `1.2.0` and later have been greatly refactored, and most new models will not work on `1.1.5` and below.
+
+We recommend always using the latest version. You can also open the model selection interface and check the text in the lower left corner to confirm the mod version:
+![image.jpg](https://s2.loli.net/2025/01/31/ShztlRosQPAaFBj.png)
+
+<Aside>
+
+- When downloading the mod, be sure to distinguish between `Forge` and `Fabric`!
+- When installing mods for MC, it is generally not recommended to use the official launcher. We recommend third-party launchers such as HMCL or PCL2!
+
+</Aside>
+
+If you don't know how to install the mod, please watch this video:
+
+<iframe
+  src="//player.bilibili.com/player.html?isOutside=true&aid=832321173&bvid=BV1434y1M7cb&cid=1301572367&p=1&autoplay=false"
+  scrolling="no"
+  border="0"
+  frameborder="no"
+  framespacing="0"
+  allowfullscreen="true"
+/>
+
+## How to get models
+
+Most creators post model showcase videos on Bilibili. You can search for relevant keywords on Bilibili to find the models you want. Some creators also post paid or free models on Afdian, and there is a free collection maintained by enthusiasts. Some creators also post models on Planet Minecraft.
+
+<CardGrid>
+
+<LinkCard
+  icon="ri:bilibili-fill"
+  title="Bilibili Model Search"
+  href="https://search.bilibili.com/all?keyword=ysm%E6%A8%A1%E5%9E%8B"
+/>
+
+<LinkCard
+  icon="simple-icons:afdian"
+  title="Afdian Model Search"
+  href="https://afdian.com/search?q=YSM"
+/>
+
+<LinkCard
+  icon="mdi:github"
+  title="GitHub Free Model Repository"
+  href="https://github.com/Elaina69/Yes-Steve-Model-Repo"
+/>
+
+<LinkCard
+  icon="ri:earth-line"
+  title="Planet Minecraft Model Search"
+  href="https://www.planetminecraft.com/mods/?keywords=YSM"
+/>
+
+</CardGrid>
+
+## How to open the model selection page
+
+In the game, press the `Alt Y` shortcut (Forge and NeoForge) or the `Y` key (Fabric). If successful, the model interface will appear.
+If nothing happens, please check the following:
+
+- Did you install the mod?
+  - Make sure the mod version matches your Minecraft and mod loader version.
+  - Pay attention to the difference between Forge and Fabric!
+- Did you press the correct key?
+- Did you change the default key binding?
+- Are there any key conflicts?
+- Is your keyboard working properly?
+
+## How to install model files
+
+<Aside>
+
+The following model installation steps are only for singleplayer. If you are a server player, only the server owner can install models!
+
+</Aside>
+
+<Steps>
+
+1. After opening the model selection interface, click the `Open Model Folder` button in the upper right corner.
+
+   ![1.jpg](https://s2.loli.net/2025/01/31/1ClHjr3ApLx5u6m.png)
+
+2. In the pop-up interface, click `Open Model Folder`.
+
+   ![2.jpg](https://s2.loli.net/2025/01/31/rTOg4kZLb3jpzPn.png)
+
+3. A folder window will pop up, as shown below:
+
+   ![3.jpg](https://s2.loli.net/2025/01/31/T6cVnUyfmi927GW.png)
+
+4. Put the model files you obtained into the popped-up window, as shown:
+
+   ![4.jpg](https://s2.loli.net/2025/01/31/VuiRdxMIFLvpNBt.png)
+
+   ![5.jpg](https://s2.loli.net/2025/01/31/rThBdgqjwlp9c24.png)
+
+   After that, return to the game.
+
+5. Press the `/` key and enter the command `ysm model reload` (this command requires OP permission), as shown:
+
+   ![6.jpg](https://s2.loli.net/2025/01/31/OUp6GX35SfdDezJ.png)
+
+6. Press Enter to execute. When the following message appears, the model has been loaded:
+
+   ![7.jpg](https://s2.loli.net/2025/01/31/56WfVpFUtXidmKD.png)
+
+7. Now open the model selection page, and you should see the newly installed files.
+
+   ![8.jpg](https://s2.loli.net/2025/01/31/FahgjmoczbBH3Rf.png)
+
+   If there are many models, you may need to use the page buttons below to find your model.
+
+</Steps>
+
+## Model not found
+
+If you have placed the model as described above but still cannot find it, please check the following:
+
+- Did you install the YSM mod?
+- Is your YSM version the latest (latest is 2.4.1)? Most new models require version 2.2.2 or above. Version 1.1.5 is no longer supported!
+- Are you in singleplayer, not multiplayer? Multiplayer requires the server owner to install the model on the server.
+- Did you use the `/ysm model reload` command to reload models?
+- If this is your first time playing and you have many models installed, after reloading, only the default model may be shown. Please wait patiently while the mod builds the cache. Once done, the models will appear. (Same for multiplayer)
+
+## Always shows the vanilla player model
+
+If you have installed the YSM mod and can open the model selection interface, but always see the vanilla player model no matter which model you use, please disable "Block rendering of your own player model" in the mod settings as follows:
+
+<Steps>
+1. Open the model selection interface:
+
+    If you don't know how, see [How to open the model selection page?](#how-to-open-the-model-selection-page)
+
+2.  Click the `Open Model Config` button:
+
+    ![1.jpg](https://s2.loli.net/2025/01/31/kGebx86qE7lIfzW.png)
+
+3.  Uncheck the option as shown:
+
+    ![2.jpg](https://s2.loli.net/2025/01/31/riqge8GDN95b1QK.png)
+
+</Steps>
+
+## Model displays abnormally after loading
+
+![optifine.jpg](https://s2.loli.net/2025/01/31/rHI5iT4zF6OsxvX.jpg)
+If you encounter a model mess like this, it is likely caused by Optifine.
+You have two solutions:
+
+<Card title="Uninstall Optifine">
+
+Switch to [Oculus (Forge)](https://www.mcmod.cn/class/5741.html) or
+[Iris (Fabric)](https://www.mcmod.cn/class/3697.html) as your shader loader.
+
+</Card>
+
+<Card title="Enable Compatibility Renderer">
+
+Use the mod's built-in compatibility renderer as follows:
+
+<Steps>
+
+1. Open the model selection interface:
+
+   If you don't know how, see [How to open the model selection page?](#how-to-open-the-model-selection-page)
+
+2. Click the `Open Model Config` button:
+
+   ![1.jpg](https://s2.loli.net/2025/01/31/kGebx86qE7lIfzW.png)
+
+3. Check `Use Compatibility Renderer`:
+
+   ![222.jpg](https://s2.loli.net/2025/01/31/3126yCFT7G9BgsN.png)
+
+</Steps>
+
+</Card>
+
+## Prompt "Unsupported YSM model version"
+
+![lowversion.jpg](https://s21.ax1x.com/2025/02/03/pEZotl6.jpg)
+If you see this, please check if your YSM version is the latest (latest is 2.4.1). If not, update the YSM mod.
+If the issue persists after updating, contact the model author.
+
+## Is there a Bedrock or NetEase version?
+
+There is now an official NetEase China version of YSM. You can search for `是，史蒂夫模型` in the NetEase component store to download and play for free!
+![saveimage_1738309430.jpg](https://s2.loli.net/2025/01/31/vnRl7bwKiqCahPk.jpg)
+
+<Aside>
+
+Note: The NetEase and Java versions are different communities.
+If you encounter issues with the NetEase version, do not report them to the Java team, and vice versa.
+
+</Aside>
+
+## Can I play this mod on mobile?
+
+Yes, but only for Java version 1.1.5 and below. Starting from version 1.2.0, due to core code changes, mobile is temporarily unsupported. We will gradually address this in future versions.
+You can also play the NetEase version.
+
+## How to enable/disable extra player rendering
+
+<Steps>
+
+1. If you don't know how to open the model selection interface, see [How to open the model selection page?](#how-to-open-the-model-selection-page) and open it.
+
+2. Click the `Open Model Config` button, as shown:
+   ![1.jpg](https://s2.loli.net/2025/01/31/kGebx86qE7lIfzW.png) 3.
+   Check or uncheck the `Disable extra player rendering` option to enable or disable extra player rendering, as shown:
+
+   ![extra.jpg](https://s2.loli.net/2025/01/31/fYHjie13xLgakCr.png)
+
+</Steps>
+
+## How to move the extra player rendering position
+
+In the game, press the `Alt P` shortcut (Fabric version just press `P`) to open the extra player rendering position settings.
+
+In this interface, you can adjust the position, size, and angle of the extra player rendering according to the instructions in the upper right. When finished, press `Esc` to exit the settings.
+
+![move.jpg](https://s2.loli.net/2025/01/31/2DV7IORtHzgJT93.png)

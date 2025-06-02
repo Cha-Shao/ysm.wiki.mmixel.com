@@ -1,0 +1,22 @@
+---
+title: Armor Animation
+---
+
+Currently, there is no specific location for armor animations; you can place them in the `main.animation.json` file. When a player equips the corresponding armor, the armor animation will play.
+
+To achieve the effect of displaying an animation when armor is equipped, you can follow these steps:
+
+1. In the parallel animation, set the scale of all armor groups to 0;
+2. Create specific armor animations and set the scale of the specific group back to 1.
+
+The naming convention for armor animations is almost identical to the hand animations mentioned earlier. Vanilla armor can be divided into four types according to the equipment slot: `head`, `chest`, `legs` (note the plural), and `feet`. All armor animations use these names as prefixes, followed by `$` plus the item ID or `#` plus the item tag to add the armor animation.
+
+Below are some examples of armor animations. You can add as many custom animations as you like:
+
+| Name                                 | Function                                                                                                                                   | Note                                        |
+| :----------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| `head$minecraft:iron_helmet`         | Plays this animation when the player equips an item with ID minecraft:iron_helmet in the helmet slot                                       | `$` plus item ID                            |
+| `chest$minecraft:diamond_chestplate` | Plays this animation when the player equips an item with ID minecraft:diamond_chestplate in the chestplate slot                            | `$` plus item ID                            |
+| `legs#forge:armor/diamond`           | Plays this animation when the player equips an item with the tag forge:armor/diamond in the leggings slot                                  | `#` plus item tag                           |
+| `feet#forge:armor/iron`              | Plays this animation when the player equips an item with the tag forge:armor/iron in the boots slot                                        | `#` plus item tag                           |
+| `head:default`                       | Plays this animation when the player equips any armor in the helmet slot. This has the lowest priority and can be used as a default effect | Also applies to `chest`, `legs`, and `feet` |

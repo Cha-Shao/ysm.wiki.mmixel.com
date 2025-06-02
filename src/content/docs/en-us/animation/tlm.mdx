@@ -1,0 +1,66 @@
+---
+title: Maid Animation
+---
+
+import { Aside } from "@astrojs/starlight/components"
+
+Since YSM version 2.4.0, we have added support for the Touhou Little Maid mod. Now, YSM models can be directly used by maids in the Touhou Little Maid mod.
+
+## Adding a New Locator Group
+
+The maid mod has a locator group called `BackpackLocator`, which is used to display the maid's equipped backpack. Its position is usually set between the two shoulders. When the maid's accessory slot is equipped with a Slash Blade or a banner, this locator group is also used as a reference.
+
+## Adding an Animation Locator File
+
+First, you need to add a new type `tlm` to the animation field in `ysm.json`, as shown below:
+
+```json {11}
+"animation": {
+    "main": "animations/main.animation.json",
+    "arm": "animations/arm.animation.json",
+    "extra": "animations/extra.animation.json",
+    "tac": "animations/tac.animation.json",
+    "carryon": "animations/carryon.animation.json",
+    "parcool": "animations/parcool.animation.json",
+    "swem": "animations/swem.animation.json",
+    "slashblade": "animations/slashblade.animation.json",
+    // This is the maid animation
+    "tlm": "animations/tlm.animation.json"
+}
+```
+
+After that, just refer to the default model's `tlm.animation.json` animation.
+
+<Aside>
+  **If you want to modify the maid animation, be sure to fill in this section.
+  If the modified maid animation does not work properly, please check whether
+  this file is declared here.**
+</Aside>
+
+## Animation List
+
+Below are the customizable maid animations. The default model's maid animation file is `tlm.animation.json`:
+
+| Name       | Function                                                                                                                                                                         | Note    |
+| :--------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------ |
+| gomoku     | Animation of the maid sitting next to a Gomoku, chess, or chessboard                                                                                                             | Looping |
+| bookshelf  | Animation of the maid sitting on a bookshelf                                                                                                                                     | Looping |
+| computer   | Animation of the maid sitting next to a computer                                                                                                                                 | Looping |
+| keyboard   | Animation of the maid sitting next to a keyboard                                                                                                                                 | Looping |
+| chair      | Animation of the maid sitting on a cushion. You can add `$` and a cushion ID at the end to add an animation for a specific cushion.<br/>Example: `chair$touhou_little_maid:moto` | Looping |
+| picnic     | Animation of the maid sitting on a picnic mat                                                                                                                                    | Looping |
+| beg        | When the player approaches the maid with a cake, the maid will play this animation                                                                                               | Looping |
+| game_lost  | Animation played when the maid loses a chess game                                                                                                                                | Looping |
+| game_win   | Animation played when the maid wins a chess game                                                                                                                                 | Looping |
+| broom      | Animation played when the maid is riding a broom                                                                                                                                 | Looping |
+| statue     | Animation played when the maid model is rendered as a statue                                                                                                                     | Looping |
+| garage_kit | Animation played when the maid model is rendered as a garage kit (figure)                                                                                                        | Looping |
+
+## Cushion Conditional Animations
+
+The maid mod's cushions all have the same entity ID. For this reason, we have specially added support for conditional animations.
+
+Cushion conditional animations are named starting with `chair`, followed by `$` and the cushion's model ID.
+
+- For example, in-game chair: `chair$touhou_little_maid:class_chair`
+- For example, in-game motorcycle cushion: `chair$touhou_little_maid:moto`

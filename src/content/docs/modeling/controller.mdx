@@ -4,13 +4,13 @@ title: 动画控制器
 
 import { Aside } from "@astrojs/starlight/components"
 
-过去什么条件下播放什么动画完全是硬编码的，美术没法自定义。
+在过去，动画的播放条件完全是硬编码的，美术人员无法进行自定义设置。
 
-2.3.0 版本添加了基岩版动画控制器，可以通过控制器自定义动画的播放条件。
+在 2.3.0 版本中，添加了基岩版动画控制器，通过该控制器，用户能够自定义动画的播放条件。
 
 ## 控制器写法
 
-只需要在 `ysm.json` 文件内添加 `animation_controllers` 字段即可，案例如下：
+只需在 `ysm.json` 文件中添加 `animation_controllers` 字段即可，以下是示例：
 
 ```json {12-14}
 "files": {
@@ -34,21 +34,21 @@ import { Aside } from "@astrojs/starlight/components"
 }
 ```
 
-动画控制器文件里可以包含多个控制器，你如果喜欢，**也可以将其拆分成多个文件**，反正程序在读取时会自动合并
+动画控制器文件中可以包含多个控制器。如果你愿意，**也可以将其拆分为多个文件**，因为程序在读取时会自动进行合并。
 
-控制器文件的名称不受限制，但是其内部命名的控制器需要特定几个名称，如下图所示：
+控制器文件的名称不受限制，但内部命名的控制器需要使用特定的名称，如下图所示：
 
 ![1.png](https://s2.loli.net/2025/01/28/MDi8yJZFOIY1dlH.png)
 
-当你添加特定名称的动画控制器时，也就意味着先前硬编码的控制器被替换掉了。
+当你添加了特定名称的动画控制器后，先前硬编码的控制器将被替换。
 
 <Aside>
 
-如果你发现你的 BlockBench 无法导入动画控制器，请尝试移除 GeckoLib 插件后再重新导入。
+如果你的 BlockBench 无法导入动画控制器，请尝试移除 GeckoLib 插件后再重新导入。
 
 </Aside>
 
-目前有这些名称可以用，具体什么意思看英文名应该就懂吧，我就不翻译了：
+目前有以下这些名称可供使用，具体含义通过英文名应该就能理解，这里就不进行翻译了：
 
 ### 并行动画
 
@@ -120,7 +120,7 @@ import { Aside } from "@astrojs/starlight/components"
 
 ## 添加的 molang 变量与函数
 
-为了方便控制器，我们包装了部分状态，直接添加了以 ctrl 开头的 molang 变量来方便制作动画控制器
+为了方便使用控制器，我们对部分状态进行了封装，直接添加了以 ctrl 开头的 molang 变量，以便于制作动画控制器。
 
 ### 变量（全是布尔值变量）
 
@@ -128,31 +128,31 @@ import { Aside } from "@astrojs/starlight/components"
 | :------------------------------ | :-------------------------------------------- |
 | `query.all_animations_finished` | 当前状态下，控制器的全部动画播放完毕时为 true |
 | `query.any_animation_finished`  | 当前状态下，控制器的任意动画播放完毕时为 true |
-| `ctrl.death`                    | 死亡时为 true                                 |
-| `ctrl.riptide`                  | 使用三叉戟，触发激流时为 true                 |
-| `ctrl.sleep`                    | 睡觉时为 true                                 |
-| `ctrl.swim`                     | 游泳时为 true                                 |
-| `ctrl.climb`                    | 趴下并移动时为 true                           |
-| `ctrl.climbing`                 | 趴下不移动时为 true                           |
-| `ctrl.ladder_up`                | 梯子上上爬时为 true                           |
-| `ctrl.ladder_stillness`         | 梯子上定住时为 true                           |
-| `ctrl.ladder_down`              | 梯子上下滑时为 true                           |
-| `ctrl.fly`                      | 飞行时为 true                                 |
-| `ctrl.elytra_fly`               | 鞘翅飞行时为 true                             |
-| `ctrl.swim_stand`               | 站立式游泳时为 true                           |
-| `ctrl.attacked`                 | 被攻击时为 true                               |
-| `ctrl.jump`                     | 跳跃时为 true                                 |
-| `ctrl.sneak`                    | 潜行移动时为 true                             |
-| `ctrl.sneaking`                 | 潜行不移动时为 true                           |
-| `ctrl.run`                      | 跑步时为 true                                 |
-| `ctrl.walk`                     | 行走时时为 true                               |
-| `ctrl.idle`                     | 待命状态时为 true                             |
+| `ctrl.death`                    | 玩家死亡时为 true                             |
+| `ctrl.riptide`                  | 玩家使用三叉戟并触发激流时为 true             |
+| `ctrl.sleep`                    | 玩家睡觉时为 true                             |
+| `ctrl.swim`                     | 玩家游泳时为 true                             |
+| `ctrl.climb`                    | 玩家趴下并移动时为 true                       |
+| `ctrl.climbing`                 | 玩家趴下但不移动时为 true                     |
+| `ctrl.ladder_up`                | 玩家在梯子上上爬时为 true                     |
+| `ctrl.ladder_stillness`         | 玩家在梯子上定住时为 true                     |
+| `ctrl.ladder_down`              | 玩家在梯子上下滑时为 true                     |
+| `ctrl.fly`                      | 玩家飞行时为 true                             |
+| `ctrl.elytra_fly`               | 玩家使用鞘翅飞行时为 true                     |
+| `ctrl.swim_stand`               | 玩家站立式游泳时为 true                       |
+| `ctrl.attacked`                 | 玩家被攻击时为 true                           |
+| `ctrl.jump`                     | 玩家跳跃时为 true                             |
+| `ctrl.sneak`                    | 玩家潜行移动时为 true                         |
+| `ctrl.sneaking`                 | 玩家潜行但不移动时为 true                     |
+| `ctrl.run`                      | 玩家跑步时为 true                             |
+| `ctrl.walk`                     | 玩家行走时为 true                             |
+| `ctrl.idle`                     | 玩家处于待命状态时为 true                     |
 
 ### 函数
 
-下面几个为 molang 函数，需要填入参数
+以下是几个 molang 函数，使用时需要填入参数。
 
-其中第二个参数和原来动画命名有点类似，`$`物品 ID，`#`物品 tag，`:`特殊类别。
+其中第二个参数和原来动画命名有些类似，`$` 表示物品 ID，`#` 表示物品 tag，`:` 表示特殊类别。
 
 | molang       | 说明                                                                                       |
 | :----------- | :----------------------------------------------------------------------------------------- |
@@ -164,20 +164,20 @@ import { Aside } from "@astrojs/starlight/components"
 
 ## 模组兼容相关 molang
 
-| molang                      | 说明                                                                                                           |
-| :-------------------------- | :------------------------------------------------------------------------------------------------------------- |
-| `ctrl.carryon_type`         | 返回字符串 <br/> 玩家抱起的类型，有三种 `block` `entity` `player` 如果没有抱起任何东西，返回空字符串           |
-| `ctrl.carryon_is_princess`  | 返回布尔值 <br/> 玩家是否**被**抱起                                                                            |
-| `ctrl.parcool_state`        | 返回字符串 <br/> 返回当前正在执行的跑酷动作（内容较多，暂不展示） <br/> 如果没有执行任何跑酷动作，返回空字符串 |
-| `ctrl.swem_is_ride`         | 返回布尔值 <br/> 玩家是否**骑乘** SWEM 的马                                                                    |
-| `ctrl.swem_state`           | 返回字符串 <br/> 玩家当前正在执行的马术动作 <br/> 如果没有骑 SWEM 的马，返回空字符串                           |
-| `ctrl.tac_hold_gun`         | 返回布尔值 <br/> 玩家是否主手持 tacz 的枪械                                                                    |
-| `ctrl.tac_gun_type`         | 返回字符串 <br/> 玩家当前持有的枪械类型（步枪、手枪那些分类） <br/> 如果没有持枪，返回空字符串                 |
-| `ctrl.tac_gun_id`           | 返回字符串 <br/> 玩家当前持有的枪械 ID <br/> 如果没有持枪，返回空字符串                                        |
-| `ctrl.tac_is_fire`          | 返回布尔值 <br/> 玩家是否正在开火                                                                              |
-| `ctrl.tac_is_aim`           | 返回布尔值 <br/> 玩家是否正在瞄准                                                                              |
-| `ctrl.tac_is_reload`        | 返回布尔值 <br/> 玩家是否正在重载弹药                                                                          |
-| `ctrl.tac_is_melee`         | 返回布尔值 <br/> 玩家是否正在近战（刺刀）                                                                      |
-| `ctrl.tac_is_draw`          | 返回布尔值 <br/> 玩家是否正在切枪                                                                              |
-| `ctrl.slashblade_animation` | 返回字符串 <br/> 玩家当前打出的剑技名称 <br/> 如果没有，返回空字符串                                           |
-| `ctrl.slashblade_animation` | 返回字符串 <br/> 玩家当前打出的剑技名称 <br/> 如果没有，返回空字符串                                           |
+| molang                      | 说明                                                                                                                |
+| :-------------------------- | :------------------------------------------------------------------------------------------------------------------ |
+| `ctrl.carryon_type`         | 返回字符串 <br/> 表示玩家抱起的类型，有三种：`block` `entity` `player` 。如果玩家没有抱起任何东西，则返回空字符串。 |
+| `ctrl.carryon_is_princess`  | 返回布尔值 <br/> 表示玩家是否**被**抱起。                                                                           |
+| `ctrl.parcool_state`        | 返回字符串 <br/> 返回当前正在执行的跑酷动作（内容较多，暂不展示）。如果没有执行任何跑酷动作，则返回空字符串。       |
+| `ctrl.swem_is_ride`         | 返回布尔值 <br/> 表示玩家是否**骑乘** SWEM 的马。                                                                   |
+| `ctrl.swem_state`           | 返回字符串 <br/> 表示玩家当前正在执行的马术动作。如果没有骑乘 SWEM 的马，则返回空字符串。                           |
+| `ctrl.tac_hold_gun`         | 返回布尔值 <br/> 表示玩家是否主手持 tacz 的枪械。                                                                   |
+| `ctrl.tac_gun_type`         | 返回字符串 <br/> 表示玩家当前持有的枪械类型（如步枪、手枪等分类）。如果没有持枪，则返回空字符串。                   |
+| `ctrl.tac_gun_id`           | 返回字符串 <br/> 表示玩家当前持有的枪械 ID。如果没有持枪，则返回空字符串。                                          |
+| `ctrl.tac_is_fire`          | 返回布尔值 <br/> 表示玩家是否正在开火。                                                                             |
+| `ctrl.tac_is_aim`           | 返回布尔值 <br/> 表示玩家是否正在瞄准。                                                                             |
+| `ctrl.tac_is_reload`        | 返回布尔值 <br/> 表示玩家是否正在重载弹药。                                                                         |
+| `ctrl.tac_is_melee`         | 返回布尔值 <br/> 表示玩家是否正在进行近战（如刺刀攻击）。                                                           |
+| `ctrl.tac_is_draw`          | 返回布尔值 <br/> 表示玩家是否正在切枪。                                                                             |
+| `ctrl.slashblade_animation` | 返回字符串 <br/> 表示玩家当前打出的剑技名称。如果没有打出剑技，则返回空字符串。                                     |
+| `ctrl.slashblade_animation` | 返回字符串 <br/> 表示玩家当前打出的剑技名称。如果没有打出剑技，则返回空字符串。                                     |

@@ -1,0 +1,111 @@
+---
+title: Freesia Plugin
+---
+
+import { Aside, LinkCard } from "@astrojs/starlight/components"
+import FileCard from "@/components/FileCard"
+
+<Aside type="caution">
+
+**Freesia Plugin is not an official YSM project**. It is released under the
+[Mozilla Public License Version
+2.0](https://github.com/YesSteveModel/Freesia/blob/main/LICENSE)!
+
+</Aside>
+
+<Aside>
+
+The original author of the Freesia Plugin is
+[MrHua269](https://github.com/MrHua269), and it is currently maintained by
+[HappyRespawnanchor](https://github.com/HappyRespawnanchor). We sincerely
+thank these authors for their contributions.
+
+</Aside>
+
+Freesia is a server-side proxy plugin that enables plugin servers to support Yes Steve Model.
+
+Freesia mainly consists of three parts: `Velocity`, `Worker`, and plugin sub-servers with `Backend` installed. `Velocity` is responsible for forwarding and processing YSM packets, `Worker` handles model synchronization and data generation, and the sub-servers are where players play the game.
+
+You can get the latest version of Freesia [here](https://github.com/YesSteveModel/Freesia/releases).
+
+<LinkCard title="YesSteveModel/Freesia" href="YesSteveModel/Freesia" />
+
+## Velocity
+
+On the Velocity side, there are two key components: `master_control_service` and `msession`.
+
+- `master_control_service`: Used for communication between Velocity and Worker nodes, controlling the behavior of Worker nodes.
+- `msession`: Responsible for forwarding players' YSM packets to Worker nodes with the YSM mod installed for cache synchronization.
+
+<Aside>
+
+- Make sure Velocity can connect to the Minecraft port of the Worker server.
+- Do not add the Worker server to the Velocity sub-server list, and do not expose the `master_control_service` and `msession` ports to the public network, otherwise there will be security risks.
+
+</Aside>
+
+### Example Configuration File
+
+```toml
+[functions]
+# Whether to kick players who do not have the YSM mod installed
+kick_if_ysm_not_installed = false
+# Handshake timeout (milliseconds)
+ysm_detection_timeout_for_kicking = 30000
+
+[messages]
+# Language option, supports "zh_CN" and "en_US"
+language = "zh_CN"
+
+[worker]
+# Master control node address
+worker_master_ip = "localhost"
+worker_master_port = 19200
+# Worker server address (should match server-port and server-ip in server.properties)
+# Do not expose Worker and master control node ports to the public network, or there will be security risks
+worker_msession_port = 19199
+worker_msession_ip = "localhost"
+```
+
+## Worker
+
+Worker is a **Fabric 1.21 server with YSM and Freesia - Worker mods installed**. It mainly handles YSM logic (such as cache synchronization), entity state updates, and NBT data generation.
+
+To reduce resource usage, most game functions are disabled on the Worker side, and it only processes YSM packets and login phase packets, simulating a MultiPaper-like multi-slave scenario.
+
+Worker **does not execute most game logic or save world data**, but tick logic still exists. Due to YSM logic, the Worker may become a performance bottleneck, but Freesia uses asynchronous processing, so the impact is relatively small.
+
+### Example Worker Freesia Configuration File:
+
+```toml
+[worker]
+# Must be consistent with Freesia - Velocity configuration
+worker_master_ip = "localhost"
+worker_master_port = 19200
+# Reconnection interval for the control node (seconds)
+controller_reconnect_interval = 1
+# Player data cache expiration time (seconds)
+player_data_cache_invalidate_interval_seconds = 30
+```
+
+### Worker server `server.properties` configuration:
+
+```properties
+# Must be consistent with Freesia - Velocity configuration
+server-ip=127.0.0.1
+server-port=19199
+```
+
+## Sub-server
+
+The main responsibility of the sub-server is to handle player Tracker check requests from Velocity and notify Velocity to update the player Tracker. Therefore, **the sub-server must have `Freesia - Backend` installed**.
+
+## Example Script
+
+If you are still unsure how to use it, you can get a template file below. You can run `install - freesia.bat` (Windows) or `install - freesia.sh` (Linux) to download the relevant files. After downloading, run `start.bat` or `start.sh` in the corresponding folder to start the server.
+
+<FileCard
+  name="freesia-template.zip"
+  size="10.6 KB"
+  url="/files/freesia-template.zip"
+/>

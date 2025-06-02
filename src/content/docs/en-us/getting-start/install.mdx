@@ -1,0 +1,66 @@
+---
+title: Installation & Usage
+---
+
+import { Aside, Badge } from "@astrojs/starlight/components"
+
+Yes Steve Model must be installed on both the client and the server to use all features properly.
+
+If you **only install on the client**, you need to enter singleplayer first and wait for the models to load before using them on a server!
+
+## Platform and JVM Support
+
+Versions 1.1.5 and earlier support all major platforms, including Windows, Linux, MacOS, Android, and iOS (such as Pojav launchers). However, starting from version 1.2.0, only Windows (client and server) and Linux (server) are supported for now, with support for other platforms still in development.
+
+We have tested JVMs from Oracle, Azul Zulu, Microsoft, and Dragonwell. If you encounter `Exception message: java.lang.RuntimeException: err: 54` when running YSM, try switching to one of these JVMs.
+
+- Microsoft OpenJDK<Badge type="tip" text="Recommended" />: [https://learn.microsoft.com/zh-cn/java/openjdk/download](https://learn.microsoft.com/zh-cn/java/openjdk/download)
+- Oracle JVM: [https://www.oracle.com/cn/java/technologies/downloads/](https://www.oracle.com/cn/java/technologies/downloads/)
+- Azul Zulu: [https://www.azul.com/downloads/](https://www.azul.com/downloads/)
+- Alibaba Dragonwell: [https://www.aliyun.com/product/dragonwell](https://www.aliyun.com/product/dragonwell)
+
+## Notes for NeoForge / Forge Version
+
+When a player enters the server for the first time, wait a few seconds (this is the time needed for model synchronization, which depends on the number of models on the server), then use the shortcut `Alt` + `Y` to open the following GUI:
+
+![1.png](https://s2.loli.net/2023/06/25/Ya7DMmKToSneN6L.png)
+
+**① Model Switch Button**: Click to switch to the corresponding model. If the button background is gray, the model is not authorized. The number in the upper left indicates the number of available textures for that model.
+
+**② Model Category Switch Button**: Switch between all models, authorized models, and favorite models.
+
+**③ Details Interface Button**: Click to enter the model details interface, where you can view all available textures and animations. The preview window in the middle supports operations: left mouse drag to rotate the model, right mouse drag to move the model, and scroll wheel to zoom. Click the texture selector on the right to choose different textures; click the animation list on the left to preview different animations.
+
+![3.png](https://s2.loli.net/2023/02/11/UxtCNy9wEg1XjSI.png)
+
+Version 2.2.1 adds an author details interface. Click the "Open Details" button in the upper left of the model interface to open the following screen:
+
+![2024-06-23_21.24.png](https://s2.loli.net/2024/06/23/5ePDTnrBchwyzq8.png)
+
+## Notes for Fabric Version
+
+<Aside type="tip">
+
+The Fabric port was fully completed by **TomatoPuddin** ([https://github.com/TomatoPuddin](https://github.com/TomatoPuddin)). Please join us in expressing our highest respect!
+
+</Aside>
+
+Most features of the Fabric version are **fully consistent** with the Forge version. Compatibility testing has been done with Sodium, Sodium Extra, Iris, Lithium, ModernFix, FerriteCore, ServerCore, Debugify, Carpet (including FakePlayer), and other mods, with good stability.
+
+The Fabric version requires two dependencies:
+
+- [Fabric Api](https://www.mcmod.cn/class/3124.html)
+- [Forge Config Api Port](https://www.mcmod.cn/class/5510.html) (not required from version 2.2.1 onwards)
+
+It also has compatibility and interaction with the following mods:
+
+- [First - Person Model](https://www.mcmod.cn/class/4391.html) (improved first-person compatibility)
+- [Amecs](https://www.mcmod.cn/class/2003.html) (supports the same combo key bindings as Forge)
+- [Modern KeyBinding](https://www.curseforge.com/minecraft/mc-mods/modern-keybinding-fabric) (another mod supporting combo key bindings like Forge, supported since 2.2.1)
+
+Key binding is slightly different from Forge. Fabric's key binding API does not support Ctrl / Alt / Shift combos, so you need to install [Amecs](https://www.mcmod.cn/class/2003.html) to enable this. However, this mod conflicts with [Controlling](https://www.mcmod.cn/class/1191.html), so it is optional and up to the user.
+
+Alternatively, you can install [Modern KeyBinding](https://www.curseforge.com/minecraft/mc-mods/modern-keybinding-fabric), which does not conflict with [Controlling](https://www.mcmod.cn/class/1191.html).
+
+- If Amecs is installed, key bindings are registered the same as in Forge;
+- **If not installed, key bindings are registered without modifier keys. For example, just press Y to open the model selection page, no Alt needed.**

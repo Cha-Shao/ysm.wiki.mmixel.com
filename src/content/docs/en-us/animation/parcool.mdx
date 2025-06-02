@@ -1,0 +1,72 @@
+---
+title: Parcool Animation
+---
+
+import { Aside } from "@astrojs/starlight/components"
+
+The Parcool mod adds various parkour actions for players. Since version 2.2.2, we have added compatibility support for this mod!
+
+<Aside>
+  MCMOD Wiki: [Parcool Mod](https://www.mcmod.cn/class/5958.html) Reference
+  Video: [Parcool Mod Demo Video](https://www.bilibili.com/video/BV1xJ4m1h7UH)
+</Aside>
+
+Some animations require distinguishing between front, back, left, and right directions, so you need to refer to the animation names in the default model animation file `parcool.animation.json`. Also, don't forget to declare this animation file in `ysm.json`!
+
+## Add Animation Mapping File
+
+First, add a type `parcool` in the animation field of `ysm.json`, as shown below:
+
+```json {8}
+"animation": {
+    "main": "animations/main.animation.json",
+    "arm": "animations/arm.animation.json",
+    "extra": "animations/extra.animation.json",
+    "tac": "animations/tac.animation.json",
+    "carryon": "animations/carryon.animation.json",
+    // This is the parkour animation
+    "parcool": "animations/parcool.animation.json",
+    "swem": "animations/swem.animation.json",
+    "slashblade": "animations/slashblade.animation.json",
+    "tlm": "animations/tlm.animation.json"
+}
+```
+
+After that, just refer to the animations in the default model's `parcool.animation.json`.
+
+<Aside>
+  **If you want to modify the parkour animation, be sure to fill in this
+  section. If the modified parkour animation does not work properly, please
+  check whether the file is declared here first.**
+</Aside>
+
+## Animation List
+
+Below are the customizable parkour animations. The default model's parkour animation file is `parcool.animation.json`:
+
+| ID                            | Description                                                                                                                                                                                                       | Reference Video                                                       | Preview Image                                                                                                                                        |
+| :---------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `parcool:backward_wall_jump`  | Should be a wall jump with your back to the wall, but I couldn't reproduce this effect                                                                                                                            |                                                                       |                                                                                                                                                      |
+| `parcool:wall_jump`           | Wall jump                                                                                                                                                                                                         | [Reference Clip](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=152.5) |                                                                                                                                                      |
+| `parcool:cat_leap`            | Cat leap                                                                                                                                                                                                          | [Reference Clip](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=74)    | ![Cat Leap GIF](https://s2.loli.net/2024/08/14/U14VOHA7E2We3w8.gif)                                                                                  |
+| `parcool:climb_up`            | Wall climb jump                                                                                                                                                                                                   | Not shown in the video                                                | ![Climb Up GIF](https://s2.loli.net/2024/08/14/KnmHXyNi8lBDuJt.gif)                                                                                  |
+| `parcool:cling_to_cliff`      | Cat hang, can move left and right                                                                                                                                                                                 | [Reference Clip](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=84)    | ![Cat Hang GIF](https://s2.loli.net/2024/08/14/6QLI3nzpgtqdHvk.png)                                                                                  |
+| `parcool:crawl`               | Crawl                                                                                                                                                                                                             | [Reference Clip](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=123.4) |                                                                                                                                                      |
+| `parcool:dive_animation_host` | Dive down                                                                                                                                                                                                         | [Reference Clip](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=216.0) | ![Dive GIF](https://s2.loli.net/2024/08/14/L37ftNsS2Oz8YDT.gif)                                                                                      |
+| `parcool:dive_into_water`     | Dive into water                                                                                                                                                                                                   | [Reference Clip](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=216.0) | ![Dive Into Water GIF](https://s2.loli.net/2024/08/14/nHc5toSp2sxOR6f.gif)                                                                           |
+| `parcool:dodge`               | Dodge animation                                                                                                                                                                                                   | [Reference Clip](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=205.0) | ![Dodge GIF](https://s2.loli.net/2024/08/14/XknxO7CpmE2YfdH.gif)                                                                                     |
+| `parcool:fast_running`        | Fast running                                                                                                                                                                                                      | [Reference Clip](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=27.5)  | ![Fast Running GIF](https://s2.loli.net/2024/08/14/yFjnCDo51SVMZp8.gif)                                                                              |
+| `parcool:fast_swim`           | Fast swimming                                                                                                                                                                                                     | [Reference Clip](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=27.5)  | ![Fast Swim GIF](https://s2.loli.net/2024/08/14/nDfSbzOdFmVluGL.gif)                                                                                 |
+| `parcool:flipping`            | Flip                                                                                                                                                                                                              | [Reference Clip](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=175.0) |                                                                                                                                                      |
+| `parcool:horizontal_wall_run` | Horizontal wall run                                                                                                                                                                                               | [Reference Clip](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=62)    |                                                                                                                                                      |
+| `parcool:vertical_wall_run`   | Vertical wall run (could not reproduce this effect)                                                                                                                                                               | [Reference Clip](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=62)    |                                                                                                                                                      |
+| `parcool:jump_from_bar`       | No information found                                                                                                                                                                                              |                                                                       |                                                                                                                                                      |
+| `parcool:hang`                | Hanging                                                                                                                                                                                                           | [Reference Clip](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=114.5) |                                                                                                                                                      |
+| `parcool:kong_vault`          | Kong vault                                                                                                                                                                                                        | [Reference Clip](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=37.1)  | ![Kong Vault GIF 1](https://s2.loli.net/2024/08/14/4plmdIjfM1XnkWw.gif)<br/>![Kong Vault Image](https://s2.loli.net/2024/08/14/wGmdXYiEkAOztF9.webp) |
+| `parcool:speed_vault`         | Speed vault                                                                                                                                                                                                       |                                                                       | ![Speed Vault Image](https://s2.loli.net/2024/08/14/kMb2FPGd8KQ5jiz.webp)                                                                            |
+| `parcool:roll`                | Looks similar to a flip, but is not the `parcool:flipping` animation                                                                                                                                              |                                                                       |                                                                                                                                                      |
+| `parcool:sliding`             | Slide                                                                                                                                                                                                             | [Reference Clip](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=135.8) |                                                                                                                                                      |
+| `parcool:tap`                 | Landing buffer                                                                                                                                                                                                    | [Reference Clip](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=185.3) |                                                                                                                                                      |
+| `parcool:wall_slide`          | Wall slide: When the character is off the ground and touches a wall, hold the wall slide key (default right mouse button) to grab the wall and slow down the fall for a safe landing. This is a static animation. | [Reference Clip](https://www.bilibili.com/video/BV1xJ4m1h7UH?t=141.4) | ![Wall Slide Image](https://s2.loli.net/2024/08/14/tkRG8MiDBqrvAuI.png)                                                                              |
+| `parcool:jump_charging`       | High jump charging (when holding the shift key)                                                                                                                                                                   |                                                                       |                                                                                                                                                      |
+| `parcool:charge_jump`         | High jump (after charging, press the space bar)                                                                                                                                                                   |                                                                       |                                                                                                                                                      |

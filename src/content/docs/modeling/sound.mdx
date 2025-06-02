@@ -4,22 +4,22 @@ title: 音频播放
 
 import { Aside, Steps } from "@astrojs/starlight/components"
 
-2.3.0 版本起，Yes Steve Model 模组支持在动画中调用音频，使用时需注意以下事项：
+自 2.3.0 版本起，Yes Steve Model 模组支持在动画中调用音频，使用时需留意以下要点：
 
-- 音频文件可内置于模型包或调用原版游戏音频
-- 内置音频需放置在模型包的 `sounds` 文件夹中（默认路径）
-- 仅支持新版文件结构（旧版结构无法使用音频功能）
-- 音频格式必须为 **OGG**，建议使用单声道以实现游戏内立体声效果
-- 单个音频文件大小不超过 4M，整个模型包大小不超过 66M
+- 音频文件既可以内置于模型包，也能调用原版游戏音频。
+- 若为内置音频，需将其放置在模型包的 `sounds` 文件夹中（此为默认路径）。
+- 仅支持新版文件结构，旧版结构无法使用音频功能。
+- 音频格式必须为 **OGG**，建议采用单声道以在游戏内实现立体声效果。
+- 单个音频文件大小不得超过 4M，整个模型包大小不得超过 66M。
 
 <Aside title="如何转换音频？ 常用音频转换工具推荐：">
 
-- **格式工厂**：简单易用，适合新手，下载地址：
+- **格式工厂**：操作简单，易于上手，适合新手使用。下载地址：
   [官网](http://www.pcfreetime.com/formatfactory/CN/index.html) |
   [腾讯软件中心](https://pc.qq.com/detail/11/detail_1511.html)
-- **Adobe Audition**：专业级音频软件，功能强大但上手门槛较高 - 其他工具：如
-  Audacity、FFmpeg 等，支持导出为 OGG 格式即可
-- 当然，您也可以使用其他转换工具，例如：Audacity、FFmpeg 等，只要能转换为 ogg 格式即可。
+- **Adobe Audition**：专业级音频处理软件，功能十分强大，但上手难度较高。
+- 其他工具：像 Audacity、FFmpeg 等，只要支持导出为 OGG 格式即可。
+- 当然，您也可以选用其他转换工具，例如 Audacity、FFmpeg 等，只要能将音频转换为 ogg 格式就行。
 
 </Aside>
 
@@ -29,19 +29,19 @@ import { Aside, Steps } from "@astrojs/starlight/components"
 
 1. **新建音频文件夹**
 
-   在模型包根目录创建固定名称的文件夹：`sounds`
+   在模型包根目录创建名为 `sounds` 的固定文件夹。
 
    ![1.png](https://s2.loli.net/2025/01/30/HZMXbJgK1i6raef.png)
 
 2. **添加 OGG 音频文件**
 
-   仅支持 `.ogg` 格式，其他格式需转换后使用
+   仅支持 `.ogg` 格式的音频文件，其他格式的音频需转换后才能使用。
 
    ![4.png](https://s2.loli.net/2025/01/30/niRbwcJYmG9dqzO.png)
 
 3. **在 BlockBench 中为动画添加音频**
 
-   在动画关键帧中配置音频触发点
+   在动画关键帧里配置音频触发点。
 
    ![3.png](https://s2.loli.net/2025/01/30/bQ3r4OSskhH5z7a.png)
 
@@ -53,13 +53,12 @@ import { Aside, Steps } from "@astrojs/starlight/components"
 
 **默认路径**：`sounds/音频名.ogg`
 
-- 在动画关键帧中直接填写音频文件名（无需后缀和路径前缀），例如：
-
-  音频文件为 `sounds/攻击音效.ogg`，则关键帧填写 `攻击音效`
+- 在动画关键帧中，直接填写音频文件名（无需添加后缀和路径前缀）。例如：
+  若音频文件为 `sounds/攻击音效.ogg`，则在关键帧中填写 `攻击音效`。
 
 **自定义路径**：
 
-如需修改音频文件夹名称，需在 `ysm.json` 的 `properties` 中添加 `sound_path` 字段：
+若需要修改音频文件夹名称，需在 `ysm.json` 的 `properties` 中添加 `sound_path` 字段：
 
 ```json
 {
@@ -69,19 +68,19 @@ import { Aside, Steps } from "@astrojs/starlight/components"
 }
 ```
 
-- 此时音频文件路径为 `自定义文件夹名称/音频名.ogg`
-- 动画关键帧仍填写音频文件名（无需路径前缀和后缀）
+- 此时，音频文件的路径变为 `自定义文件夹名称/音频名.ogg`。
+- 在动画关键帧中仍只需填写音频文件名（无需路径前缀和后缀）。
 
 ### 2. 原版游戏音频
 
-在动画关键帧中直接填写原版音频 ID（如 `minecraft:block.anvil.hit`），即可调用游戏内置音频。  
-如需扩展原版音频，可通过资源包实现：
+在动画关键帧中直接填写原版音频 ID（如 `minecraft:block.anvil.hit`），便可调用游戏内置音频。  
+若需要扩展原版音频，可通过制作资源包来实现：
 
 - 资源包制作教程：[Minecraft Wiki（教程:制作资源包）](https://zh.minecraft.wiki/w/Tutorial:%E5%88%B6%E4%BD%9C%E8%B5%84%E6%BA%90%E5%8C%85?variant=zh-cn)
 - 音效配置教程：[Minecraft Wiki（教程:制作资源包/音效和音乐）](https://zh.minecraft.wiki/w/Tutorial:%E5%88%B6%E4%BD%9C%E8%B5%84%E6%BA%90%E5%8C%85/%E9%9F%B3%E6%95%88%E5%92%8C%E9%9F%B3%E4%B9%90)
 
 <Aside>
 
-推荐优先使用原版资源包添加音频，可减少模型包体积并规避版权风险。
+建议优先使用原版资源包添加音频，这样既能减小模型包体积，又能规避版权风险。
 
 </Aside>

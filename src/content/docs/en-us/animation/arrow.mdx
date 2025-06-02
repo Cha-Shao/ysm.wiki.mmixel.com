@@ -1,0 +1,87 @@
+---
+title: Arrow Animation
+---
+
+import { Aside, Tabs, TabItem } from "@astrojs/starlight/components"
+
+Since version 1.2.0, we have added custom arrow functionality, allowing players to modify the arrow model and its animation.
+
+Starting from version 2.2.1, to create a custom arrow, you must declare the relevant files in `ysm.json`, otherwise your changes will not take effect.
+
+<Tabs>
+
+<TabItem label="Using the YSM Plugin">
+
+On the plugin's model info page, click the `Arrow Files` option in the sidebar:
+
+![pEZvm4O.png](https://s21.ax1x.com/2025/02/04/pEZvm4O.png)
+
+On the right, click the button shown in the image to import the corresponding files:
+
+![pEZvK8e.png](https://s21.ax1x.com/2025/02/04/pEZvK8e.png)
+
+After filling in and confirming the information is correct, click the confirm button below to save:
+
+![pEZvBKs.png](https://s21.ax1x.com/2025/02/04/pEZvBKs.png)
+
+</TabItem>
+
+<TabItem label="Manual Editing">
+
+First, open your model's `ysm.json` file, find the `files` field, and add a new field named `arrow` as shown below:
+
+```json {6-13}
+"files": {
+    "player": {
+        // Player model section
+    },
+    // Add the arrow model and animation after this
+    "arrow": {
+        // Arrow model
+        "model": "models/arrow.json",
+        // Arrow animation
+        "animation": "animations/arrow.animation.json",
+        // Arrow texture
+        "texture": "textures/arrow.png"
+    }
+}
+```
+
+If your arrow texture uses PBR materials, the `texture` field should be filled in as follows:
+
+```json {5-11}
+"arrow": {
+    "model": "models/arrow.json",
+    "animation": "animations/arrow.animation.json",
+    // If you want to use PBR, modify as follows
+    "texture": {
+        // The uv field is required; the following two PBR materials are optional. If not filled, it will be treated as a normal texture.
+        "uv": "textures/arrow.png",
+        // Oculus and Iris PBR support
+        "normal": "textures/arrow_n.png",
+        "specular": "textures/arrow_s.png"
+    }
+}
+```
+
+</TabItem>
+
+</Tabs>
+
+<Aside >
+
+**If you want to create a custom arrow, be sure to fill in this section. If your custom arrow does not work properly, please check whether the relevant files have been declared here.**
+
+</Aside>
+
+## Animation List
+
+Below are the customizable arrow animations. The default model's arrow animation file is `arrow.animation.json`:
+
+| Name                                                   | Function                                                                 |
+| :----------------------------------------------------- | :----------------------------------------------------------------------- |
+| `water`                                                | Arrow animation in water, high priority, can be overridden by parallel   |
+| `fire`                                                 | Arrow on fire animation, high priority, can be overridden by parallel    |
+| `ground`                                               | Arrow landing animation, low priority, can be overridden by other anims  |
+| `air`                                                  | Arrow flying in air animation, low priority, can be overridden by others |
+| `parallel0` <br/>`parallel1` <br/>... <br/>`parallel7` | Parallel animations, high priority, cannot be overridden                 |

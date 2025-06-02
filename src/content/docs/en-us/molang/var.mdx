@@ -1,0 +1,64 @@
+---
+title: Variables
+---
+
+import { Aside } from "@astrojs/starlight/components"
+
+## Definition of Variables
+
+In Minecraft, variables are a type of readable parameter used to record various player behaviors, such as the player's head pitch, walking speed, and health. By reading these variables, you can implement some custom behaviors on the model.
+
+For example: "When the player looks up, the hair on the back also rotates backward to offset the rotation caused by looking up, preventing the hair from clipping through the chest."
+
+Another example: "Detect the player's vertical speed so that the hair floats up when the player is falling, making the model look more realistic."
+
+## Types of Variables
+
+1. Read-only variables: Start with `query.`, can only be read, not written, and are used to record real-time behaviors of entities or the game.
+2. Entity variables: Start with `variable.`, can be read and written, stored in the entity, and require assignment to write data.
+3. Temporary variables: Start with `temp.`, also readable and writable, used for temporary storage, and are destroyed after an animation cycle ends.
+4. Persistent variables: Start with `variable.roaming.`, function the same as entity variables, but their values are not reset when the player leaves the game or changes dimension.
+
+Among these variables:
+
+- `query.` can be abbreviated as `q.`
+- `variable.` can be abbreviated as `v.`
+- `variable.roaming.` can be abbreviated as `v.roaming.`
+- `temp.` can be abbreviated as `t.`
+- Other variables do not support abbreviations.
+
+## How to Use Entity Variables
+
+Entity variables need to be changed by assignment. If not assigned, their initial value is null. The assignment operator is `=`.
+
+<Aside type="caution">
+
+`=` is the assignment operator, while `==` is used for equality comparison.
+
+</Aside>
+
+<Aside>
+
+When you want to give a variable that may be null an initial value, you can use the `??` statement.
+
+For example, `variable.jump = variable.jump?? 1` will set `variable.jump` to 1 if its value is null; if `variable.jump` already has a value, it will return that value as is.
+
+</Aside>
+
+Example: `variable.jump = query.is_jumping`
+
+`query.is_jumping` can read in real time whether the player is jumping.
+
+Suppose you want to implement a jump attack (this is a vanilla Minecraft mechanic, where attacking while jumping and falling causes a critical hit), you can use `query.is_jumping` to read whether the player is jumping.
+
+However, the value of `query.is_jumping` changes in real time, and when the player lands, its value immediately becomes 0.
+
+If you want to detect whether the player was jumping only at the start of the animation, and not change the result after landing, you need to use an entity variable.
+
+Write `variable.jump = query.is_jumping` at the start of the animation. If the player is jumping at the start, the value of `variable.jump` will be 1. If you do not modify `variable.jump` afterward, its value will remain 1 until it is assigned again.
+
+## More Learning Resources
+
+There are many tutorials and resources online where you can learn more about entity variables. For example, the Bedrock Edition development wiki: [Molang](https://bedrock.dev/en/docs/stable/Molang)
+
+If you have mastered the basics, you can try some more advanced features, or join the game community to learn and communicate with other players.

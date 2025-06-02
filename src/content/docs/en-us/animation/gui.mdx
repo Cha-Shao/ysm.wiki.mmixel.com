@@ -1,0 +1,53 @@
+---
+title: GUI Selection Animation
+---
+
+Since version 2.2.2, we have added animation support for the model selection GUI. When you hover over, move out, or select a model button in the GUI, the corresponding animation will play.
+
+You can place these animations in the `main.animation.json` file.
+
+## Default Playback Animation
+
+By default, the playback animation for the selection GUI does not have a fixed name. You can create any animation name you like (for example, we name it `gui`), and then modify the `preview_animation` field in the `ysm.json` file to this animation name (as shown below).
+
+```json {4}
+{
+  "properties": {
+    // The preview animation played in the model selection GUI
+    "preview_animation": "gui"
+  }
+}
+```
+
+If you are using the BlockBench plugin, just modify it here:
+
+![2.png](https://s2.loli.net/2025/01/28/iVCstWgDwlTnmf4.png)
+
+## Other Animations
+
+For specific usage, you can refer to the `main.animation.json` file of the built-in `wine_fox_jk` model.
+
+| Name            | Function                                                 | Note              |
+| :-------------- | :------------------------------------------------------- | :---------------- |
+| `hover`         | Plays when the mouse hovers over the model button        | -                 |
+| `hover_fadeout` | Plays when the mouse moves out of the model button       | Used for fade-out |
+| `focus`         | Plays when the model button is selected (only for 1.20+) | -                 |
+
+## Animation Angle Issue
+
+In version 2.2.2 and earlier, to make the selection GUI animation fit the angle, you needed to set a very strange rotation angle for the character.
+
+Since version 2.3.0, you only need to add the following field under `properties` in the `ysm.json` file to remove this strange rotation angle.
+
+```json {4}
+{
+  "properties": {
+    // Set to true to disable the model selection GUI angle
+    "disable_preview_rotation": true
+  }
+}
+```
+
+At this point, the model's front view and the in-game GUI selection angle will be completely consistent!
+
+![1.png](https://s2.loli.net/2025/01/30/mIce4li6Y2vzKaN.png)

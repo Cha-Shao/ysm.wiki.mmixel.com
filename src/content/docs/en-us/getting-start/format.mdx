@@ -1,0 +1,56 @@
+---
+title: Model Format Description
+---
+
+import { Aside } from "@astrojs/starlight/components"
+import ImageCard from "@/components/ImageCard"
+
+The Yes Steve Model mod is based on `geckolib`, so it supports model files compatible with `geckolib` for Bedrock Edition version `1.12.0` and above, as well as animation files for Bedrock Edition version `1.8.0`.
+
+Starting from version 2.3.0, this mod also supports Bedrock animation controllers and animation audio.
+
+## Model Formats
+
+There are three formats for model files. Place them in the specified directory and the game will recognize and load them:
+
+- Folder format: This is the most recommended format by model designers, as it is easy to modify and allows for quick reload testing in-game.
+- Zip format: This is a **direct package** of the folder format, convenient for sharing with others.
+- ysm format: This is an **encrypted package** of the folder format, making it easy to share with others while preventing the model files from being modified or stolen.
+
+## Model File Placement
+
+All custom model files should be placed in the `config/yes_steve_model` folder in the game root directory. Four subfolders will be automatically generated under the `yes_steve_model` folder:
+
+- `auth` folder: Used to store custom models that **must be authorized** to use.
+- `cache` folder: This is the cache folder for encrypted model files automatically obtained from the server.
+- `custom` folder: Also used to store custom models, but models here **do not require authorization** to use.
+- `export` folder: When you use the `/ysm export` command in-game, the generated ysm format model files will be stored here.
+
+You can choose to place custom model files directly in the `auth` or `custom` folder.
+
+<Aside>
+
+Some models are set to not require authorization. Even if you place these models in the `auth` folder, you can use them without authorization.
+
+</Aside>
+
+<Aside type="tip">
+
+Starting from version 2.2.1, to solve the problem of players liking to change file names or nest multiple folders, we have modified the file reading logic.
+Now, as long as the file is in the `custom` or `auth` directory, no matter how many subfolders are nested (up to 16 levels), and regardless of whether it is a folder, zip, or ysm format, the game can recognize it correctly. File names can use any characters (including Chinese).
+
+</Aside>
+
+## Encrypted Format Description
+
+- ysm format encrypted models cannot be converted back to normal model files, ==nor can they be modified again!==
+- ysm format follows downward compatibility. Therefore, if you use a ysm file exported by a higher version mod, it cannot be loaded in a lower version mod.
+- Enter the `/ysm export <model_id>` command in-game to export a folder format model as a ysm format model file.
+- Starting from version 2.2.2, this command also supports `/ysm export <model_id> [extra_info]`, where you can add custom text information in `extra_info`, and this info will be included in the exported ysm file.
+
+<ImageCard
+  src="https://s2.loli.net/2025/01/27/S9n5omVqt8bBOjD.png"
+  title="What it looks like when opening a YSM model file with Notepad"
+  desc="When you open a ysm file exported by a new version of the mod (1.2.0 and above) with Notepad, you will see the information in the image. This information cannot be modified. If you force modification, the mod will refuse to load the file."
+  href="/"
+/>

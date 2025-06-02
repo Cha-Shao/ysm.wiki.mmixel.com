@@ -1,0 +1,111 @@
+---
+title: Custom Wheel Menu
+---
+
+import ImageCard from "@/components/ImageCard"
+
+Starting from version 2.3.0, the wheel menu supports sub-wheels and allows you to customize configuration buttons.
+
+<ImageCard
+  src="https://s2.loli.net/2025/01/30/5YTArJ3MUmg1qcD.png"
+  title="Custom Configuration Button (Model by: 星屑海螺)"
+  description="Custom configuration button in the Furina model. Click the light blue configuration button to open the configuration interface on the right and adjust display settings."
+  href="/"
+/>
+
+So how do you write the relevant content?
+
+First, open your `ysm.json` file and find the previous `extra_animation` field. Here is an example for your reference.
+
+A BlockBench plugin will be developed to handle this in the future, but it’s good to get familiar with it in advance.
+
+## Example File
+
+```json
+{
+  // Find your original extra_animation field and add to it as shown
+  "extra_animation": {
+    // The old format is still supported, you can ignore it
+    "extra1": "Wheel Animation 1",
+    // Note the # symbol in the value, which has special meaning
+    // It will look for an item with the same id in extra_animation_buttons
+    // to add configuration buttons
+    "extra2": "#Button1",
+    // Note the # symbol at the start, which also has special meaning
+    // It will look for animations in extra_animation_classify
+    // to open a submenu interface
+    "#Category1": "Test Category",
+    // Special category wheel, #return is a fixed name, this wheel acts as a return button
+    // Added in version 2.3.1
+    "#return": "Return Button"
+  },
+  // This field was not present before, now used to add submenu interfaces
+  "extra_animation_classify": [
+    {
+      // This ID is the content after # above
+      "id": "Category1",
+      // The format is the same as the extra_animation field above
+      "extra_animation": {
+        "extra0": "Animation 1",
+        "extra1": "Animation 2",
+        "extra2": "Animation 3",
+        "extra3": "Animation 4"
+      }
+    }
+  ],
+  // This feature is rich and is used to add configuration buttons to the wheel
+  "extra_animation_buttons": [
+    {
+      // This ID is the content after # above
+      "id": "Button1",
+      // Display name, can be anything
+      "name": "Any Name",
+      // Specific configuration components
+      "config_forms": [
+        {
+          // This is a slider
+          "type": "range",
+          "title": "Size",
+          "description": "Used to change the player's size",
+          // The slider will change the molang variable, must specify a variable!
+          "value": "v.player_size",
+          // No further explanation needed
+          "step": 0.1,
+          "min": 0.2,
+          "max": 5
+        },
+        {
+          // Toggle button
+          "type": "checkbox",
+          "title": "Toggle Cat Ears",
+          "description": "Used to toggle Furina's cat ears",
+          // The molang variable to change, must specify a variable!
+          "value": "v.neko"
+        },
+        {
+          "type": "radio",
+          "title": "Please select the correct answer",
+          "description": "Try the effect",
+          // When opening the config interface, it reads the value of v.type here,
+          // and selects the radio button accordingly;
+          // If v.type is 0, the first is selected; if 1, the second; and so on.
+          // Only variable names can be filled here, not expressions!
+          "value": "v.type",
+          // Options, can add as many as you want
+          "labels": {
+            // The left is the display name, the right is the execution statement (not an assignment statement)
+            // Clicking will execute the corresponding statement for calculation!
+            "A": "v.type=0;",
+            "B": "v.type=1;",
+            "C": "v.type=2;",
+            "D": "v.type=3;",
+            "E": "v.type=4;",
+            "F": "v.type=5;",
+            "any label": "v.type=6;"
+          }
+        }
+      ]
+    }
+  ]
+}
+```

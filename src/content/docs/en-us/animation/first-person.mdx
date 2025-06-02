@@ -1,0 +1,21 @@
+---
+title: More Realistic First Person
+---
+
+import { Aside } from "@astrojs/starlight/components"
+
+The [First-person Model](https://www.curseforge.com/minecraft/mc-mods/first-person-model) mod is a mod that mimics the player perspective of traditional 3D games. It replaces the vanilla first-person view, making the gameplay experience more realistic and interesting.
+
+![2023-07-21_00.18.jpg](https://s2.loli.net/2023/07/21/25SgTJLdlU1iYCQ.jpg)
+
+<Aside>
+
+Note: For the [First-person Model](https://www.curseforge.com/minecraft/mc-mods/first-person-model) mod, we can only provide minimal compatibility. Therefore, occasional issues such as the player's head disappearing or abnormal player view may still occur...
+
+</Aside>
+
+Models with the group name `AllHead` will be automatically hidden when rendering the player in first-person view. If you have hats or other models that might block the first-person view, they should be placed under this group.
+
+The height of the player's view is controlled by the pivot point of `ViewLocator`. However, since the [First-person Model](https://www.curseforge.com/minecraft/mc-mods/first-person-model) mod forces the X and Z coordinates to be fixed at the origin, you can only modify the height of the player's view.
+
+Additionally, we provide the `ysm.first_person_mod_hide` molang parameter. When the [First-person Model](https://www.curseforge.com/minecraft/mc-mods/first-person-model) mod is installed and the player's head needs to be hidden, this parameter returns true; otherwise, it returns false. You can use this to implement more complex first-person hiding features.

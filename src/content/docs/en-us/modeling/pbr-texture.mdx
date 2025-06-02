@@ -1,0 +1,103 @@
+---
+title: PBR Texture
+---
+
+import { Card, CardGrid, Aside } from "@astrojs/starlight/components"
+import ImageCard from "@/components/ImageCard"
+
+We have also added support for PBR materials in the Oculus (Forge) and Iris (Fabric) mods.
+
+## What is PBR
+
+Simply put, with PBR, we can more easily and prominently showcase the texture of an object. Common parameters include smoothness, metallic, emission, and normal.
+
+<Card title="Smoothness">
+
+The higher the smoothness value, the smoother the model surface will be. At the highest value, it can even show a mirror-like reflection.
+
+However, note that the mirror reflection achieved in this way is not a true mirror reflection—think of it as a simplified version. Be cautious if you want to use smoothness to create a mirror effect.
+
+</Card>
+
+<Card title="Metallic">
+
+The higher the metallic value, the stronger the light reflection on the model
+surface. The edges of the model will have more pronounced highlights, and the
+metallic feel will be more obvious.
+
+</Card>
+
+<Card title="Emission">
+
+Emission controls the glow of the model surface. With this effect, you no longer need to rely on group emission; you can create glowing effects directly on the texture.
+
+However, this method cannot achieve true self-illumination—the model will still be dark at night.
+
+</Card>
+
+<Card title="Normal">
+
+Normals can be used to present the bump details of the model. Based on lighting, they can make a 2D texture appear 3D.
+
+This feature is a bit difficult to use. Do not use it in actual production until you are proficient.
+
+</Card>
+
+## Notes
+
+Before you start making PBR textures, you must be aware of the following:
+
+1. Do not overly rely on the effects of PBR textures and neglect the importance of the original texture. PBR can only enhance your work. Make sure your original texture is good enough before using PBR. Do not think: `“My metallic part in the original texture is bad, but I can fix it by increasing the metallic value in PBR.”`
+2. Due to the PBR workflow, it is strongly recommended to create a color palette when making the model and control the number of colors used. Avoid using gradient brushes as much as possible, otherwise changing colors later will be troublesome!
+3. When loading PBR in-game, please enable shaders and make sure the shader supports PBR textures.
+
+## Getting Started with PBR
+
+Here, we use a model provided by 蓝玫瑰 (02Bunny) as an example to create a PBR texture from scratch.
+
+![7162d2214e813c4b.jpg](https://s2.loli.net/2025/01/30/KCu37bDxr4LsgeX.jpg)
+
+First, copy a texture and add `_s` to the filename (this is a common naming convention, not a requirement). Switch to painting mode and set the canvas to RGB mode in the settings.
+
+Now, the values below will correspond to the PBR parameters one by one, as shown in the image: smoothness 128, metallic 255, emission 0.
+
+![71d061534ea4540c.jpg](https://s2.loli.net/2025/01/30/4sXHn6QbT25ImZq.jpg)
+
+Next, you can recolor the new texture. Since we set it as a metal material, recolor the parts of the model that should have a metallic feel.
+
+![5f9718c096f5c71b.jpg](https://s2.loli.net/2025/01/30/ES9I1VMnwckzlhu.jpg)
+
+For other parts, adjust the values according to the material you want to present.
+
+For example, for glass, you can set it to `255 64 0` to emphasize reflectivity; for any glowing parts, fill with `0 0 255`; smoothness and metallic can be added as needed. For materials like tires, hair, or fabric, you can leave them as `0 0 0`.
+
+![419b098b3f62d33d.jpg](https://s2.loli.net/2025/01/30/WAjlcXQz4trskGZ.jpg)
+
+## Final Effect
+
+After that, export the texture and model. Use the plugin to mount these files.
+
+![1.png](https://s2.loli.net/2025/01/30/2mh7ZFRVJzpg5UW.png)
+
+Now the PBR texture is complete. You can enter the game to check and compare the effects before and after using PBR:
+
+<CardGrid>
+  <ImageCard
+    src="https://s2.loli.net/2025/01/30/f5IsdMaKxyem3V2.jpg"
+    title="Before PBR"
+    href="/"
+  />
+  <ImageCard
+    src="https://s2.loli.net/2025/01/30/OMzXqU87EdLcgDm.jpg"
+    title="After PBR"
+    href="/"
+  />
+</CardGrid>
+
+If you find that some effects are not ideal, you can go back to BlockBench to modify and save the PBR texture, then use the refresh command in-game to see the changes in real time.
+
+<Aside type="caution">
+
+Do not overly rely on the effects of PBR textures and neglect the importance of the original texture. A good original texture is the key.
+
+</Aside>

@@ -1,20 +1,20 @@
 ---
-title: 常用 molang 集合
+title: 常用 Molang 集合
 ---
 
 import { Card, CardGrid } from "@astrojs/starlight/components"
 
 ## BlockBench 变量占位符
 
-BlockBench 里支持添加变量占位符按钮，快速调试不同 molang 参数效果。 如图所示：
+在 BlockBench 中，支持添加变量占位符按钮，可快速调试不同 Molang 参数的效果。具体如图所示：
 
 ![molang1.6.pdf-image-000.jpg](https://s2.loli.net/2025/01/31/93nW8LOjuYGQMdo.jpg)
 
-比如写入`query.ground_speed=slider('地面速度')`，则表现为：添加一个`query.ground_speed`的变量滑块，其命名为`地面速度`。
+例如，当写入`query.ground_speed=slider('地面速度')`时，会添加一个名为`地面速度`的`query.ground_speed`变量滑块。
 
-如果写入`ysm.has_chest_plate=toggle('胸甲')`，则表现为：添加一个`ysm.has_chest_plate `的变量选项，其命名为`胸甲`。
+若写入`ysm.has_chest_plate=toggle('胸甲')`，则会添加一个名为`胸甲`的`ysm.has_chest_plate`变量选项。
 
-复制以下文本，即可快捷更改变量来预览 molang 效果：
+复制以下文本，就能快捷更改变量，从而预览 Molang 效果：
 
 ```javascript
 query.ground_speed = slider("地面速度")
@@ -45,11 +45,11 @@ query.is_jumping = toggle("跳跃中")
 query.is_on_ground = toggle("在地面上")
 ```
 
-## 常用 molang 参考
+## 常用 Molang 参考
 
 ### 换装设计
 
-检测护甲栏是否有护甲，通过穿脱护甲来实现换装：
+通过检测护甲栏中是否有护甲，可利用穿脱护甲的操作来实现换装效果：
 
 ![molang1.6.pdf-image-007.jpg](https://s2.loli.net/2025/01/31/EOk6Ia5fct4LA9H.jpg)
 
@@ -57,26 +57,25 @@ query.is_on_ground = toggle("在地面上")
 
 <Card>
 
-- 用于：`parallel` 动画
-- 部位：衣服/盔甲
-- 关键帧：缩放
-- 头盔：`ysm.has_helmet`
-- 胸甲：`ysm.has_chest_plate`
-- 护腿：`ysm.has_leggings`
-- 鞋子：`ysm.has_boots`
+- 适用动画类型：`parallel` 动画
+- 作用部位：衣服/盔甲 - 关键帧属性：缩放
+- 头盔判断条件：`ysm.has_helmet`
+- 胸甲判断条件：`ysm.has_chest_plate`
+- 护腿判断条件：`ysm.has_leggings`
+- 鞋子判断条件：`ysm.has_boots`
 
 </Card>
 
 ### 自发光效果
 
-通过在组名前加上 `ysmGlow` 前缀来实现发光效果（注意大小写）：
+在组名前添加 `ysmGlow` 前缀（需注意大小写），即可实现发光效果：
 
 ![molang1.6.pdf-image-011.jpg](https://s2.loli.net/2025/01/31/ctB2piGgWHzeTyw.jpg)
 ![molang1.6.pdf-image-012.jpg](https://s2.loli.net/2025/01/31/gZ5CiFUM3Etqxmy.jpg)
 
 ### 眼部追踪
 
-让瞳孔跟随玩家视线进行移动，模拟眼部追踪效果。
+可让瞳孔跟随玩家的视线移动，以此模拟眼部追踪效果。
 
 ![molang1.6.pdf-image-013.jpg](https://s2.loli.net/2025/01/31/kxMqBTubXGepv37.jpg)
 
@@ -84,33 +83,32 @@ query.is_on_ground = toggle("在地面上")
 
 <Card>
 
-- 用于：`parallel` 动画
-- 部位：瞳孔
-- 关键帧：位置
-- X：`ysm.head_yaw/180`
-- Y：`ysm.head_pitch/360`
-- Z：`0`
+- 适用动画类型：`parallel` 动画
+- 作用部位：瞳孔 - 关键帧属性：位置
+- X 轴数值：`ysm.head_yaw/180`
+- Y 轴数值：`ysm.head_pitch/360`
+- Z 轴数值：`0`
 
 </Card>
 
 ### 头部锁定
 
-锁定头部，让其不跟随视角进行旋转。
+通过该设置可锁定头部，使其不跟随视角旋转。
 
 <Card>
 
-- 用于：特殊动画
-- 部位：头部
-- 关键帧：旋转
-- X：`ysm.head_pitch`
-- Y：`math.clamp(ysm.head_yaw,-60,60)`
-- Z：`0`
+- 适用动画类型：特殊动画
+- 作用部位：头部
+- 关键帧属性：旋转
+- X 轴数值：`ysm.head_pitch`
+- Y 轴数值：`math.clamp(ysm.head_yaw,-60,60)`
+- Z 轴数值：`0`
 
 </Card>
 
 ### 自动眨眼
 
-自动根据是否需要闭眼而闭眼（通常为 4 秒一次），懒得做闭眼动画可以直接用这个。
+该功能可自动根据是否需要闭眼来进行闭眼操作（通常每 4 秒一次），若懒得制作闭眼动画，可直接使用此功能。
 
 ![molang1.6.pdf-image-017.jpg](https://s2.loli.net/2025/01/31/uWDrRi1Fak2wSqU.jpg)
 
@@ -118,21 +116,21 @@ query.is_on_ground = toggle("在地面上")
 
 <Card>
 
-- 用于：`pre_parallel` 动画
-- 部位：眼睛
-- 关键帧：缩放
-- 全部填写：`ysm.is_close_eyes ? 0 : 1`
+- 适用动画类型：`pre_parallel` 动画
+- 作用部位：眼睛
+- 关键帧属性：缩放
+- 全部填写内容：`ysm.is_close_eyes ? 0 : 1`
 
 </Card>
 
 <Card>
 
-- 用于：`pre_parallel` 动画
-- 部位：眉毛
-- 关键帧：位置
-- X：`0`
-- Y：`ysm.is_close_eyes ? -1 : 0`
-- Z：`0`
+- 适用动画类型：`pre_parallel` 动画
+- 作用部位：眉毛
+- 关键帧属性：位置
+- X 轴数值：`0`
+- Y 轴数值：`ysm.is_close_eyes ? -1 : 0`
+- Z 轴数值：`0`
 
 </Card>
 

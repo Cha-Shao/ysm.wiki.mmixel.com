@@ -1,0 +1,25 @@
+---
+title: Parallel Animations
+---
+
+import { Aside } from "@astrojs/starlight/components"
+
+Parallel animations are mainly divided into two categories: `pre_parallel` and `parallel`. Among them, `pre_parallel` has a lower priority than the main animation and will be overridden by the main animation; while `parallel` has a higher priority than the main animation, **and uses a special blending animation method**.
+
+Parallel animations are also placed in the `main.animation.json` file and are used for animations that should always play regardless of the situation, such as tail and ear swinging, blinking, etc.
+
+You can also add molang scripts in parallel animations to show or hide armor under specific conditions.
+
+| Name                                                            | Function                                                                                       | Note  |
+| :-------------------------------------------------------------- | :--------------------------------------------------------------------------------------------- | :---- |
+| `pre_parallel0`<br/>`pre_parallel1`<br/>...<br/>`pre_parallel7` | Independent from the main animation, lowest priority. The priority increases with the number.  | Loops |
+| `parallel0`<br/>`parallel1`<br/>...<br/>`parallel7`             | Independent from the main animation, highest priority. The priority increases with the number. | Loops |
+
+<Aside title="What is special blending animation?">
+Suppose there are two animations: Animation A bends the arm by 10 degrees, and Animation B bends the arm by 25 degrees, with B having a higher priority than A.
+- By default: Animation B will completely override the effect of Animation A on the arm, so the arm bends 25 degrees.
+- Special blending animation: The effects of Animation B and Animation A on the arm will be added together, so the arm bends 35 degrees.
+
+This blending method only stacks rotation, and does not affect translation or scaling.
+
+</Aside>

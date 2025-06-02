@@ -1,0 +1,38 @@
+---
+title: Commands
+---
+
+The Yes Steve Model mod provides a rich set of commands, most of which require OP level 2 permission to execute.
+
+All commands have in-game prompt functionality, and both model IDs and player IDs support intelligent suggestions.
+
+## Main Commands
+
+These commands can be executed on both the server and the client.
+
+- `/ysm model reload`: Reloads all model files and synchronizes them to all client players.
+- `/ysm model set <player> <model_id> <texture_id> [ignore_auth]`: Assigns a specific model and texture to the specified player. The last `ignore_auth` parameter is optional; if set to true, it will ignore model authorization and forcibly assign the model to the player.
+- `/ysm play <player> <animation_name>`: Forces the specified player to play the specified animation.
+- `/ysm play <player> stop`: Clears the previously forced animation for the player.
+- `/ysm auth <player> all`: Authorizes all models for the player.
+- `/ysm auth <player> clear`: Clears all authorized models for the player.
+- `/ysm auth <player> add <model_id>`: Authorizes the specified model for the player.
+- `/ysm auth <player> remove <model_id>`: Removes the specified model authorization from the player.
+- `/ysm export <model_id> [extra_info]`: Exports the specified model to the exclusive ysm model format, with optional extra information.
+- `/ysm ping`: Tests connectivity between the client and server. If you see a "server mod and client version do not match" prompt, you can use this command. This command does not require permission.
+- `/ysm molang execute <player> <expr>`: Executes a molang expression on the specified player. This command is available in multiplayer but does not print the result.
+
+## Client Commands
+
+These commands are executed only on the client and are used by model creators to debug animations.
+
+- `/ysmclient watch var <expr>`: (Added in version 2.4.0) A simplified command to quickly add a molang expression to the custom debug screen for real-time calculation and updates.
+- `/ysmclient watch state <controller>`: (Added in version 2.4.0) Quickly monitors the current state of a controller on the custom debug screen for real-time calculation and updates.
+- `/ysmclient watch clear`: (Added in version 2.4.0) Simplified command to clear all previously added molang expressions and controller monitors.
+- `/ysmclient molang execute <expr>`: Executes a molang expression on the local player and outputs the result to the chat box.
+- `/ysmclient molang watch add [pre|post] <name> <expr>`: Adds a molang expression to the custom debug screen for real-time calculation and updates.
+  - `pre` means it executes before the animation update, `post` means after the animation update.
+  - In version 2.2.2 and earlier, you need to press `Alt` + `B` twice to enter the custom debug screen.
+  - In version 2.3.0 and later, just press `Alt` + `B` once to enter the custom debug screen.
+- `/ysmclient molang watch remove <name>`: Removes the specified molang expression previously added.
+- `/ysmclient molang watch clear`: Clears all previously added molang expressions.

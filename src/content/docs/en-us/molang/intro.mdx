@@ -1,0 +1,126 @@
+---
+title: Introduction
+---
+
+import { Card } from "@astrojs/starlight/components"
+
+Molang is an extremely simple language officially designed by Mojang for Bedrock Edition animation. With Molang, we can achieve various complex animations.
+
+Since version 1.2.0, we have supported almost all official Molang features (as listed below). You can refer to the official documentation to learn how to use them:
+
+- [String Type](https://bedrock.dev/zh/docs/stable/Molang#Strings)
+- [Custom Variables](https://bedrock.dev/zh/docs/stable/Molang#Variables)
+- [Nullish Coalescing Operator](https://wiki.mcbe-dev.net/zh-cn/Molang#??空值合并运算符)
+- [Ternary Conditional Operator](https://wiki.mcbe-dev.net/zh-cn/Molang#关键字)
+- [Aliases](https://bedrock.dev/zh/docs/stable/Molang#Aliases)
+- [Complex Expressions](https://wiki.mcbe-dev.net/zh-cn/Molang#基本语法)
+- [Scope Delimiters](https://wiki.mcbe-dev.net/zh-cn/Molang#{}花括号作用域定界符)
+- [loop Loop](https://wiki.mcbe-dev.net/zh-cn/Molang#loop), [continue](https://wiki.mcbe-dev.net/zh-cn/Molang#continue), [break](https://wiki.mcbe-dev.net/zh-cn/Molang#break) (for_each is also supported, but not yet used)
+- [Structs](https://wiki.mcbe-dev.net/zh-cn/Molang#结构体)
+- [Arrow Expressions](https://wiki.mcbe-dev.net/zh-cn/Molang#->指针运算符)
+
+## What is Molang
+
+To better explain what Molang is and how it works, let's start with the mechanism of Bedrock Edition animation.
+
+The animation mechanism in Bedrock Edition is very simple: keyframes are created at different points in time, and the position, rotation, or scale of a component is set. When the animation starts playing, the program automatically calculates the tween animation, moving, rotating, or scaling the component from one state to another to present the animation effect.
+
+![5.png](https://s2.loli.net/2023/02/11/xykIWa7bTqSBnfm.png)
+
+For each keyframe, we set a specific value, which determines the position, rotation, or scale of the component at that keyframe.
+
+![6.png](https://s2.loli.net/2023/02/11/Uz8XTsCNJMcb3tZ.png)
+
+However, in some special cases, this value is not fixed. For example, we may want the swing angle to be 30 degrees when the player is holding an item, and 60 degrees when empty-handed. In this case, we can use a Molang expression.
+
+A common animation design is to show or hide a model. For example, we want to display the helmet component when the player wears a helmet. We can use the scale function to hide the component: when the X, Y, and Z scale are all 0, the component will be hidden. Therefore, in BlockBench, we can write:
+
+![7.png](https://s2.loli.net/2023/02/11/1gAHJNZfwmu6qzL.png)
+
+Here, `ysm.has_helmet` is a Molang parameter. When the player wears a helmet, it returns 1; when the player does not wear a helmet, it returns 0, which perfectly achieves the show/hide effect we want.
+
+For a long time, long hair models have been a headache. When the player looks up, the long hair rotates with the head and clips into the body. We can also use Molang to cleverly solve this problem, as follows:
+
+1. When the player looks up, the hair no longer rotates with the head, but hangs straight down (i.e., the hair's rotation angle is the opposite of the head's, canceling each other out).
+2. When the player looks down, the hair rotates with the head (i.e., rotation angle is 0).
+
+So, we can write the Molang parameter like this:
+
+![8.png](https://s2.loli.net/2023/02/11/POS9uIYbKBfJwxi.png)
+
+Let's explain this parameter line by line:
+
+This is a conditional expression in the format `condition ? result if true : result if false`
+
+```molang
+(ysm.head_pitch > 0) ? -ysm.head_pitch : 0
+```
+
+`(ysm.head_pitch > 0)`: The condition. The player's pitch angle ranges from -90 to 90 degrees. Here, we check if the pitch is greater than 0. Using parentheses makes it clearer.
+
+`-ysm.head_pitch`: When the pitch is greater than 0 (looking up), we negate it to offset the hair's rotation.
+
+`0`: When the pitch is less than 0 (looking down), we set it to 0 so the hair rotates with the head.
+
+## Differences from Bedrock Edition
+
+- Uninitialized variables are null and can be detected using the nullish coalescing operator. When used in numeric calculations, they are treated as 0 or false.
+- Structs do not support nesting.
+- When the player switches models, respawns, teleports to certain dimensions, exits and rejoins, or performs similar actions, all variable storage will be cleared.
+
+## Related Debug Commands
+
+<Card>
+
+Execute a Molang expression on the local player and output the result to the chat. This command only works in singleplayer.
+
+```
+/ysmclient molang execute <expr>
+```
+
+</Card>
+
+<Card>
+
+Add a Molang expression to the custom debug screen, which will be calculated and updated in real time.
+
+- `pre` means execute before the animation update, `post` means after.
+- In version `2.2.2` and earlier, you need to press `Alt` + `B` twice to enter the custom debug screen.
+- In version `2.3.0` and later, just press `Alt` + `B` once.
+
+```
+/ysmclient molang watch add [pre|post] <name> <expr>
+```
+
+</Card>
+
+<Card>
+
+Manage entries on the custom debug screen.
+
+```
+/ysmclient molang watch remove <name>
+/ysmclient molang watch clear
+```
+
+</Card>
+
+<Card>
+
+Execute Molang on a specified player. This command is available in multiplayer and requires admin permissions. The result will not be output.
+
+```
+/ysm molang execute <player> <expr>
+```
+
+</Card>
+
+## `roaming` Variables
+
+Variables written in the format `v.roaming.xxx` (**cannot** be abbreviated as `v.r.xxx`) can be restored after dimension switching, respawning, or rejoining. These variables can also be synchronized between players and will be saved to the server's cap storage.
+
+However, these variables have some limitations:
+
+- Each model can have up to 16 `roaming` variables, and all models share these 16 variables.
+- Variable names cannot exceed 16 characters.
+- Variables can only store `float` type data.

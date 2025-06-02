@@ -1,0 +1,76 @@
+---
+title: SlashBlade Animation
+---
+
+import { Aside, Steps } from "@astrojs/starlight/components"
+
+<Aside>
+
+Since version 2.3.0, we have added compatibility support for the SlashBlade
+mod. Now, both the old SlashBlade and SlashBlade: Reforged can use this
+animation system.
+
+</Aside>
+
+## Adding New Locator Groups
+
+The old `LeftWaistLocator` is still retained, which will render a complete sword (including blade and sheath). The newly added locator groups `BladeLocator` and `SheathLocator` can render the blade and sheath separately.
+
+<Aside>
+
+- The `BladeLocator` group is recommended to be placed at the right hand position, sharing the same position and rotation point as `RightHandLocator`.
+
+- The `SheathLocator` group is recommended to be placed at the left hand position, sharing the same position and rotation point as `LeftHandLocator`.
+
+- The `LeftWaistLocator` group is recommended to be placed at the left hand position, sharing the same position and rotation point as `LeftHandLocator`.
+
+- The `RightWaistLocator` group can remain unchanged and still be under `UpperBody`.
+
+</Aside>
+
+To execute SlashBlade animations, all these locator groups must exist. Otherwise, the old default animation (i.e., always performing the normal attack animation) will continue to be used.
+
+## Adding Animation Locator File
+
+First, you need to add a new type `slashblade` in the animation field of `ysm.json`, as shown below:
+
+```json {10}
+"animation": {
+    "main": "animations/main.animation.json",
+    "arm": "animations/arm.animation.json",
+    "extra": "animations/extra.animation.json",
+    "tac": "animations/tac.animation.json",
+    "carryon": "animations/carryon.animation.json",
+    "parcool": "animations/parcool.animation.json",
+    "swem": "animations/swem.animation.json",
+    // This is the SlashBlade animation
+    "slashblade": "animations/slashblade.animation.json",
+    "tlm": "animations/tlm.animation.json"
+}
+```
+
+After that, you can refer to the default model's `slashblade.animation.json` animation.
+
+<Aside>
+
+**If you want to modify the SlashBlade animation, be sure to fill in this
+field. If the modified SlashBlade animation does not take effect, please check
+whether this file is declared here.**
+
+</Aside>
+
+## Get the Current Sword Skill Animation Name
+
+In fact, there are not many commonly used SlashBlade animations, about twenty or so. The rest are either not implemented or very hard to trigger.
+
+If you want to know which animation is currently being executed, you can follow these steps:
+
+<Steps>
+
+1. Enter the command `/ysmclient molang watch add post "Current SlashBlade Animation" ctrl.slashblade_animation`
+
+2. Open the debug interface by pressing **Alt B** to enable debugging.
+
+3. Trigger a sword skill with SlashBlade, and you will see the current animation name.
+
+</Steps>

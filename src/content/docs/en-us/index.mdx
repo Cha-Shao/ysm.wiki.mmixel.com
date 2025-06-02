@@ -1,0 +1,41 @@
+---
+title: Yes Steve Model（是，史蒂夫模型）
+description: 一款可对玩家模型动画进行自定义修改的模组
+template: splash
+hero:
+  tagline: 一款可对玩家模型动画进行自定义修改的模组
+  image:
+    file: ../../../assets/main.webp
+  actions:
+    - text: 开启教程
+      link: /intro
+      icon: right-arrow
+    - text: 下载模组
+      link: /download
+      icon: external
+      variant: minimal
+banner:
+  content: YSM 最新版本为 2.4.1
+---
+
+import { Card, CardGrid } from "@astrojs/starlight/components"
+import Hero from "@/components/Hero"
+
+<Hero />
+
+## 为何 YSM 如此有趣？
+
+<CardGrid stagger>
+  <Card title="充满活力的社区" icon="pencil">
+    YSM 社区目前已拥有超过 2000 个模型，且数量每日都在持续增长。
+  </Card>
+  <Card title="Molang 语言运算" icon="add-document">
+    我们支持使用 Molang 语言来计算模型的运作方式！
+  </Card>
+  <Card title="热门模组联动" icon="setting">
+    我们的模型可与 TaCZ、拔刀剑、车万女仆、Carry On 等热门模组相适配。
+  </Card>
+  <Card title="开启文档阅读" icon="open-book">
+    你想使用自己制作的模型吗？那就开始[阅读文档](/intro)吧。
+  </Card>
+</CardGrid>

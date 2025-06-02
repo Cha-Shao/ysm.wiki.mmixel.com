@@ -1,0 +1,14 @@
+---
+title: Ride Animation
+---
+
+Currently, there is no specific location for ride animations; you can place them in the `main.animation.json` file. When a player rides another entity, or when a player is ridden by another entity, the ride animation will play.
+
+The naming convention for ride animations is very similar to the hand animations mentioned earlier. It uses `vehicle` or `passenger` as a prefix, followed by `$` plus the entity ID or `#` plus the entity tag to add the ride animation.
+
+There are mainly two cases for riding:
+
+- `vehicle` represents the vehicle, followed by the entity ID.  
+  For example, when a player rides a slime, the animation name is `vehicle$minecraft:slime`.
+- `passenger` represents the passenger, that is, the entity riding on the player's head, also followed by the entity ID.  
+  For example, if a fox is riding on the player's head, the animation name is `passenger$minecraft:fox`.

@@ -1,0 +1,154 @@
+---
+title: Project Structure
+---
+
+import { Aside, FileTree, Tabs, TabItem } from "@astrojs/starlight/components"
+
+Understanding the project structure of a model pack is a crucial step.
+
+Since both the compressed package format and the ysm format models are converted from the folder format, we will explain using the folder format directly here.
+
+## File Directory Structure
+
+<Aside>
+  New features require the new file structure; the old structure does not
+  support new features.
+</Aside>
+
+<Tabs syncKey="version">
+
+<TabItem label="Version 2.3.0/2.3.1">
+  
+Version 2.3.0 adds support for audio and animation controllers.
+
+Except for the resource description file `ysm.json`, which has a fixed name and location, custom models, animations, textures, etc. can be placed in different subfolders as needed. Folder names, texture names, etc. can use any characters.
+
+<FileTree>
+
+- custom or auth folder
+
+  - Cardboard Fox Model Pack (model pack folder, name can be customized; the game uses this folder name as the model ID)
+    - ysm.json (resource description file, fixed name and location)
+    - animations (animation folder, recommended name, any characters allowed, customizable)
+      - arm.animation.json (file names are unlimited, any characters allowed)
+      - Bow Animation.json
+      - carryon.animation.json
+      - extra.animation.json
+      - main.animation.json
+      - tac.animation.json
+    - avatar (author avatar folder, recommended name, any characters allowed, customizable)
+      - Godzilla.png
+      - Conch.png
+      - ...
+    - models (model folder, recommended name, any characters allowed, customizable)
+      - arm.json
+      - Arrow.json
+      - main.json
+    - textures (texture folder, recommended name, any characters allowed, customizable)
+      - arrow.png
+      - Blue Texture.png
+      - Default Texture.png
+      - ...
+    - controller (controller folder, recommended name, any characters allowed, customizable)
+      - parallel_controllers.json
+      - Sword Swing Controller.json
+      - ...
+    - sounds (sound folder, must use this name, but customizable)
+      - song.ogg (audio only supports ogg format)
+      - GongXiFaCai.ogg
+      - ...
+
+</FileTree>
+
+</TabItem>
+
+<TabItem label="Version 2.2.1 / 2.2.2">
+
+In older versions, having many files made the structure very messy. Therefore, starting from version 2.2.1, a new file structure was designed, with the `ysm.json` file in the directory managing other resources. The recommended structure is as follows:
+
+Except for the resource description file `ysm.json`, which has a fixed name and location, custom models, animations, textures, etc. can be placed in different subfolders as needed. Folder names, texture names, etc. can use any characters.
+
+<FileTree>
+
+- custom or auth folder
+  - Cardboard Fox Model Pack (model pack folder, name can be customized; the game uses this folder name as the model ID)
+    - ysm.json (resource description file, fixed name and location)
+    - animations (animation folder, recommended name, any characters allowed, customizable)
+      - arm.animation.json (file names are unlimited, any characters allowed)
+      - Bow Animation.json
+      - carryon.animation.json
+      - extra.animation.json
+      - main.animation.json
+      - tac.animation.json
+    - avatar (author avatar folder, recommended name, any characters allowed, customizable)
+      - Duanmu.png
+      - Godzilla.png
+      - Conch.png
+      - SweetZongzi.png
+      - ...
+    - models (model folder, recommended name, any characters allowed, customizable)
+      - arm.json
+      - Arrow.json
+      - main.json
+    - textures (texture folder, recommended name, any characters allowed, customizable)
+      - arrow.png
+      - Blue Texture.png
+      - Default Texture.png
+      - ...
+
+</FileTree>
+
+</TabItem>
+
+<TabItem label="Version 1.2.0 and Earlier">
+
+The folder format model structure is as follows, with only three required parts: `main.json`, `arm.json`, and at least one `png` texture.
+
+Custom models, animations, and textures must all be placed in one folder. Folder names, texture names, etc. can only use lowercase English letters, numbers, and underscores.
+
+<FileTree>
+
+- custom or auth folder
+  - default (model pack folder, name can be customized; the game uses this folder name as the model ID)
+    - info.json (info file, used to display author, name, license, etc. in-game)
+    - main.json (main model file, fixed name)
+    - arm.json (arm model file for first-person arms, fixed name)
+    - arrow.json (arrow model file, replaces the player's arrow if present, fixed name)
+    - main.animation.json (main model animation file, fixed name)
+    - extra.animation.json (wheel animation file, fixed name)
+    - arm.animation.json (arm animation file, fixed name)
+    - arrow.animation.json (arrow animation file, fixed name)
+    - tac.animation.json (compatibility animation for Eternal Firearms mod, fixed name)
+    - carryon.animation.json (compatibility animation for Carry On mod, fixed name)
+    - slashblade.animation.json (compatibility animation for SlashBlade mod, fixed name)
+    - tlm.animation.json (compatibility animation for Touhou Little Maid mod, fixed name)
+    - arrow.png (arrow texture, fixed name)
+    - happy_skin.png (main model texture 1, customizable name, used as display name in-game)
+    - ...
+    - good_cloth_12.png (main model texture 2, customizable name, used as display name in-game)
+
+</FileTree>
+
+</TabItem>
+
+</Tabs>
+
+## ysm.json File Details
+
+The `ysm.json` file is a resource description file added in version **2.2.1** and later. New models and related configurations use this file as an index.
+
+This file supports the following:
+
+- Set default texture and texture display order;
+- Set preview animation to play in the model selection interface (previously always idle);
+- Customize the number, order, and names of Extra animations (no longer limited to extra+number);
+- Read subdirectory files in the model directory;
+- Insert author information, assign avatars, roles, descriptions, and contact info;
+- Insert homepage and donation page info;
+- Specify PBR textures;
+- Wheel animation configuration (added in 2.3.0);
+- Wheel animation classification (added in 2.3.0).
+
+`ysm.json` must be placed in the root directory of the model folder and saved with UTF-8 without BOM encoding. The content structure is as follows:
+
+...existing code...

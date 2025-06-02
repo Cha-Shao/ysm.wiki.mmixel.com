@@ -1,0 +1,93 @@
+---
+title: Model Creation
+---
+
+import { Aside, Badge, Steps } from "@astrojs/starlight/components"
+import ImageCard from "@/components/ImageCard"
+
+## Main Model
+
+The main model uses a standardized group design. As long as you don't make major changes to the default model's groups, the related animation files will generally be fully compatible.  
+After the game runs, the standard model and animation files will be automatically generated in the `config\yes_steve_model\custom\default` folder in the game root directory. You can modify and distribute them as you like.
+
+<Aside type="tip">
+
+To encourage and facilitate the creation of model packs, the models in the
+`default` folder are released under the **CC 0 license** and can be freely
+modified and distributed.
+
+</Aside>
+
+Certain specific group names are automatically given special functions by the game. **Applying scale, rotation, and translation animations to them can change the size, orientation, and position of the related rendering**:
+
+| Group Name                                                    | Function                              | Note                                                                                                                    |
+| :------------------------------------------------------------ | :------------------------------------ | :---------------------------------------------------------------------------------------------------------------------- |
+| `Head`                                                        | Head positioning group                | The game will add head movement animation by default (legacy issue, modify with care).                                  |
+| `AllHead`                                                     | True first-person/Better Combat group | In related mods, models under this group are hidden in first person.                                                    |
+| `ViewLocator`                                                 | View positioning group                | In true first-person mods, the player's head height is determined by the Y value of this group's rotation point.        |
+| `LeftHandLocator`                                             | Left hand item holding group          | If missing, offhand items are not rendered.                                                                             |
+| `RightHandLocator`                                            | Right hand item holding group         | If missing, main hand items are not rendered.                                                                           |
+| `ElytraLocator`                                               | Elytra positioning group              | If missing, elytra are not rendered.                                                                                    |
+| `LeftShoulderLocator` `RightShoulderLocator`                  | Parrot positioning group              | If missing, parrots on shoulders are not shown.                                                                         |
+| `LeftWaistLocator`                                            | Main hand blade locator group         | If missing, main hand blade is not shown. **Should be at the same level as LeftHandLocator.**                           |
+| `RightWaistLocator`                                           | Offhand blade locator group           | If missing, offhand blade is not shown.                                                                                 |
+| `BladeLocator` <Badge variant="success" text="2.3.0 New"/>    | Main hand blade body locator group    | For blade animations. If missing, blade is not shown. **Should be at the same level as RightHandLocator.**              |
+| `SheathLocator` <Badge variant="success" text="2.3.0 New"/>   | Main hand blade sheath locator group  | For blade animations. If missing, sheath is not shown. **Should be at the same level as LeftHandLocator.**              |
+| `PistolLocator`                                               | Pistol model locator group            | In Eternal Firearms Workshop mod, renders pistol model at waist when offhand holds a pistol. If missing, not shown.     |
+| `RifleLocator`                                                | Other firearms locator group          | In Eternal Firearms Workshop mod, renders back model when offhand holds rifle/rocket launcher. If missing, not shown.   |
+| `BackpackLocator` <Badge variant="success" text="2.4.0 New"/> | Backpack locator group                | For maid backpack positioning (between both shoulders). Mod backpacks, blade/flag decorations also refer to this group. |
+| Any group starting with `ysmGlow` (e.g. `ysmGlowHead`)        | Glow group                            | Renders glow effect under most shaders, **only affects the current group**.                                             |
+
+<ImageCard
+  src="https://s2.loli.net/2023/06/25/OQY3GPnWrHCBpzw.png"
+  title="Glow effect with shader"
+  href="/"
+/>
+
+## First-Person Arm Model
+
+<Aside type="tip">
+
+The first-person hand model currently does not support Bedrock animations, but
+is fully compatible with the Eternal Firearms Workshop mod.
+
+</Aside>
+
+The first-person hand model can be created by modifying the main model and shares the same texture. Steps:
+
+<Steps>
+
+1. **Create a new model**
+
+   Start a blank BlockBench project.
+
+2. **Copy arm models**
+
+   Copy only the `LeftArm` and `RightArm` groups from the main model file to the **root** of this project.
+
+3. **Adjust rotation and position**
+
+   Set the `X`/`Y`/`Z` rotation of both `LeftArm` and `RightArm` groups to `0` (no need to modify subgroups; after adjustment, arms should point straight down).
+
+   <Aside type="tip">
+
+   If the arm position is abnormal when using the Eternal Firearms Workshop
+   mod, you can fix it by moving the arms down or reducing the distance
+   between them.
+
+   </Aside>
+
+</Steps>
+
+Additionally, create a group named `Background` at the root. The game will render it as a background in first-person view, unaffected by held items or use state.  
+The final model in Blockbench should look like this:
+
+![2.png](https://s2.loli.net/2023/02/11/yLC1siW2aFvStXE.png)
+
+## Custom Arrow Model
+
+Version 1.2.0 and above support custom arrow models. When the player switches models, fired arrows (including crossbow bolts) will automatically use the custom model; if none, the vanilla arrow is shown.
+
+**Note orientation:** In front view, the arrowhead should point to the left (East).
+
+![1.png](https://s2.loli.net/2025/01/28/5cCrIML7kpTRBW8.png)

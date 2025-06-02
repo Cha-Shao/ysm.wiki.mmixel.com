@@ -1,0 +1,137 @@
+---
+title: Common Molang Collection
+---
+
+import { Card, CardGrid } from "@astrojs/starlight/components"
+
+## BlockBench Variable Placeholders
+
+In BlockBench, you can add variable placeholder buttons to quickly test the effects of different Molang parameters. As shown below:
+
+![molang1.6.pdf-image-000.jpg](https://s2.loli.net/2025/01/31/93nW8LOjuYGQMdo.jpg)
+
+For example, when you write `query.ground_speed=slider('地面速度')`, a slider named `地面速度` for the `query.ground_speed` variable will be added.
+
+If you write `ysm.has_chest_plate=toggle('胸甲')`, a toggle named `胸甲` for the `ysm.has_chest_plate` variable will be added.
+
+Copy the following text to quickly change variables and preview Molang effects:
+
+```javascript
+query.ground_speed = slider("地面速度")
+query.vertical_speed = slider("垂直速度")
+ysm.head_yaw = slider("左右视角")
+ysm.head_pitch = slider("上下视角")
+query.health = slider("当前生命值")
+query.max_health = slider("最大生命值")
+ysm.food_level = slider("玩家饱食度")
+query.player_level = slider("玩家等级")
+query.time_of_day = slider("时间")
+query.moon_phase = slider("月相")
+ysm.armor_value = slider("玩家护甲值")
+query.distance_from_camera = slider("摄像机距离")
+ysm.has_chest_plate = toggle("胸甲")
+ysm.has_leggings = toggle("护腿")
+ysm.has_helmet = toggle("头盔")
+ysm.has_boots = toggle("鞋子")
+ysm.has_elytra = toggle("鞘翅")
+ysm.is_close_eyes = toggle("眨眼")
+ysm.has_mainhand = toggle("主手持握")
+ysm.has_offhand = toggle("副手持握")
+query.is_on_fire = toggle("着火")
+query.is_in_water_or_rain = toggle("在水和雨中")
+query.is_spectator = toggle("观察者模式")
+query.is_first_person = toggle("第一人称视角")
+query.is_jumping = toggle("跳跃中")
+query.is_on_ground = toggle("在地面上")
+```
+
+## Common Molang Reference
+
+### Outfit Switching Design
+
+By detecting whether there is armor in the armor slots, you can use equipping/unequipping armor to achieve outfit switching effects:
+
+![molang1.6.pdf-image-007.jpg](https://s2.loli.net/2025/01/31/EOk6Ia5fct4LA9H.jpg)
+
+![molang1.6.pdf-image-009.jpg](https://s2.loli.net/2025/01/31/exZsAfbikwHtzh6.jpg)
+
+<Card>
+
+- Applicable animation type: `parallel` animation
+- Target part: Clothes/Armor - Keyframe property: Scale
+- Helmet condition: `ysm.has_helmet`
+- Chestplate condition: `ysm.has_chest_plate`
+- Leggings condition: `ysm.has_leggings`
+- Boots condition: `ysm.has_boots`
+
+</Card>
+
+### Glow Effect
+
+Add the `ysmGlow` prefix (case-sensitive) to the group name to enable glow effects:
+
+![molang1.6.pdf-image-011.jpg](https://s2.loli.net/2025/01/31/ctB2piGgWHzeTyw.jpg)
+![molang1.6.pdf-image-012.jpg](https://s2.loli.net/2025/01/31/gZ5CiFUM3Etqxmy.jpg)
+
+### Eye Tracking
+
+Allows the pupils to follow the player's view direction, simulating eye tracking:
+
+![molang1.6.pdf-image-013.jpg](https://s2.loli.net/2025/01/31/kxMqBTubXGepv37.jpg)
+
+![molang1.6.pdf-image-015.jpg](https://s2.loli.net/2025/01/31/n4CS7g2wNBpzk9i.jpg)
+
+<Card>
+
+- Applicable animation type: `parallel` animation
+- Target part: Pupil - Keyframe property: Position
+- X axis value: `ysm.head_yaw/180`
+- Y axis value: `ysm.head_pitch/360`
+- Z axis value: `0`
+
+</Card>
+
+### Head Lock
+
+This setting locks the head so it does not rotate with the view.
+
+<Card>
+
+- Applicable animation type: Special animation
+- Target part: Head
+- Keyframe property: Rotation
+- X axis value: `ysm.head_pitch`
+- Y axis value: `math.clamp(ysm.head_yaw,-60,60)`
+- Z axis value: `0`
+
+</Card>
+
+### Auto Blink
+
+This feature automatically closes the eyes as needed (usually once every 4 seconds). If you don't want to make a blink animation, you can use this directly.
+
+![molang1.6.pdf-image-017.jpg](https://s2.loli.net/2025/01/31/uWDrRi1Fak2wSqU.jpg)
+
+<CardGrid>
+
+<Card>
+
+- Applicable animation type: `pre_parallel` animation
+- Target part: Eyes
+- Keyframe property: Scale
+- Value for all: `ysm.is_close_eyes ? 0 : 1`
+
+</Card>
+
+<Card>
+
+- Applicable animation type: `pre_parallel` animation
+- Target part: Eyebrows
+- Keyframe property: Position
+- X axis value: `0`
+- Y axis value: `ysm.is_close_eyes ? -1 : 0`
+- Z axis value: `0`
+
+</Card>
+
+</CardGrid>

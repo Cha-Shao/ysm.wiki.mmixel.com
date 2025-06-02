@@ -1,0 +1,183 @@
+---
+title: Animation Controller
+---
+
+import { Aside } from "@astrojs/starlight/components"
+
+In the past, animation playback conditions were completely hardcoded, and artists could not customize them.
+
+In version 2.3.0, a Bedrock-style animation controller was added, allowing users to customize animation playback conditions.
+
+## Controller Syntax
+
+Simply add the `animation_controllers` field to the `ysm.json` file. Here is an example:
+
+```json {12-14}
+"files": {
+    "player": {
+      "model": {
+        "main": "models/main.json",
+        "arm": "models/arm.json"
+      },
+      "animation": {
+        "main": "animations/main.animation.json",
+        "parcool": "animations/parcool.animation.json"
+      },
+      // Multiple files can be added
+      "animation_controllers": [
+        "controller/any_name_is_ok.json"
+      ],
+      "texture": [
+        "textures/texture.png"
+      ]
+    }
+}
+```
+
+A controller file can contain multiple controllers. If you wish, **you can also split them into multiple files**, as the program will automatically merge them when reading.
+
+The controller file name is not restricted, but the controllers inside must use specific names, as shown below:
+
+![1.png](https://s2.loli.net/2025/01/28/MDi8yJZFOIY1dlH.png)
+
+Once you add an animation controller with a specific name, the previously hardcoded controllers will be replaced.
+
+<Aside>
+
+If your BlockBench cannot import animation controllers, try removing the GeckoLib plugin and then re-importing.
+
+</Aside>
+
+The following names are available for use. Their meanings should be clear from the English names, so they are not translated here:
+
+### Parallel Animations
+
+- player.pre_parallel_0
+- player.pre_parallel_1
+- player.pre_parallel_2
+- player.pre_parallel_3
+- player.pre_parallel_4
+- player.pre_parallel_5
+- player.pre_parallel_6
+- player.pre_parallel_7
+
+---
+
+- player.parallel_0
+- player.parallel_1
+- player.parallel_2
+- player.parallel_3
+- player.parallel_4
+- player.parallel_5
+- player.parallel_6
+- player.parallel_7
+
+### Main Animations
+
+- player.main
+- player.pre_main
+- player.post_main
+
+### Hand Animations
+
+- player.hold_mainhand
+- player.hold_offhand
+- player.pre_hold
+- player.post_hold
+- player.use
+- player.pre_use
+- player.post_use
+- player.swing
+- player.pre_swing
+- player.post_swing
+
+### Riding and Armor
+
+- player.passenger
+- player.vehicle
+- player.armor_feet
+- player.armor_legs
+- player.armor_chest
+- player.armor_head
+
+### Mod Related
+
+- player.fire (**only for tacz firing**)
+- player.carry_on
+- player.parcool
+
+### Arrow
+
+- arrow.main
+- arrow.parallel_0
+- arrow.parallel_1
+- arrow.parallel_2
+- arrow.parallel_3
+- arrow.parallel_4
+- arrow.parallel_5
+- arrow.parallel_6
+- arrow.parallel_7
+
+## Added molang Variables and Functions
+
+To make controllers easier to use, we have wrapped some states and directly added molang variables starting with `ctrl` for making animation controllers.
+
+### Variables (all are boolean variables)
+
+| molang                          | Description                                              |
+| :------------------------------ | :------------------------------------------------------- |
+| `query.all_animations_finished` | True when all animations in the controller are finished  |
+| `query.any_animation_finished`  | True when any animation in the controller is finished    |
+| `ctrl.death`                    | True when the player is dead                             |
+| `ctrl.riptide`                  | True when the player uses a trident and triggers riptide |
+| `ctrl.sleep`                    | True when the player is sleeping                         |
+| `ctrl.swim`                     | True when the player is swimming                         |
+| `ctrl.climb`                    | True when the player is crawling and moving              |
+| `ctrl.climbing`                 | True when the player is crawling but not moving          |
+| `ctrl.ladder_up`                | True when the player is climbing up a ladder             |
+| `ctrl.ladder_stillness`         | True when the player is stationary on a ladder           |
+| `ctrl.ladder_down`              | True when the player is sliding down a ladder            |
+| `ctrl.fly`                      | True when the player is flying                           |
+| `ctrl.elytra_fly`               | True when the player is flying with elytra               |
+| `ctrl.swim_stand`               | True when the player is swimming in a standing position  |
+| `ctrl.attacked`                 | True when the player is attacked                         |
+| `ctrl.jump`                     | True when the player is jumping                          |
+| `ctrl.sneak`                    | True when the player is sneaking and moving              |
+| `ctrl.sneaking`                 | True when the player is sneaking but not moving          |
+| `ctrl.run`                      | True when the player is running                          |
+| `ctrl.walk`                     | True when the player is walking                          |
+| `ctrl.idle`                     | True when the player is idle                             |
+
+### Functions
+
+Below are several molang functions, which require parameters.
+
+The second parameter is similar to the original animation naming: `$` means item ID, `#` means item tag, `:` means special category.
+
+| molang       | Description                                                                                    |
+| :----------- | :--------------------------------------------------------------------------------------------- |
+| `ctrl.hold`  | Usage: `ctrl.hold('mainhand', '$minecraft:apple')`                                             |
+| `ctrl.swing` | Usage: `ctrl.swing('offhand', '#minecraft:axes')`                                              |
+| `ctrl.use`   | Usage: `ctrl.use('offhand', ':eat')`                                                           |
+| `ctrl.armor` | Usage: `ctrl.armor('head', '$minecraft:iron_helmet')` First parameter: feet, legs, chest, head |
+| `ctrl.ride`  | Usage: `ctrl.ride('vehicle', '$minecraft:pig')` `ctrl.ride('passenger', '$minecraft:pig')`     |
+
+## Mod Compatibility molang
+
+| molang                      | Description                                                                                                                          |
+| :-------------------------- | :----------------------------------------------------------------------------------------------------------------------------------- |
+| `ctrl.carryon_type`         | Returns a string <br/> The type the player is carrying: `block`, `entity`, or `player`. Returns an empty string if carrying nothing. |
+| `ctrl.carryon_is_princess`  | Returns boolean <br/> Whether the player is **being** carried.                                                                       |
+| `ctrl.parcool_state`        | Returns a string <br/> The current parkour action. Returns an empty string if not performing any parkour action.                     |
+| `ctrl.swem_is_ride`         | Returns boolean <br/> Whether the player is **riding** a SWEM horse.                                                                 |
+| `ctrl.swem_state`           | Returns a string <br/> The current equestrian action. Returns an empty string if not riding a SWEM horse.                            |
+| `ctrl.tac_hold_gun`         | Returns boolean <br/> Whether the player is holding a tacz gun in the main hand.                                                     |
+| `ctrl.tac_gun_type`         | Returns a string <br/> The type of gun the player is holding (e.g., rifle, pistol). Returns an empty string if not holding a gun.    |
+| `ctrl.tac_gun_id`           | Returns a string <br/> The ID of the gun the player is holding. Returns an empty string if not holding a gun.                        |
+| `ctrl.tac_is_fire`          | Returns boolean <br/> Whether the player is firing.                                                                                  |
+| `ctrl.tac_is_aim`           | Returns boolean <br/> Whether the player is aiming.                                                                                  |
+| `ctrl.tac_is_reload`        | Returns boolean <br/> Whether the player is reloading.                                                                               |
+| `ctrl.tac_is_melee`         | Returns boolean <br/> Whether the player is performing a melee attack (e.g., bayonet attack).                                        |
+| `ctrl.tac_is_draw`          | Returns boolean <br/> Whether the player is switching weapons.                                                                       |
+| `ctrl.slashblade_animation` | Returns a string <br/> The name of the sword skill currently being used. Returns an empty string if not using a sword skill.         |
+| `ctrl.slashblade_animation` | Returns a string <br/> The name of the sword skill currently being used. Returns an empty string if not using a sword skill.         |

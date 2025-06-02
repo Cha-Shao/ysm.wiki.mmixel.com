@@ -1,0 +1,70 @@
+---
+title: Configuration File Guide
+---
+
+The Yes Steve Model mod provides multiple configuration files, allowing players to personalize their experience and making it easier for server administrators to manage the server.
+
+## Client Configuration
+
+In the top right corner of the model selection interface, you can open an in-game configuration panel to adjust various client-side options.
+
+To adjust the paper doll in the top left corner, simply press the `Alt P` shortcut (if this shortcut does not work, please check your key bindings).
+
+![2.png](https://s2.loli.net/2025/01/27/WzH1G8TK4hcrLks.png)
+
+![2025-01-27_11.57.06.png](https://s2.loli.net/2025/01/27/sZtCmdDA2pKIuHU.png)
+
+## Server Configuration
+
+The Yes Steve Model mod has two configuration files: one located at `config/yes_steve_model-common.toml`, and another at `world save directory/serverconfig/yes_steve_model-server.toml` (this file is available from version 2.3.0 onwards).
+
+### Common Configuration (requires server restart)
+
+The configuration at `config/yes_steve_model-common.toml` differs between versions before 2.2.2 and after 2.3.0.
+
+```toml
+[general]
+    # Whether to show the disclaimer screen
+    DisclaimerShow = false
+    # Whether to print roulette animation playback info in the chat
+    PrintAnimationRouletteMsg = false
+    # Whether to disable rendering of your own YSM model
+    DisableSelfModel = false
+    # Whether to disable rendering of other players' YSM models
+    DisableOtherModel = false
+    # Whether to disable first-person YSM hand rendering
+    DisableSelfHands = false
+    # Whether to disable YSM arrow model replacement rendering
+    DisableArrowsModel = false
+    # Default model ID given to players when they first join the server
+    DefaultModelId = "default"
+    # Default model texture given to players when they first join the server
+    DefaultModelTexture = "default"
+    # If you encounter rendering issues when using Optifine, enable this
+    UseCompatibilityRenderer = false
+    # Global sound volume for animation sounds (added in 2.3.0)
+    # Range: 0.0 ~ 100.0
+    SoundVolume = 100.0
+```
+
+### Server Configuration (no restart required, auto hot-reload)
+
+The configuration at `world save directory/serverconfig/yes_steve_model-server.toml` was introduced in version 2.3.0. In version 2.2.2 and earlier, these settings are found in `config/yes_steve_model-common.toml`.
+
+```toml
+[server_scheduler]
+    # Number of threads for model processing, 0 means auto
+    # Range: 0 ~ 19
+    ThreadCount = 0
+    # Bandwidth allocated per player when distributing models (unit: Mbps)
+    # Range: 1 ~ 999
+    BandwidthLimit = 5
+    # Timeout for player sync response. Values less than 10 mean auto. (unit: seconds)
+    # Range: 0 ~ 120
+    PlayerSyncTimeout = 0
+    # Whether players can freely switch models
+    CanSwitchModel = true
+    # Models hidden from the client selection interface, used to hide unwanted default models (added in 2.3.0)
+    # Example: ["default", "default_boy", "alex", "steve", "qingluka"]
+    ClientNotDisplayModels = []
+```

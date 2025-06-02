@@ -6,30 +6,32 @@ import { Aside, Steps } from "@astrojs/starlight/components"
 
 <Aside>
 
-2.3.0
-版本起我们新增了对拔刀剑模组的兼容，现在旧版拔刀剑和拔刀剑重锋都可使用这套动画系统
+自 2.3.0
+版本起，我们新增了对拔刀剑模组的兼容支持。如今，旧版拔刀剑和拔刀剑重锋均可使用这套动画系统。
 
 </Aside>
 
 ## 添加新的定位组
 
-旧的 `LeftWaistLocator` 仍然存在，并且会渲染一把完整的刀（刀身+刀鞘） ，而新增的定位组 `BladeLocator`，`SheathLocator`
-可以分别单独渲染刀身和刀鞘。
+旧有的 `LeftWaistLocator` 依然保留，它会渲染出一把完整的刀（包括刀身和刀鞘）。而新增的定位组 `BladeLocator` 和 `SheathLocator`，则可以分别单独渲染刀身和刀鞘。
 
 <Aside>
 
-- `BladeLocator`定位组建议放在右手里，和 `RightHandLocator` 位于同一位置，同一旋转点；
-- `SheathLocator` 定位组建议放在左手里，和 `LeftHandLocator` 位于同一位置，同一旋转点；
-- `LeftWaistLocator` 定位组建议放在左手里，和 `LeftHandLocator` 位于同一位置，同一旋转点；
-- `RightWaistLocator` 定位组可以保持不变，仍在 `UpperBody` 下。
+- `BladeLocator` 定位组建议放置在右手位置，与 `RightHandLocator`处于同一位置和旋转点。
+
+- `SheathLocator` 定位组建议放置在左手位置，与`LeftHandLocator` 处于同一位置和旋转点。
+
+- `LeftWaistLocator`定位组建议放置在左手位置，与 `LeftHandLocator` 处于同一位置和旋转点。
+
+- `RightWaistLocator` 定位组可保持不变，仍位于 `UpperBody` 之下。
 
 </Aside>
 
-这些定位组必须全部存在，才能执行拔刀剑动画，否则会继续沿用旧版默认动画（就始终平 A 的那个）。
+要执行拔刀剑动画，这些定位组必须全部存在，否则将继续沿用旧版默认动画（即始终进行平 A 的动画）。
 
 ## 添加动画定位文件
 
-首先你需要去你的 `ysm.json` 的动画字段里添加一个新的类型 `slashblade`，如下图所示：
+首先，你需要在 `ysm.json` 的动画字段中添加一个新的类型 `slashblade`，示例如下：
 
 ```json {10}
 "animation": {
@@ -46,32 +48,29 @@ import { Aside, Steps } from "@astrojs/starlight/components"
 }
 ```
 
-然后参考默认模型的 `slashblade.animation.json` 动画即可。
+之后，参考默认模型的 `slashblade.animation.json` 动画即可。
 
 <Aside>
 
-**如果你要修改拔刀剑动画，请务必填写此处。如果你修改的拔刀剑动画不起作用，那么先查看这一处是否声明了文件**
+**若你要修改拔刀剑动画，务必填写此处。若修改后的拔刀剑动画无法正常生效，请先检查此处是否声明了该文件**
 
 </Aside>
 
 ## 获取当前剑技动画名
 
-拔刀剑动画常用的其实并不多，也就二十来个，剩下的要么没有实装，要么很难触发。
+实际上，常用的拔刀剑动画数量并不多，大约二十来个，其余的要么未实装，要么很难触发。
 
-想知道你当前执行的是哪个动画，可以这样做：
+若想知晓当前执行的是哪个动画，可按以下步骤操作：
 
 <Steps>
+1. 输入指令 输入指令 `/ysmclient molang watch add post "当前拔刀剑动画" ctrl.slashblade_animation `
 
-1. 输入指令
+2. 打开调试界面 按下 **Alt B**
 
-   输入指令 `/ysmclient molang watch add post "当前拔刀剑动画" ctrl.slashblade_animation `
-
-2. 打开调试界面
-
-   按下 **Alt B** 快捷键，打开调试功能
+   快捷键，开启调试功能。
 
 3. 触发剑技
 
-   使用拔刀剑触发剑技，就能看到当前动画名
+   使用拔刀剑触发剑技，即可看到当前的动画名称。
 
 </Steps>

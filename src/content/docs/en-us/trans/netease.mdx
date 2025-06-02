@@ -1,0 +1,141 @@
+---
+title: China Edition YSM Component
+---
+
+import { Aside } from "@astrojs/starlight/components"
+import FileCard from "@/components/FileCard"
+
+This tutorial will explain in detail how to convert a Java Edition Yes Steve Model (YSM) mod model pack into a NetEase China Edition Yes Steve Model component add-on.
+
+This tutorial assumes you are already familiar with making Java Edition Yes Steve Model models.
+
+<Aside type="caution">
+  Encrypted Java Edition Yes Steve Model models (that is, single files ending
+  with `.ysm`) **cannot be read or converted**! If you have not obtained
+  permission from the original author for your model, **do not convert or
+  distribute it**! We strongly oppose any infringement or theft of models, and
+  we are not responsible for any consequences arising from this!
+</Aside>
+
+## 1. Preparation
+
+First, you need to download the following two files:
+![img](https://s2.loli.net/2025/01/28/WiIGQSLgq2A8rdF.png)
+
+- `ysmMain.zip`: This is a prerequisite pack, only for testing the China Edition YSM component add-on. **Do not use it for other purposes**.
+- `ysm-netease-utils.js`: This is a BlockBench plugin that can be used to convert Java Edition YSM model packs with one click.
+
+<FileCard
+  name="ysm-netease-utils.js"
+  size="442 KB"
+  url="/files/ysm-netease-utils.js"
+/>
+
+Next, your computer also needs to have the following three programs installed:
+![img](https://s2.loli.net/2025/01/28/p5jxLacNJkVRQgl.png)
+
+- `BlockBench`: A model creation tool, which should be familiar to everyone.
+- `VSCode`: A classic text editor. Some advanced features may require editing script files, so it is recommended to install this software.
+- `Minecraft Developer Launcher`: This is the official NetEase tool for component development. You need to register a developer account to log in and use it. Download link: [https://mc.163.com/dev](https://mc.163.com/dev)
+
+## 2. Plugin Installation
+
+First, open BlockBench and drag the previously downloaded `ysm-netease-utils.js` file (**do not rename the file, and do not delete it after installation**) directly into BlockBench.
+![img](https://s2.loli.net/2025/01/28/1aQ39gqfGRCjrPc.png)
+After confirming, you will see the loaded plugin in the `File -> Plugins` menu:
+![img](https://s2.loli.net/2025/01/28/rh7paZYUKB13NjE.png)
+![img](https://s2.loli.net/2025/01/28/EltwBoCvgDxus64.png)
+
+## 3. Model Conversion
+
+Now, let's start converting the Java Edition YSM model.
+Open the following menu in BlockBench:
+![img](https://s2.loli.net/2025/01/28/ailrDY1VGJ8uXfd.png)
+![img](https://s2.loli.net/2025/01/28/SI8qWfDuMgdmkn7.png)
+Click the `Select Java Edition Model Pack` button, then select the Java Edition YSM model pack folder you want to convert.
+Next, click the `Select Export Path` button and choose the path where you want to save the converted component pack.
+
+<Aside>
+  The China Edition component pack does not support Chinese characters in the
+  path. It is recommended to choose a path with only English characters, such as
+  placing it on the desktop.
+</Aside>
+Finally, fill in the author name and model name. These two names will be automatically
+combined by the plugin as your component pack ID. Please choose names that are long
+and unlikely to conflict.
+<Aside>
+  The China Edition component pack does not support IDs containing Chinese
+  characters. Please use only lowercase English letters or underscores, and do
+  not use Chinese characters or spaces.
+</Aside>
+
+## 4. Testing the Model
+
+Now that you have completed the conversion, let's test it in-game!
+First, open the `Minecraft Developer Launcher`, log in, and select `Create -> Local Import -> Import Bedrock Component`:
+![img](https://s2.loli.net/2025/01/28/Spsc9gmIo13udVa.png)
+Import the previously downloaded `ysmMain.zip` prerequisite pack, give it any name, and click import.
+![img](https://s2.loli.net/2025/01/28/mLuF12gj5IzSJZx.png)
+Then, import the folder you just converted using the plugin in the same way:
+![img](https://s2.loli.net/2025/01/28/xQgAlP5dIvmGfiX.png)
+Next, select the main pack (or the add-on pack, as you prefer), and click the development test button:
+![img](https://s2.loli.net/2025/01/28/JROyAUMZbsta1oE.png)
+Choose any version, such as 3.1 or 3.2:
+![img](https://s2.loli.net/2025/01/28/haFymdDS31AKCMr.png)
+On this screen, you need to make two changes:
+
+- Check both the main pack and the add-on pack.
+- Select Creative Mode (otherwise, you may be killed by monsters during testing, which is inconvenient).
+  ![img](https://s2.loli.net/2025/01/28/WgS3JU4BQuAXhRL.png)
+  Click the start button to run the game, then use the YSM component in-game as usual:
+  ![img](https://s2.loli.net/2025/01/28/bGRXdTnQjYivkH6.png)
+
+## 5. Feedback
+
+If you encounter problems during use, we may ask you for log files. You can export the log file by clicking here:
+![img](https://s2.loli.net/2025/01/28/FxkE21hGWM9i3jX.png)
+
+## Common Conversion Issues
+
+### 1. Some Errors in the Log
+
+If you see the following errors, they usually do not affect usage and can be ignored:
+`friendly name 'material.tohru' not found in entity friendly name list (material.default) - check your spelling?`
+![img](https://s2.loli.net/2025/01/28/C4Ncf6ZkIeqmJrn.png)
+`Error: can't find animation xxx`
+![img](https://s2.loli.net/2025/01/28/jbEFC5zc8LTnGvl.png)
+
+### 2. First-Person Arm Model Has Extra or Missing Parts
+
+The first-person arm model is automatically generated by the plugin by recognizing all subgroups under the `RightArm` group. If you do not have a `RightArm` group, or if the `RightArm` group contains extra bones, you may encounter this issue.
+!!(Planned): The plugin will add a new feature in the future to let users select which groups to display!!
+Solution:
+First, as shown below, find the file in your converted component pack and open it with `VSCode`:
+![img](https://s2.loli.net/2025/01/28/yIpkr4SGvaRwdCJ.png)
+Under the `part_visibility` field, delete any extra groups that should not be displayed. If there are missing groups, you can add them in the same way.
+
+### 3. Some Parts Are Shown in Certain GUIs When They Should Be Hidden
+
+As shown below, some parts that should be hidden are displayed:
+![img](https://s2.loli.net/2025/01/28/VvZHTMIfz3ODLhU.png)
+![21.png](https://s2.loli.net/2025/01/28/Dmv6nH5WSFZp2Qo.png)
+Solution:
+The animation called in these two GUIs is named `paperpoll`. The default `paperpoll` animation generated by the plugin may have some issues. You need to manually fix its content to hide certain components.
+Due to Bedrock Edition's mechanism, only the `paperpoll` animation is played in the GUI—**no parallel animations will be played**! Therefore, the animation played in the GUI should not be too complex, and it is not recommended to use `molang` statements, as this may cause the game to lag.
+The model file is located at `resource_pack\models\entity`, and the animation file is at `resource_pack\animations`. Usually, you only need to load the file named `main.animation.json`.
+![22.png](https://s2.loli.net/2025/01/28/EakQb85KMFJj3WR.png)
+![23.png](https://s2.loli.net/2025/01/28/P38Ks4EwHhCuG2y.png)
+
+### 4. Errors Flood the Log When Opening the GUI Model Switch Screen
+
+The error message may look like: `Error: unhandled request for unknown variable 'variable.xxx'`
+![img](https://s2.loli.net/2025/01/28/UHCodeBYLnRyIOw.png)
+Solution:
+GUI and paperdoll animations do not support molang variables. Please check whether your `gui` and `paperdoll` animations contain molang statements.
+
+### 5. Some Model Parts Not Shown in Wheel Animation
+
+If you hide some groups (scale to 0) in the `pre_parallel` animation and want to show them (scale to 1) in the wheel animation, but they do not appear in the wheel animation during testing:
+Solution:
+Find the keyframes for the group in both the `pre_parallel` and wheel animations, and check if their mode is set to linear. If so, change both to the same smooth frame mode to fix the issue.
+The cause of this problem is unclear, but the above method works.

@@ -1,0 +1,54 @@
+---
+title: SWEM Animation
+---
+
+import { Aside } from "@astrojs/starlight/components"
+
+The SWEM equestrian mod is a highly realistic horse-related mod that adds a complete set of equestrian animations, simulating real-life horse movements in the game. Since version 2.2.2, we have added compatibility support for this mod!
+
+You can refer to the MCMOD Wiki: [https://www.mcmod.cn/class/7803.html](https://www.mcmod.cn/class/7803.html)
+
+You can refer to the default model animation file `swem.animation.json`. Also, don't forget to declare this file in `ysm.json`!
+
+## Adding Animation Locator File
+
+First, you need to add a new type `swem` in the animation field of `ysm.json`, as shown below:
+
+```json {9}
+"animation": {
+    "main": "animations/main.animation.json",
+    "arm": "animations/arm.animation.json",
+    "extra": "animations/extra.animation.json",
+    "tac": "animations/tac.animation.json",
+    "carryon": "animations/carryon.animation.json",
+    "parcool": "animations/parcool.animation.json",
+    // This is the equestrian animation
+    "swem": "animations/swem.animation.json",
+    "slashblade": "animations/slashblade.animation.json",
+    "tlm": "animations/tlm.animation.json"
+}
+```
+
+After that, refer to the default model's `swem.animation.json` animation.
+
+<Aside>
+
+If you want to modify the equestrian animation, be sure to fill in this field.
+If the modified equestrian animation does not take effect, please check
+whether this file is declared here.
+
+</Aside>
+
+## Animation List
+
+Below are the customizable equestrian animations. The default model's equestrian animation file is `swem.animation.json`:
+
+| Name                                                                                            | Function                                                 |
+| :---------------------------------------------------------------------------------------------- | :------------------------------------------------------- |
+| `swem:idle`                                                                                     | Animation when the player rides a SWEM horse and is idle |
+| `swem:walk`                                                                                     | Walk                                                     |
+| `swem:trot`                                                                                     | Trot                                                     |
+| `swem:canter`                                                                                   | Canter                                                   |
+| `swem:canter_ext`                                                                               | Extended canter                                          |
+| `swem:gallop`                                                                                   | Gallop                                                   |
+| `swem:jump_lv1`<br/>`swem:jump_lv2`<br/>`swem:jump_lv3`<br/>`swem:jump_lv4`<br/>`swem:jump_lv5` | Jump, divided into five levels                           |

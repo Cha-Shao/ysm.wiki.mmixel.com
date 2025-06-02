@@ -1,0 +1,24 @@
+---
+title: Texture Creation
+---
+
+import { Aside } from "@astrojs/starlight/components"
+
+Only `png` format textures are supported. It is recommended to minimize the use of **semi-transparent** textures, as stacking many semi-transparent textures may cause some rendering errors.
+
+<Aside>
+
+Since version 2.2.1, as long as the new format is used, texture names are not
+restricted and can use any characters.
+
+</Aside>
+
+## Specifying the Default Texture
+
+Sometimes, we create multiple textures for a model. If you want to specify the default texture for the model selection interface, how should you do it?
+
+Just modify the `default_texture` field under `properties` in the definition file `ysm.json`.
+
+If you are using the BlockBench plugin, simply select here:
+
+![1.png](https://s2.loli.net/2025/01/28/ZGozRt8v679OBdl.png)

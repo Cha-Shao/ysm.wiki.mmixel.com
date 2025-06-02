@@ -1,0 +1,31 @@
+---
+title: Emote Animation
+---
+
+Extra animations need to be stored separately in the `extra.animation.json` file. When using the animation wheel, these animations will play.
+
+Starting from version 2.2.1, there is no longer a limit to the number of extra animations—you can add as many as you like. If you use the new file format, animation names are also no longer fixed and can be customized.
+
+**Only the first eight emote animations can have custom hotkeys**, which you can add directly in the vanilla keybind settings.
+
+| Name                                       | Function                                                        | Note                                                                                                          |
+| :----------------------------------------- | :-------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------ |
+| `extra0`<br/>`extra1`<br/>...<br/>`extra7` | Plays the corresponding extra animation via the animation wheel | Plays according to the loop type set in the animation file<br/>**Since version 2.2.1, names are not limited** |
+
+## How to Set Play Type
+
+If you want the emote animation to play only once or to always maintain a certain animation state, just set the animation's play type to `Play Once/Loop`.
+
+You only need to modify this property in BlockBench: right-click the animation, select the `Properties` menu, and you can open this settings interface:
+
+![extra.png](https://s2.loli.net/2025/01/30/Vxr6khACRDjHKYd.png)
+
+## How to Disable Walk Interrupt
+
+In YSM version 2.2.2 and earlier, walking would interrupt the emote animation (this was intentional).
+
+From version 2.3.0, a `Lock` button was added to the emote wheel. After clicking, moving or sprinting will not interrupt the emote animation (unless the animation itself finishes).
+
+Since version 2.3.1, a new hotkey `Alt L (default)` was added to quickly enable or disable the lock feature.
+
+![lock.png](https://s2.loli.net/2025/01/30/PoFnd8Qpemg32V7.png)

@@ -1,0 +1,123 @@
+---
+title: Touhou Little Maid Mod
+---
+
+import { Aside } from "@astrojs/starlight/components"
+import FileCard from "@/components/FileCard"
+
+In the Touhou Little Maid 1.1.3 update, this mod added compatibility with the Yes Steve Model mod, allowing it to use unencrypted Yes Steve Model model and animation files. However, encrypted ysm format models cannot be used here!
+
+<Aside>
+  Since Touhou Little Maid version 1.1.13, we have adopted the same molang
+  system as Yes Steve Model 2.2.2.
+</Aside>
+
+<Aside>
+Encrypted Java Yes Steve Model models (that is, single files with the `.ysm` extension) **cannot be read or converted**!
+
+If you have not obtained permission from the original author for your model, **do not convert or distribute it**! We strongly oppose any infringement or theft of models, and we are not responsible for any consequences arising from this!
+
+</Aside>
+
+Touhou Little Maid supports creating model packs via plugins. The relevant plugin file and tutorial are as follows:
+
+<FileCard name="tlm - utils.js" size="514 KB" url="/files/tlm - utils.js" />
+
+Plugin tutorial: [https://www.bilibili.com/video/BV1LN411G7sU](https://www.bilibili.com/video/BV1LN411G7sU)
+
+The models and animations used by these two mods are basically compatible, with only minor differences, which are explained here.
+
+## Model
+
+Currently, the YSM models used by the maid support rendering of swords in both main hand and offhand (support for the YSM mod itself will be added later), as well as rendering of back items and headwear. All these renderings are implemented via locator groups. If a locator group is missing, the corresponding extra content will not be rendered.
+
+| Group Name                                                                  | Description                                                                                                                                                                                   |
+| :-------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `LeftHandLocator`                                                           | Same as YSM, locator group for items held in the left hand                                                                                                                                    |
+| `RightHandLocator`                                                          | Same as YSM, locator group for items held in the right hand                                                                                                                                   |
+| `LeftWaistLocator`                                                          | Locator group for rendering a sword when held in the right hand (this is correct)                                                                                                             |
+| `RightWaistLocator`                                                         | Locator group for rendering a sword when held in the left hand (this is correct)                                                                                                              |
+| `BackpackLocator`                                                           | Locator group when the maid is carrying a backpack, should be placed between the shoulders.<br/>Also used as the locator group when a sword or banner is placed in the maid's accessory slot. |
+| `Head`                                                                      | Same as YSM, locator group for the head                                                                                                                                                       |
+| `PistolLocator`                                                             | Same as YSM, renders a pistol on the waist when a pistol is placed in the maid's accessory slot                                                                                               |
+| `RifleLocator`                                                              | Same as YSM, renders a rifle or rocket launcher on the back when placed in the maid's accessory slot                                                                                          |
+| All groups starting with `ysmGlow`<br/>e.g. `ysmGlowHead`, `ysmGlowRingBow` | Glowing groups, same as YSM, will glow under most shader effects. **Only effective for the current group**                                                                                    |
+
+## Animation
+
+Some player actions cannot be performed by the maid, such as riding a horse, sneaking, crawling, flying, and elytra flight. However, the maid can play Gomoku, use a computer, etc., so there are some differences in animation names, and the maid has fewer animations overall.
+
+The maid mod's conditional animations (animations triggered by animation names) are basically the same as YSM, but the maid cannot perform swing (left-click action) with the offhand weapon and currently cannot use shields.
+
+The following main animations can be used directly, with the same playback conditions as YSM:
+
+| Name             | Function                                                  | Note                                                           |
+| :--------------- | :-------------------------------------------------------- | :------------------------------------------------------------- |
+| idle             | Animation when the maid is idle                           | Loops                                                          |
+| walk             | Animation when the maid is walking                        | Loops                                                          |
+| run              | Animation when the maid is running                        | Loops, but the maid rarely reaches running speed               |
+| jump             | Animation when the maid is jumping                        | Loops                                                          |
+| attacked         | Animation when the maid is attacked                       | Plays once                                                     |
+| swim_stand       | Animation when the maid is swimming standing in water     | Loops                                                          |
+| swim             | Animation when the maid is swimming                       | Added in maid mod 1.1.14, loops                                |
+| sit              | Animation when the maid is sitting (Shift + right-click)  | Loops<br/>Position differs slightly from YSM, needs adjustment |
+| boat             | Animation when the maid is sitting in a boat              | Loops                                                          |
+| sleep            | Animation when the maid is sleeping                       | Loops                                                          |
+| death            | Animation when the maid dies                              | Plays once, duration 1 second                                  |
+| swing_hand       | Animation when the maid swings her arm (left-click)       | Plays once                                                     |
+| use_offhand      | Animation when the maid uses the left hand (right-click)  | Plays once                                                     |
+| use_mainhand     | Animation when the maid uses the right hand (right-click) | Plays once                                                     |
+| ladder_up        | Animation when the maid climbs up a ladder                | Added in maid mod 1.1.14, loops                                |
+| ladder_stillness | Animation when the maid is still on a ladder              | Added in maid mod 1.1.14, loops                                |
+| ladder_down      | Animation when the maid climbs down a ladder              | Added in maid mod 1.1.14, loops                                |
+
+The following are maid-specific animations that need to be added separately:
+
+| Name      | Function                                                             | Note  |
+| :-------- | :------------------------------------------------------------------- | :---- |
+| gomoku    | Animation when the maid is sitting by a Gomoku, chess, or chessboard | Loops |
+| bookshelf | Animation when the maid is sitting on a bookshelf                    | Loops |
+| computer  | Animation when the maid is sitting by a computer                     | Loops |
+| keyboard  | Animation when the maid is sitting by a keyboard                     | Loops |
+| chair     | Animation when the maid is sitting on a cushion                      | Loops |
+| picnic    | Animation when the maid is sitting on a picnic mat                   | Loops |
+| beg       | Animation played when the player approaches the maid with a cake     | Loops |
+| game_lost | Animation played when the maid loses a game                          | Loops |
+| game_win  | Animation played when the maid wins a game                           | Loops |
+
+All conditional animations can be applied to the maid, as follows:
+
+- `hold_mainhand`, `hold_offhand` conditional animations, played when the maid holds a specific item. For example, fishing: `hold_mainhand:fishing`
+- `passenger` conditional animation, played when certain entities ride the maid.
+- `swing`, `swing_offhand` conditional animations. Played when the maid swings an item, but the maid cannot perform swing_offhand (offhand swing).
+- `use_mainhand`, `use_offhand` conditional animations, played when the maid uses a specific item. For example, eating with the main hand: `use_mainhand:eat`; using a gohei to fire danmaku: `use_mainhand:gohei`
+- `vehicle` conditional animation, played when the maid rides a specific entity. For example, when a player picks up the maid with a saddle: `vehicle$minecraft:player`
+- `head`, `chest`, `legs` (note the plural), `feet` conditional animations, played when the maid wears specific armor.
+- `tac` conditional animation, compatible with tacz, exactly the same as YSM.
+- Cushion animation, which is maid-specific, starts with `chair` and is followed by `$` and the cushion's model ID.
+  - For example, in-game chair: `chair$touhou_little_maid:class_chair`
+
+## Molang Functions and Variables
+
+The maid mod has all the molang functions of the Yes Steve Model mod, but since the maid lacks some player attributes, the return values of some function variables are different.
+
+### New molang variables
+
+| Variable Name      | Description                                        |
+| :----------------- | :------------------------------------------------- |
+| `tlm.is_begging`   | True when the maid is begging, false otherwise     |
+| `tlm.is_sitting`   | True when the maid is in standby, false otherwise  |
+| `tlm.has_backpack` | True when the maid has a backpack, false otherwise |
+
+### Different molang function variables
+
+| Variable Name                | Description                                          |
+| :--------------------------- | :--------------------------------------------------- |
+| `ysm.bone_pivot_abs`         | No return value in the maid mod                      |
+| `ysm.food_level`             | The maid does not have a hunger system, always 20    |
+| `ysm.texture_name`           | This variable is an empty string                     |
+| `ysm.rendering_in_inventory` | Always false                                         |
+| `query.player_level`         | The maid has an experience system, returns maid's XP |
+| `query.has_cape`             | The maid does not have a cape, always returns false  |
+
+All debugging molang functions, such as `query.debug_output`, `ysm.dump_mods`, `ysm.dump_effects`, etc., cannot be used; these functions are empty.

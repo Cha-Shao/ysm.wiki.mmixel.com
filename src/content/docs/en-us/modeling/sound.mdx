@@ -1,0 +1,86 @@
+---
+title: Audio Playback
+---
+
+import { Aside, Steps } from "@astrojs/starlight/components"
+
+Starting from version 2.3.0, the Yes Steve Model mod supports calling audio in animations. Please note the following points when using this feature:
+
+- Audio files can be either built into the model pack or reference vanilla game audio.
+- For built-in audio, place the files in the `sounds` folder in the root of the model pack (this is the default path).
+- Only the new file structure is supported; the old structure does not support audio features.
+- The audio format must be **OGG**. It is recommended to use mono for stereo effects in-game.
+- A single audio file must not exceed 4MB, and the entire model pack must not exceed 66MB.
+
+<Aside title="How to convert audio? Recommended tools:">
+
+- **Format Factory**: Simple and easy to use, suitable for beginners. Download:
+  [Official Site](http://www.pcfreetime.com/formatfactory/CN/index.html) |
+  [Tencent Software Center](https://pc.qq.com/detail/11/detail_1511.html)
+- **Adobe Audition**: Professional audio editing software, very powerful but has a steeper learning curve.
+- Other tools: Audacity, FFmpeg, etc. As long as they support exporting to OGG format.
+- Of course, you can use any other tool that can convert audio to OGG format.
+
+</Aside>
+
+## Steps to Add Audio
+
+<Steps>
+
+1. **Create the audio folder**
+
+   Create a folder named `sounds` in the root directory of your model pack.
+
+   ![1.png](https://s2.loli.net/2025/01/30/HZMXbJgK1i6raef.png)
+
+2. **Add OGG audio files**
+
+   Only `.ogg` audio files are supported. Other formats must be converted before use.
+
+   ![4.png](https://s2.loli.net/2025/01/30/niRbwcJYmG9dqzO.png)
+
+3. **Add audio to animations in BlockBench**
+
+   Configure audio trigger points in animation keyframes.
+
+   ![3.png](https://s2.loli.net/2025/01/30/bQ3r4OSskhH5z7a.png)
+
+</Steps>
+
+## Audio Naming Rules
+
+### 1. Built-in Audio (Custom Path)
+
+**Default path**: `sounds/AudioName.ogg`
+
+- In animation keyframes, just enter the audio file name (no extension or path prefix needed). For example:
+  If the audio file is `sounds/AttackSound.ogg`, enter `AttackSound` in the keyframe.
+
+**Custom path**:
+
+If you want to change the audio folder name, add the `sound_path` field in the `properties` section of `ysm.json`:
+
+```json
+{
+  "properties": {
+    "sound_path": "CustomFolderName" // e.g., "AudioLibrary"
+  }
+}
+```
+
+- The audio file path then becomes `CustomFolderName/AudioName.ogg`.
+- In animation keyframes, still only enter the audio file name (no prefix or extension).
+
+### 2. Vanilla Game Audio
+
+In animation keyframes, directly enter the vanilla audio ID (e.g., `minecraft:block.anvil.hit`) to use built-in game audio.  
+If you want to extend vanilla audio, you can do so by creating a resource pack:
+
+- Resource pack tutorial: [Minecraft Wiki (Tutorial: Creating a resource pack)](https://zh.minecraft.wiki/w/Tutorial:%E5%88%B6%E4%BD%9C%E8%B5%84%E6%BA%90%E5%8C%85?variant=zh-cn)
+- Sound configuration tutorial: [Minecraft Wiki (Tutorial: Resource pack/Sounds and Music)](https://zh.minecraft.wiki/w/Tutorial:%E5%88%B6%E4%BD%9C%E8%B5%84%E6%BA%90%E5%8C%85/%E9%9F%B3%E6%95%88%E5%92%8C%E9%9F%B3%E4%B9%90)
+
+<Aside>
+
+It is recommended to use vanilla resource packs for adding audio whenever possible. This reduces the size of your model pack and avoids copyright issues.
+
+</Aside>
