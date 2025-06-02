@@ -1,103 +1,111 @@
 ---
-title: Introduction
+title: 简介
 ---
 
 import { Aside, CardGrid } from "@astrojs/starlight/components"
 import ImageCard from "@/components/ImageCard"
 
-#
-
-Yes Steve Model is a mod that modifies the vanilla player model. It uses Minecraft Bedrock Edition model and animation files, and provides many optimizations and model encryption features.
+Yes Steve Model 是一个修改原版玩家模型的模组，它使用了 Minecraft 基岩版模型和动画文件，并提供了诸多优化与模型加密功能。
 
 ![img](https://s2.loli.net/2023/01/01/RAor58n6LBct3kW.jpg)
 
-<Aside type="tip">The latest version of Yes Steve Model is **2.4.1**</Aside>
+<Aside type="tip">目前最新版的 Yes Steve Model 版本号为 **2.4.1**</Aside>
 
 <Aside type="tip">
-  **Version 2.4.1** supports 1.16.5/1.18.2/1.19.2/1.20.1 Forge,
-  1.16.5/1.18.2/1.19.2/1.20.1/1.21/1.21.1 Fabric, and 1.21/1.21.1 NeoForge, for
-  a total of twelve versions.
+  **2.4.1 版本**同时支持 1.16.5/1.18.2/1.19.2/1.20.1
+  Forge，1.16.5/1.18.2/1.19.2/1.20.1/1.21/1.21.1 Fabric 和 1.21/1.21.1 NeoForge
+  共计十二个版本。
 </Aside>
 
-## Basic Introduction
+## 基本介绍
 
-Yes Steve Model is designed with server communities in mind, featuring many server-friendly designs, including but not limited to:
+Yes Steve Model 模组考虑到了服务器群体的模组需求，采用了诸多适用于服务器环境的设计，包括但不限于：
 
-- Automatic client model sync: When regular players join the server, the server will **automatically** sync models to the player's computer.
-- Encrypted model files: All models sent to the client are **encrypted binary files**, effectively preventing model theft!
-- Model permission system: Models can be individually authorized. Only after OP enters a command to authorize, can specific models be used.
-- Vanilla player model modification: Adds default Steve and Alex models, both of which can automatically use player skins.
-- Animation wheel feature: Pressing the `Z` key opens an animation wheel, allowing you to easily play various fun animations (such as actions, expressions, etc.).
-- Touhou Little Maid mod rendering support: Using Yes Steve Model 2.4.0 or later and Touhou Little Maid 1.2.0 or later, you can also use corresponding models and animations for maids.
+- 自动同步客户端模型：普通玩家在进入服务器时，服务器会==自动==把模型同步到玩家的电脑上。
+- 加密模型文件：发送到玩家客户端的模型全部是==加密的二进制文件==，有效避免模型窃取问题！
+- 模型权限功能：模型可以单独设置授权，只有 OP 输入指令授权后，特定的模型才可以使用。
+- 原版玩家模型修改：添加了默认的 Steve 和 Alex 模型，这两个模型均可自动调用玩家皮肤显示。
+- 动画轮盘功能：当按下 `Z` 键时，能够打开一个轮盘动画。通过它你可以方便播放各种有趣的动画（比如动作、表情等）。
+- 女仆模组渲染支持：使用 2.4.0 及以后版本的 Yes Steve Model 模组和 1.2.0 版本以后的 Touhou Little Maid
+  模组，即可对女仆也使用相应模型和动画。
 
 <CardGrid>
   <ImageCard
     src="/intro/first-personal.jpg"
-    title="More Realistic First-person Model"
-    desc="Mod name: First-person Model, but there are still some hard-to-fix bugs."
+    title="更真实的第一人称模型"
+    desc="模组名 First-person Model，但是仍旧存在些许错误很难解决。"
     href="/"
   />
   <ImageCard
     src="/intro/tacz.jpg"
-    title="TAC/TACZ (Timeless and Classic Guns)"
-    desc="Perfectly compatible with gun holding, reloading, aiming, firing, and other actions of this mod."
+    title="TAC/TACZ（永恒枪械工坊）"
+    desc="可以完美的兼容该模组的持枪、换弹、瞄准、开火等诸多动作。"
     href="/"
   />
   <ImageCard
     src="/intro/carry-on.jpg"
     title="Carry On"
-    desc="Can play corresponding animations when the player picks up other blocks or entities. In Carry On 1.19.2 and 1.20, you can even pick up players, so you can bond with friends on the server."
+    desc="能够在玩家抱起其他方块、实体时播放对应动画。1.19.2 和 1.20 版本的 Carry On 模组甚至可以抱起玩家，所以你可以在服务器与你的好友培养感情"
     href="/"
   />
   <ImageCard
     src="/intro/slash-blade.jpg"
-    title="Slash Blade"
-    desc="Can render specific main/offhand Slash Blades. Version 2.3.0 adds compatibility for Slash Blade animations, with 33 new animations. See the default model's slashblade.animation.json file."
+    title="Slash Blade（拔刀剑）"
+    desc="可以渲染特定的主副手拔刀剑。2.3.0 版本添加了对拔刀剑动画的兼容，新增 33 个动画，可参考默认模型的 slashblade.animation.json 文件"
     href="/"
   />
   <ImageCard
     src="/intro/swem.jpg"
-    title="SWEM (Horse Riding)"
-    desc="Adds 11 new animations. See the default model's swem.animation.json file."
+    title="SWEM（马术）"
+    desc="新增 11 个动画，可参考默认模型的 swem.animation.json 文件"
     href="/"
   />
   <ImageCard
     src="/intro/parcool.jpg"
-    title="Parcool (Parkour)"
-    desc="Adds 35 new animations. See the default model's parcool.animation.json file."
+    title="Parcool（跑酷）"
+    desc="新增 35 个动画，可参考默认模型的 parcool.animation.json 文件"
     href="/"
   />
   <ImageCard
     src="/intro/touhou-little-maid.jpg"
-    title="Touhou Little Maid"
-    desc="Adds 15 new animations. See the default model's tlm.animation.json file."
+    title="Touhou Little Maid（车万女仆）"
+    desc="新增 15 个动画，可参考默认模型的 tlm.animation.json 文件"
     href="/"
   />
   <ImageCard
     src="/intro/sophisticated-backpacks.jpg"
-    title="Sophisticated Backpacks"
-    desc="Supports rendering Sophisticated Backpacks."
+    title="Sophisticated Backpacks（精妙背包）"
+    desc="支持渲染精妙背包"
     href="/"
   />
 </CardGrid>
 
-## Mod Compatibility Notes
+## 模组兼容说明
 
-- 1.16.5/1.18.2 Forge versions add compatibility for [Timeless and Classic Guns](https://www.curseforge.com/minecraft/mc-mods/timeless-and-classic-guns-tac), but require **version 0.3.7** or above, otherwise holding a gun in-game will cause a crash.
-- 1.18.2/1.19.2/1.20.1 Forge versions add compatibility for [Timeless and Classics: Zero](https://www.curseforge.com/minecraft/mc-mods/timeless-and-classics-zero).
-- Although compatibility for [First-person Model](https://www.curseforge.com/minecraft/mc-mods/first-person-model) is added, there are still some bugs.
-- Adds support for Oculus (Forge) and Iris (Fabric) PBR materials.
-- Adds support for [Slash Blade](https://www.curseforge.com/minecraft/mc-mods/slashblade) animations. Version 2.2.1 also supports [Slash Blade: Resharped](https://www.curseforge.com/minecraft/mc-mods/slashblade-resharped). Version 2.4.0 supports some Japanese-style add-on sword skills.
-- Supports [Cosmetic Armor Reworked](https://www.curseforge.com/minecraft/mc-mods/cosmetic-armor-reworked) armor and elytra slots.
-- Supports [SWEM (Horse Riding)](https://www.curseforge.com/minecraft/mc-mods/swem) and [Parcool (Parkour)](https://www.curseforge.com/minecraft/mc-mods/parcool).
-- Compatible with [Carpet](https://www.curseforge.com/minecraft/mc-mods/carpet) and [Curtain](https://www.curseforge.com/minecraft/mc-mods/curtain) mod dummies.
-- Compatible with [Touhou Little Maid](https://www.curseforge.com/minecraft/mc-mods/touhou-little-maid), allowing you to replace the maid's rendering model with this mod. Requires Touhou Little Maid version 1.2.0 or above.
-- Compatible with [Sophisticated Backpacks](https://modrinth.com/mod/sophisticated-backpacks), allowing rendering of this mod's backpacks.
+- 1.16.5/1.18.2 Forge
+  版本添加了对[永恒枪械工坊](https://www.curseforge.com/minecraft/mc-mods/timeless-and-classic-guns-tac)模组的兼容，但需要
+  **0.3.7** 及以上版本的[永恒枪械工坊](https://www.curseforge.com/minecraft/mc-mods/timeless-and-classic-guns-tac)
+  模组才可以，否则游戏内持枪会导致游戏崩溃。
+- 1.18.2/1.19.2/1.20.1 Forge
+  版本添加了对[永恒枪械工坊：零](https://www.curseforge.com/minecraft/mc-mods/timeless-and-classics-zero)模组的兼容。
+- 虽然添加了对[更真实的第一人称模型](https://www.curseforge.com/minecraft/mc-mods/first-person-model)
+  模组的兼容，但仍旧存在些许错误。
+- 添加了对 Oculus(Forge) 和 Iris(Fabric) 模组 PBR 材质的支持。
+- 添加了对[拔刀剑](https://www.curseforge.com/minecraft/mc-mods/slashblade)动画的支持，2.2.1
+  版本还支持[拔刀剑：重锋](https://www.curseforge.com/minecraft/mc-mods/slashblade-resharped)。2.4.0 版本支持部分日式附属的刀技动画。
+- 支持[时装盔甲](https://www.curseforge.com/minecraft/mc-mods/cosmetic-armor-reworked)的盔甲和鞘翅插槽。
+- 支持 [SWEM（马术）](https://www.curseforge.com/minecraft/mc-mods/swem)
+  和 [Parcool（跑酷）](https://www.curseforge.com/minecraft/mc-mods/parcool)模组。
+- 兼容 [Carpet](https://www.curseforge.com/minecraft/mc-mods/carpet)
+  和 [Curtain](https://www.curseforge.com/minecraft/mc-mods/curtain) 模组的假人。
+- 兼容 [Touhou Little Maid](https://www.curseforge.com/minecraft/mc-mods/touhou-little-maid)，可以给女仆替换本模组的渲染模型。需要使用
+  1.2.0 版本以上的女仆模组。
+- 兼容 [精妙背包](https://modrinth.com/mod/sophisticated-backpacks)，可以渲染该模组的背包。
 
-## Platform Support
+## 平台支持情况
 
-Versions 1.1.5 and earlier were written in pure Java, supporting the three major platforms and mobile.
+1.1.5 及之前的版本采用纯 Java 编写，支持三大主流平台和手机平台。
 
-Since the old Java encryption was quickly cracked, from version 1.2.0 onwards, the core encryption and rendering parts are all written in C++, greatly improving rendering efficiency and security, but with weaker multi-platform support.
+由于旧版 Java 加密被很快被破解，自 1.2.0 起核心的加密和渲染部分全部采用 C++ 书写，大大提升了渲染效率和安全性，但是多平台支持情况较差。
 
-Currently, the client only supports Windows x64 systems, and the server supports Windows and Linux x64 systems. Support for other platforms and architectures is in progress and will be announced as soon as there are updates.
+目前客户端仅支持 Windows x64 系统，服务端支持 Windows 和 Linux x64 系统。其他平台和架构的支持也在逐步进行中，后续有完成进度时会随时进行公告。
