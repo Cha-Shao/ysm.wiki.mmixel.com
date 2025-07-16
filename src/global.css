@@ -1,4 +1,4 @@
-@layer base, starlight, theme, components, utilities;
+@layer base, starlight, theme, components, utilities, overrides;
 
 @import "@astrojs/starlight-tailwind";
 @import "tailwindcss/theme.css" layer(theme);
@@ -18,6 +18,8 @@
   --sl-color-gray-6: #24272f;
   --sl-color-black: #17181c;
 
+  --sl-color-bg: var(--sl-color-gray-6);
+
   --border: var(--sl-color-gray-5);
 }
 /* Light mode colors. */
@@ -34,6 +36,8 @@
   --sl-color-gray-6: #eceef2;
   --sl-color-gray-7: #f5f6f8;
   --sl-color-black: #ffffff;
+
+  --sl-color-bg: var(--sl-color-gray-6);
 
   --border: var(--sl-color-gray-5);
 }
@@ -60,3 +64,28 @@
 .hero {
   display: none;
 }
+/* 
+@layer overrides {
+  @media (min-width: 50rem) {
+    .sidebar-pane {
+      background: var(--sl-color-black) !important;
+      border-radius: 1rem;
+      inset-block: unset !important;
+      inset: calc(var(--sl-nav-height) + 0.5rem) 0.5rem 0.5rem 0.5rem !important;
+    }
+
+    .sidebar-content a {
+      font-size: 2rem;
+    }
+
+    .sidebar-pane::-webkit-scrollbar {
+      width: 8px;
+      background-color: transparent;
+    }
+
+    .sidebar-pane::-webkit-scrollbar-thumb {
+      background: var(--sl-color-gray-5);
+      border-radius: 9999px;
+    }
+  }
+} */
