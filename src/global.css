@@ -18,7 +18,7 @@
   --sl-color-gray-6: #24272f;
   --sl-color-black: #17181c;
 
-  --sl-color-bg: var(--sl-color-gray-6);
+  /* --sl-color-bg: var(--sl-color-gray-6); */
 
   --border: var(--sl-color-gray-5);
 }
@@ -37,7 +37,7 @@
   --sl-color-gray-7: #f5f6f8;
   --sl-color-black: #ffffff;
 
-  --sl-color-bg: var(--sl-color-gray-6);
+  /* --sl-color-bg: var(--sl-color-gray-6); */
 
   --border: var(--sl-color-gray-5);
 }
