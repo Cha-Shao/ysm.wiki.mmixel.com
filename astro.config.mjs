@@ -115,6 +115,16 @@ export default defineConfig({
                             slug: "modeling/texture"
                         },
                         {
+                            label: "YSM 模型 UV 规范",
+                            translations: { 'en-US': "YSM Model UV Standard", },
+                            slug: "modeling/uv-standard"
+                        },
+                        {
+                            label: "多语言支持",
+                            translations: { 'en-US': "Localization", },
+                            slug: "modeling/localization"
+                        },
+                        {
                             label: "PBR贴图",
                             translations: { 'en-US': "PBR Texture", },
                             slug: "modeling/pbr-texture"
@@ -133,6 +143,16 @@ export default defineConfig({
                             label: "动画控制器",
                             translations: { 'en-US': "Animation Controller", },
                             slug: "modeling/controller"
+                        },
+                        {
+                            label: "前景图与背景图",
+                            translations: { 'en-US': "Foreground and Background Images", },
+                            slug: "modeling/cover-background"
+                        },
+                        {
+                            label: "模型打包",
+                            translations: { 'en-US': "Packaging Models", },
+                            slug: "modeling/packaging"
                         },
                     ],
                 },
@@ -191,6 +211,11 @@ export default defineConfig({
                             slug: "animation/tacz"
                         },
                         {
+                            label: "枪械动画",
+                            translations: { 'en-US': "Gun Animations", },
+                            slug: "animation/gun"
+                        },
+                        {
                             label: "马术动画",
                             translations: { 'en-US': "Equestrian Animation", },
                             slug: "animation/swem"
@@ -214,6 +239,26 @@ export default defineConfig({
                             label: "女仆动画",
                             translations: { 'en-US': "TLM Maid Animation", },
                             slug: "animation/tlm"
+                        },
+                        {
+                            label: "骑乘实体动画",
+                            translations: { 'en-US': "Ridden Entity Animations", },
+                            slug: "animation/ride-entity"
+                        },
+                        {
+                            label: "铁魔法动画",
+                            translations: { 'en-US': "Iron's Spells Animation", },
+                            slug: "animation/iron-spells"
+                        },
+                        {
+                            label: "沉浸式奏乐动画",
+                            translations: { 'en-US': "Immersive Melodies Animation", },
+                            slug: "animation/immersive-melodies"
+                        },
+                        {
+                            label: "更好的战斗动画",
+                            translations: { 'en-US': "Better Combat Animation", },
+                            slug: "animation/better-combat"
                         },
                         {
                             label: "更真实的第一人称",
@@ -246,7 +291,26 @@ export default defineConfig({
                             translations: { 'en-US': "Molang Reference", },
                             slug: "molang/ref"
                         },
+                        {
+                            label: "Molang 杂项内容",
+                            translations: { 'en-US': "Molang Miscellaneous", },
+                            slug: "molang/misc"
+                        },
+                        {
+                            label: "自定义函数",
+                            translations: { 'en-US': "Custom Functions", },
+                            slug: "molang/custom-functions"
+                        },
                     ]
+                },
+                {
+                    label: "更新日志",
+                    translations: { 'en-US': "Changelog", },
+                    items: ["2.6.5", "2.6.4", "2.6.3", "2.6.2", "2.6.1", "2.6.0", "2.5.3", "2.5.2", "2.5.1", "2.5.0", "2.4.1", "2.4.0", "2.3.2", "2.3.1", "2.3.0", "2.2.2", "2.2.1", "1.2.0"].map((version) => ({
+                        label: `${version} 更新日志`,
+                        translations: { 'en-US': `${version} Update Log`, },
+                        slug: `changelog/${version}`,
+                    })),
                 },
                 {
                     label: "模型转换",
