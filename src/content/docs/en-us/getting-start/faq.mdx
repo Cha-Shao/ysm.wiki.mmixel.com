@@ -10,6 +10,7 @@ import {
   Steps,
   CardGrid,
 } from "@astrojs/starlight/components"
+import LatestVersion from "@/components/LatestVersion.astro"
 
 <Aside type="tip">
 
@@ -71,15 +72,14 @@ If the above content does not solve your problem, you can ask in the group chat.
 
 ## How to install the mod
 
-The latest official version of the mod is: `2.4.1`
+The latest official version of the mod is: <LatestVersion />
 Supported versions:
 
-<Card title="Version 2.4.1">
+<Card title="Latest release">
 
-- Forge: `1.20.1` `1.19.2` `1.18.2` `1.16.5`
-- Fabric: `1.21.1` `1.21`
-  `1.20.1` `1.19.2` `1.18.2` `1.16.5`
-- NeoForge: `1.21.1` `1.21`
+- Forge: `1.20.1`
+- Fabric: `1.20.1` `1.21.1`
+- NeoForge: `1.21.1` `26.1.2`
 
 </Card>
 
@@ -207,7 +207,7 @@ The following model installation steps are only for singleplayer. If you are a s
 If you have placed the model as described above but still cannot find it, please check the following:
 
 - Did you install the YSM mod?
-- Is your YSM version the latest (latest is 2.4.1)? Most new models require version 2.2.2 or above. Version 1.1.5 is no longer supported!
+- Is your YSM version the latest (latest is <LatestVersion />)? Most new models require version 2.2.2 or above. Version 1.1.5 is no longer supported!
 - Are you in singleplayer, not multiplayer? Multiplayer requires the server owner to install the model on the server.
 - Did you use the `/ysm model reload` command to reload models?
 - If this is your first time playing and you have many models installed, after reloading, only the default model may be shown. Please wait patiently while the mod builds the cache. Once done, the models will appear. (Same for multiplayer)
@@ -269,7 +269,7 @@ Use the mod's built-in compatibility renderer as follows:
 ## Prompt "Unsupported YSM model version"
 
 ![lowversion.jpg](https://s21.ax1x.com/2025/02/03/pEZotl6.jpg)
-If you see this, please check if your YSM version is the latest (latest is 2.4.1). If not, update the YSM mod.
+If you see this, please check if your YSM version is the latest (latest is <LatestVersion />). If not, update the YSM mod.
 If the issue persists after updating, contact the model author.
 
 ## Is there a Bedrock or NetEase version?

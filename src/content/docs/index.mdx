@@ -14,14 +14,15 @@ hero:
       link: /download
       icon: external
       variant: minimal
-banner:
-  content: YSM 最新版本为 2.4.1
 ---
 
-import { Card, CardGrid } from "@astrojs/starlight/components"
+import { Aside, Card, CardGrid } from "@astrojs/starlight/components"
 import Hero from "@/components/Hero"
+import LatestVersion from "@/components/LatestVersion.astro"
 
 <Hero />
+
+<Aside type="tip">YSM 最新版本为 <LatestVersion /></Aside>
 
 ## 为何 YSM 如此有趣？
 

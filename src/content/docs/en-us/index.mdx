@@ -14,14 +14,15 @@ hero:
       link: /download
       icon: external
       variant: minimal
-banner:
-  content: The latest version of YSM is 2.4.1
 ---
 
-import { Card, CardGrid } from "@astrojs/starlight/components"
+import { Aside, Card, CardGrid } from "@astrojs/starlight/components"
 import Hero from "@/components/Hero"
+import LatestVersion from "@/components/LatestVersion.astro"
 
 <Hero lang="en-US" />
+
+<Aside type="tip">The latest version of YSM is <LatestVersion /></Aside>
 
 ## Why is YSM so fun?
 
