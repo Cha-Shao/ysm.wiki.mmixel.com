@@ -4,10 +4,11 @@ import starlight from "@astrojs/starlight"
 import tailwindcss from "@tailwindcss/vite"
 import path from "path"
 import react from "@astrojs/react"
-import vercel from "@astrojs/vercel/static"
+import vercel from "@astrojs/vercel"
 
 // https://astro.build/config
 export default defineConfig({
+    site: "https://ysm.wiki.mmixel.com",
     // image: {
     //     service: passthroughImageService()
     // },
